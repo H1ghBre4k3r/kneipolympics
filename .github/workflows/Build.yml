@@ -1,0 +1,27 @@
+name: Docker
+
+on: [push]
+
+jobs:
+  build-and-test-package:
+    name: Build & Test Application
+    runs-on: ubuntu-latest
+
+    env:
+      frontend-dir: ./frontend
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install dependencies
+        working-directory: ${{ env.frontend-dir }}
+        run: npm ci
+      - name: Lint the project
+        working-directory: ${{ env.frontend-dir }}
+        run: npm run lint
+      - name: Test the project
+        working-directory: ${{ env.frontend-dir }}
+        run: npm run test
