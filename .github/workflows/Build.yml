@@ -3,9 +3,16 @@ name: Build
 on: [push]
 
 jobs:
-  build-and-test-package:
-    name: Build & Test Application
-    runs-on: ubuntu-latest
+  build:
+    strategy:
+      matrix:
+        node-version: [20.x]
+        os:
+          - ubuntu-latest
+          - macos-latest
+          - windows-latest
+
+    runs-on: ${{ matrix.os }}
 
     env:
       frontend-dir: ./frontend
@@ -19,9 +26,21 @@ jobs:
       - name: Install dependencies
         working-directory: ${{ env.frontend-dir }}
         run: npm ci
+      - name: Build (typecheck) the project
+        working-directory: ${{ env.frontend-dir }}
+        run: npm run build
       - name: Lint the project
         working-directory: ${{ env.frontend-dir }}
         run: npm run lint
-      - name: Test the project
-        working-directory: ${{ env.frontend-dir }}
-        run: npm run test
+
+  image:
+    needs: build
+    uses: ./.github/workflows/image.yml
+    secrets: inherit
+
+  deploy:
+    permissions:
+      contents: write
+    needs: image
+    uses: ./.github/workflows/deploy.yml
+    secrets: inherit
