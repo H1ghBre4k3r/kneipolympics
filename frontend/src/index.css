@@ -1,68 +1,86 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
+@layer atom {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    /* font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif; */
+    font-family: Fliege Mono;
+    line-height: 1.5;
+    font-weight: 400;
+
+    color-scheme: light dark;
+    color: rgba(255, 255, 255, 0.87);
+    background-color: #242424;
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    --h1-size: 2rem;
+    --h2-size: 1.5rem;
+    --h3-size: 1.25rem;
+    --h4-size: 1.125rem;
+    --h5-size: 1rem;
+    --h6-size: 0.75rem;
+
+    --content-width: 800px;
+    --content-max-width: calc(100vw - 40px);
   }
-  a:hover {
-    color: #747bff;
+
+  @media (prefers-color-scheme: light) {
+    :root {
+      color: #213547;
+      background-color: #ffffff;
+    }
   }
-  button {
-    background-color: #f9f9f9;
+
+  @media only screen and (min-width: 1420px) {
+    :root {
+      --h1-size: 6rem;
+      --h2-size: 4rem;
+      --h3-size: 2rem;
+      --h4-size: 1.5rem;
+      --h5-size: 1.25rem;
+      --h6-size: 1.125rem;
+
+      --content-width: 1400px;
+      --content-max-width: calc(100vw - 20px);
+    }
+  }
+}
+
+@layer molecule {
+  h1 {
+    font-size: var(--h1-size);
+  }
+
+  h2 {
+    font-size: var(--h2-size);
+  }
+
+  h3 {
+    font-size: var(--h3-size);
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  main {
+    width: var(--content-width);
+    max-width: var(--content-max-width);
+  }
+
+  svg {
+    fill: currentColor;
+  }
+}
+
+@layer organism {
+}
+
+@layer utility {
+  [hidden] {
+    display: none !important;
   }
 }
