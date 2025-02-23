@@ -35,8 +35,8 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           platforms: linux/amd64,linux/arm64/v8
-          context: .
+          context: /frontend
           push: ${{ github.ref_name == 'main' }}
           tags: |
-            ghcr.io/${{ env.OWNER_LC }}/lome-dev:latest
-            ghcr.io/${{ env.OWNER_LC }}/lome-dev:${{ github.sha }}
+            ghcr.io/${{ env.OWNER_LC }}/kneipolympics:latest
+            ghcr.io/${{ env.OWNER_LC }}/kneipolympics:${{ github.sha }}
