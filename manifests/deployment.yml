@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    io.kompose.service: kneipolympics-deployment
+  name: kneipolympics-deployment
+  namespace: kneipolympics
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: kneipolympics-deployment
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        io.kompose.service: kneipolympics-deployment
+    spec:
+      containers:
+        - image: ghcr.io/h1ghbre4k3r/kneipolympics:latest
+          imagePullPolicy: Always
+          name: kneipolympics-deployment
+          ports:
+            - containerPort: 80
+          resources: {}
+      restartPolicy: Always
+status: {}

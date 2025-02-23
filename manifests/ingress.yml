@@ -1,0 +1,16 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: kneipolympics-ingress
+  namespace: kneipolympics
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`bar.lome.dev`)
+      kind: Rule
+      services:
+        - name: kneipolympics-service
+          port: 80
+  tls:
+    certResolver: le
