@@ -1,13 +1,10 @@
 import "./App.css";
+import { Header } from "./components/header";
 
 function App() {
   return (
     <main>
-      <header>
-        <section className="heading">
-          <h1>Kneipolympics</h1>
-        </section>
-      </header>
+      <Header />
       <section>
         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
         eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
