@@ -7,7 +7,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`bar.lome.dev`)
+    - match: Host(`kneipolympics.beer`)
       kind: Rule
       services:
         - name: kneipolympics-service
