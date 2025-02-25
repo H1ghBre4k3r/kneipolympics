@@ -1,4 +1,5 @@
-import { CgProfile } from "react-icons/cg";
+import { CiBeerMugFull } from "react-icons/ci";
+
 export function Header() {
   return (
     <header>
@@ -6,7 +7,7 @@ export function Header() {
         <h1>Kneipolympics</h1>
       </section>
       <section className="profile">
-        <CgProfile />
+        <CiBeerMugFull />
       </section>
     </header>
   );
