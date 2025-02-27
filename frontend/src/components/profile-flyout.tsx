@@ -1,20 +1,29 @@
 import { useState } from "react";
 import { CiBeerMugFull } from "react-icons/ci";
-import { LoginDialog } from "./login-dialog";
+import { LoginDialog, RegistrationDialog } from "./login-dialog";
 
 export function ProfileFlyout() {
   const [open, setOpen] = useState(false);
 
   const [loginOpen, setLoginOpen] = useState(false);
+  const [registrationOpen, setRegistrationOpen] = useState(false);
 
   function toggle() {
     setLoginOpen(false);
+    setRegistrationOpen(false);
     setOpen((open) => !open);
   }
 
   function onClickLogin() {
-    setLoginOpen(true);
     setOpen(false);
+    setLoginOpen(true);
+    setRegistrationOpen(false);
+  }
+
+  function onClickRegister() {
+    setOpen(false);
+    setLoginOpen(false);
+    setRegistrationOpen(true);
   }
 
   return (
@@ -29,12 +38,13 @@ export function ProfileFlyout() {
               <button onClick={onClickLogin}>Login</button>
             </li>
             <li>
-              <button>Register</button>
+              <button onClick={onClickRegister}>Register</button>
             </li>
           </ul>
         </aside>
       </div>
       <LoginDialog open={loginOpen} />
+      <RegistrationDialog open={registrationOpen} />
     </>
   );
 }
