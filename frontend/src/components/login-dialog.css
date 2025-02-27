@@ -1,0 +1,18 @@
+dialog {
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    label {
+      display: flex;
+      flex-direction: column;
+    }
+
+    button {
+      background: none;
+      border: 1px solid #242424;
+      border-radius: 4px;
+    }
+  }
+}
