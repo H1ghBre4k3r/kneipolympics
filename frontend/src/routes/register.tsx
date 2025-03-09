@@ -1,10 +1,11 @@
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { useAuth } from "../hooks/useAuth";
 import { FormEvent, useState } from "react";
 import { AppwriteException } from "appwrite";
 
 export function RegisterRoute() {
   const auth = useAuth();
+  const nav = useNavigate();
 
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -14,7 +15,7 @@ export function RegisterRoute() {
     e.preventDefault();
     auth
       .register(email, password, username)
-      .then(() => {})
+      .then(() => nav("/"))
       .catch((e: AppwriteException | unknown) => {
         if (e instanceof AppwriteException) {
           // setErr(e.message);

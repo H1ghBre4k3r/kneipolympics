@@ -4,7 +4,9 @@ export function Header() {
   return (
     <header>
       <section className="heading">
-        <h1>Kneipolympics</h1>
+        <h1>
+          <a href="/">Kneipolympics</a>
+        </h1>
       </section>
       <section className="profile">
         <CiBeerMugFull />

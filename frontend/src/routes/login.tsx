@@ -2,9 +2,12 @@ import { FormEvent, useState } from "react";
 import { useAuth } from "../hooks/useAuth";
 import { AppwriteException } from "appwrite";
 import { Link } from "react-router";
+import { useNavigate } from "react-router";
 
 export function LoginRoute() {
   const auth = useAuth();
+
+  const nav = useNavigate();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -13,7 +16,7 @@ export function LoginRoute() {
     e.preventDefault();
     auth
       .login(email, password)
-      .then(() => {})
+      .then(() => nav("/"))
       .catch((e: AppwriteException | unknown) => {
         if (e instanceof AppwriteException) {
           // setErr(e.message);

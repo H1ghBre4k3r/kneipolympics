@@ -3,6 +3,8 @@ import { useAuth } from "../hooks/useAuth";
 import { UnregisteredIndexMain } from "./unregistered.index";
 import { LoginRoute } from "./login";
 import { RegisterRoute } from "./register";
+import { LogoutRoute } from "./logout";
+import { RegisteredIndexRoute } from "./registered.index";
 
 export function Router() {
   const { loggedIn } = useAuth();
@@ -10,7 +12,10 @@ export function Router() {
     <BrowserRouter>
       <Routes>
         {loggedIn ? (
-          <></>
+          <>
+            <Route path="/" element={<RegisteredIndexRoute />}></Route>
+            <Route path="/logout" element={<LogoutRoute />}></Route>
+          </>
         ) : (
           <>
             <Route path="/" element={<UnregisteredIndexMain />}></Route>
