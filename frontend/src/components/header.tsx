@@ -1,4 +1,4 @@
-import { ProfileFlyout } from "./profile-flyout";
+import { CiBeerMugFull } from "react-icons/ci";
 
 export function Header() {
   return (
@@ -7,7 +7,7 @@ export function Header() {
         <h1>Kneipolympics</h1>
       </section>
       <section className="profile">
-        <ProfileFlyout />
+        <CiBeerMugFull />
       </section>
     </header>
   );
