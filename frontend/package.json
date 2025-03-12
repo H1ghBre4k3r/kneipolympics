@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "node scripts/create_logos.js && tsc -b && vite build",
+    "build": "tsx scripts/create_logos.ts && tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
