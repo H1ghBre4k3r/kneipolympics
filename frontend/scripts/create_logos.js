@@ -1,4 +1,4 @@
-const fs = require('fs');
+import { writeFile } from 'fs';
 
 const numJags = 21;
 const jagDistance = 1;
@@ -22,7 +22,7 @@ let maskId = 0;
 let clipId = 0;
 function bottleCap(x, y, xmlClass = "bottle-cap", mask = null) {
   let cutoutString = "";
-  for (i = 1; i <= numJags; i++) {
+  for (let i = 1; i <= numJags; i++) {
       cutoutString += `      <circle cx="${x + Math.sin((i-1) / numJags * 2 * Math.PI) * jagDistance}" cy="${y + Math.cos((i-1) / numJags * 2 * Math.PI) * jagDistance}" r="${jagRadius}" fill="black"/>\n`;
   }
 
@@ -54,23 +54,23 @@ let logoSmallSvgString = `<svg viewBox="0 0 6 6">
     @import url(../styles/logo_small.css);
   </style>
 `;
-for ([[x, y], color, _] of ringPositionsAndColors) {
+for (let [[x, y], color, _] of ringPositionsAndColors) {
   logoSmallSvgString += bottleCap(x, y, `bottle-cap-${color}`);
 }
 
-for ([[x, y], color, masks] of ringPositionsAndColors) {
-  for (mask of masks) {
+for (let [[x, y], color, masks] of ringPositionsAndColors) {
+  for (let mask of masks) {
     logoSmallSvgString += bottleCap(x, y, `bottle-cap-${color}`, mask)
   }
 }
 logoSmallSvgString += '</svg>';
 
-fs.writeFile('../frontend/public/images/bottle_cap.svg', bottleCapSvgString, (err) => {
+writeFile('../frontend/public/images/bottle_cap.svg', bottleCapSvgString, (err) => {
   if (err) {
     console.error(err.message)
   }
 })
-fs.writeFile('../frontend/public/images/logo_small.svg', logoSmallSvgString, (err) => {
+writeFile('../frontend/public/images/logo_small.svg', logoSmallSvgString, (err) => {
   if (err) {
     console.error(err.message)
   }
