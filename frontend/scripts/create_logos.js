@@ -65,12 +65,12 @@ for (let [[x, y], color, masks] of ringPositionsAndColors) {
 }
 logoSmallSvgString += '</svg>';
 
-writeFile('../frontend/public/images/bottle_cap.svg', bottleCapSvgString, (err) => {
+writeFile('public/images/bottle_cap.svg', bottleCapSvgString, (err) => {
   if (err) {
     console.error(err.message)
   }
 })
-writeFile('../frontend/public/images/logo_small.svg', logoSmallSvgString, (err) => {
+writeFile('public/images/logo_small.svg', logoSmallSvgString, (err) => {
   if (err) {
     console.error(err.message)
   }
