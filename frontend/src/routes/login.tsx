@@ -1,13 +1,13 @@
 import { FormEvent, useState } from "react";
 import { useAuth } from "../hooks/useAuth";
 import { AppwriteException } from "appwrite";
-import { Link } from "react-router";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 
 export function LoginRoute() {
   const auth = useAuth();
-
   const nav = useNavigate();
+
+  const [err, setErr] = useState<string | undefined>(undefined);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -19,7 +19,7 @@ export function LoginRoute() {
       .then(() => nav("/"))
       .catch((e: AppwriteException | unknown) => {
         if (e instanceof AppwriteException) {
-          // setErr(e.message);
+          setErr(e.message);
         }
         console.error(e);
       });
@@ -28,6 +28,7 @@ export function LoginRoute() {
   return (
     <form onSubmit={onSubmit}>
       <h3>Login</h3>
+      {err && <span className="error">{err}</span>}
       <label>
         E-Mail
         <input
