@@ -12,11 +12,12 @@ export function RegisterRoute() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [token, setToken] = useState("");
 
   function onSubmit(e: FormEvent) {
     e.preventDefault();
     auth
-      .register(email, password, username)
+      .register(email, password, username, token)
       .then(() => {
         setMessage(
           "Registration successful! Check you mail (and spam folder)!",
@@ -62,6 +63,16 @@ export function RegisterRoute() {
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+        />
+      </label>
+      <label>
+        Token
+        <input
+          type="text"
+          name="token"
+          placeholder="Token"
+          value={token}
+          onChange={(e) => setToken(e.target.value)}
         />
       </label>
       <button>Register</button>

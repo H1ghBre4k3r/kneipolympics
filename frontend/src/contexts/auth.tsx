@@ -7,7 +7,8 @@ import {
   useState,
 } from "react";
 import { useAppwrite } from "../hooks/useAppwrite";
-import { Account, AppwriteException, ID, Models } from "appwrite";
+import { Account, AppwriteException, Models } from "appwrite";
+import { useFunctions } from "../hooks/useFunctions";
 
 export type AuthContextValue = {
   session?: Models.Session;
@@ -15,13 +16,20 @@ export type AuthContextValue = {
   loggedIn: boolean;
   login(email: string, password: string): Promise<void>;
   logout(): Promise<void>;
-  register(email: string, password: string, name: string): Promise<void>;
+  register(
+    email: string,
+    password: string,
+    name: string,
+    token: string,
+  ): Promise<void>;
 };
 
 export const AuthContext = createContext({} as AuthContextValue);
 
 export function AuthContextProvider({ children }: PropsWithChildren) {
   const { client } = useAppwrite();
+  const functions = useFunctions();
+
   const account = useMemo(() => new Account(client), [client]);
 
   const [session, setSession] = useState<Models.Session | undefined>();
@@ -61,18 +69,19 @@ export function AuthContextProvider({ children }: PropsWithChildren) {
   async function login(email: string, password: string): Promise<void> {
     const session = await account.createEmailPasswordSession(email, password);
 
-    account
-      .get()
-      .then((user) => {
-        if (!user.emailVerification) {
-          throw new AppwriteException(
-            "Please verify your email before logging in!",
-          );
-        }
-        setSession(session);
-        setUser(user);
-      })
-      .catch(() => account.deleteSession("current"));
+    try {
+      const user = await account.get();
+      console.log(user, user.emailVerification);
+      if (!user.emailVerification) {
+        throw new AppwriteException(
+          "Please verify your email before logging in!",
+        );
+      }
+      setSession(session);
+      setUser(user);
+    } catch {
+      account.deleteSession("current");
+    }
   }
 
   async function logout(): Promise<void> {
@@ -89,8 +98,14 @@ export function AuthContextProvider({ children }: PropsWithChildren) {
     email: string,
     password: string,
     name: string,
+    token: string,
   ): Promise<void> {
-    await account.create(ID.unique(), email, password, name);
+    const result = await functions.register(email, password, name, token);
+    if (result.responseStatusCode !== 200) {
+      throw new AppwriteException(
+        "Registration failed! Either the credentials are already taken or the token is wrong!",
+      );
+    }
     await account.createEmailPasswordSession(email, password);
     await account.createVerification(window.location.origin.toString());
     await account.deleteSession("current");
