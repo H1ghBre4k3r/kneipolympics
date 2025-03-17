@@ -8,7 +8,7 @@ header {
     display: flex;
     align-items: center;
 
-    > .profile-flyout {
+    > * {
       height: var(--h1-size);
       width: var(--h1-size);
     }
