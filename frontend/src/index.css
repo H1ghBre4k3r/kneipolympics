@@ -138,25 +138,25 @@
     fill: currentColor;
   }
 
+  .error,
+  .success {
+    padding: 4px;
+    border-radius: 4px;
+    color: white;
+  }
+
+  .error {
+    background-color: var(--error);
+  }
+
+  .success {
+    background-color: var(--success);
+  }
+
   form {
     display: flex;
     flex-direction: column;
     gap: 8px;
-
-    .error,
-    .success {
-      padding: 4px;
-      border-radius: 4px;
-      color: white;
-    }
-
-    .error {
-      background-color: var(--error);
-    }
-
-    .success {
-      background-color: var(--success);
-    }
 
     a {
       width: fit-content;

@@ -14,6 +14,7 @@ export function LoginRoute() {
 
   function onSubmit(e: FormEvent) {
     e.preventDefault();
+
     auth
       .login(email, password)
       .then(() => nav("/"))

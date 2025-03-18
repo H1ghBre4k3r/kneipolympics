@@ -1,11 +1,12 @@
 import { CiBeerMugFull } from "react-icons/ci";
+import { Link } from "react-router";
 
 export function Header() {
   return (
     <header>
       <section className="heading">
         <h1>
-          <a href="/">Kneipolympics</a>
+          <Link to="/">Kneipolympics</Link>
         </h1>
       </section>
       <section className="profile">
