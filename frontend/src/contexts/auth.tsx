@@ -22,6 +22,7 @@ export type AuthContextValue = {
     name: string,
     token: string,
   ): Promise<void>;
+  authMessage: Maybe<string>;
 };
 
 export const AuthContext = createContext({} as AuthContextValue);
@@ -30,12 +31,12 @@ export function AuthContextProvider({ children }: PropsWithChildren) {
   const { client } = useAppwrite();
   const functions = useFunctions();
 
+  const [authMessage, setAuthMessage] = useState<Maybe<string>>(undefined);
+
   const account = useMemo(() => new Account(client), [client]);
 
-  const [session, setSession] = useState<Models.Session | undefined>();
-  const [user, setUser] = useState<
-    Models.User<Models.Preferences> | undefined
-  >();
+  const [session, setSession] = useState<Maybe<Models.Session>>();
+  const [user, setUser] = useState<Maybe<Models.User<Models.Preferences>>>();
 
   const verifyUser = useCallback(async () => {
     const params = new URLSearchParams(window.location.search);
@@ -46,7 +47,13 @@ export function AuthContextProvider({ children }: PropsWithChildren) {
       return;
     }
 
-    await account.updateVerification(userId, secret).catch(() => {});
+    try {
+      await account.updateVerification(userId, secret);
+      setAuthMessage("Account verified successully!");
+      setTimeout(() => setAuthMessage(undefined), 5000);
+    } catch (e) {
+      console.error(e);
+    }
   }, [account]);
 
   useEffect(() => {
@@ -71,7 +78,6 @@ export function AuthContextProvider({ children }: PropsWithChildren) {
 
     try {
       const user = await account.get();
-      console.log(user, user.emailVerification);
       if (!user.emailVerification) {
         throw new AppwriteException(
           "Please verify your email before logging in!",
@@ -79,8 +85,9 @@ export function AuthContextProvider({ children }: PropsWithChildren) {
       }
       setSession(session);
       setUser(user);
-    } catch {
+    } catch (e) {
       account.deleteSession("current");
+      throw e;
     }
   }
 
@@ -118,6 +125,7 @@ export function AuthContextProvider({ children }: PropsWithChildren) {
     session,
     user,
     loggedIn: !!(session && user),
+    authMessage,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

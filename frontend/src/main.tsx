@@ -5,13 +5,16 @@ import App from "./App.tsx";
 import { AppwriteContextProvider } from "./contexts/appwrite.tsx";
 import { AuthContextProvider } from "./contexts/auth.tsx";
 import { FunctionsContextProvider } from "./contexts/functions.tsx";
+import { BrowserRouter } from "react-router";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <AppwriteContextProvider>
       <FunctionsContextProvider>
         <AuthContextProvider>
-          <App />
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
         </AuthContextProvider>
       </FunctionsContextProvider>
     </AppwriteContextProvider>
