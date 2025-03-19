@@ -27,3 +27,4 @@ FROM nginx:1.27 as final
 LABEL org.opencontainers.image.source https://github.com/H1ghBre4k3r/kneipolympics
 
 COPY --from=build /usr/src/app/dist /usr/share/nginx/html
+COPY default.conf /etc/nginx/conf.d/default.conf
