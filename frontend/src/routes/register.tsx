@@ -2,9 +2,12 @@ import { Link } from "react-router";
 import { useAuth } from "../hooks/useAuth";
 import { FormEvent, useState } from "react";
 import { AppwriteException } from "appwrite";
+import { useParam } from "../hooks/useParam";
 
 export function RegisterRoute() {
   const auth = useAuth();
+
+  const presentToken = useParam("token");
 
   const [err, setErr] = useState<string | undefined>(undefined);
   const [message, setMessage] = useState<string | undefined>(undefined);
@@ -12,7 +15,7 @@ export function RegisterRoute() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [token, setToken] = useState("");
+  const [token, setToken] = useState(presentToken ?? "");
 
   function onSubmit(e: FormEvent) {
     e.preventDefault();
