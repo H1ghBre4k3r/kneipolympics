@@ -3,7 +3,7 @@
     @import url(../styles/logo_small.css);
   </style>
   <g class="bottle-cap-blue">
-    <circle class="rim" cx="1.0908116907963217" cy="2.5227029226990805" r="1" mask="url(#bottle-cap-shape-1)"  fill="var(--mainColor)"/>
+    <circle class="rim" cx="1.0908116907963217" cy="2.5227029226990805" r="1" mask="url(#bottle-cap-shape-1)"  fill="var(--iconColor)"/>
     <mask id="bottle-cap-shape-1">
       <rect width="2" height="2" x="0.09081169079632168" y="1.5227029226990805" fill="white"/>
       <circle cx="1.0908116907963217" cy="2.5227029226990805" r="0.7" fill="black"/>
@@ -31,7 +31,7 @@
     </mask>
   </g>
   <g class="bottle-cap-black">
-    <circle class="rim" cx="3" cy="2.5227029226990805" r="1" mask="url(#bottle-cap-shape-2)"  fill="var(--mainColor)"/>
+    <circle class="rim" cx="3" cy="2.5227029226990805" r="1" mask="url(#bottle-cap-shape-2)"  fill="var(--iconColor)"/>
     <mask id="bottle-cap-shape-2">
       <rect width="2" height="2" x="2" y="1.5227029226990805" fill="white"/>
       <circle cx="3" cy="2.5227029226990805" r="0.7" fill="black"/>
@@ -59,7 +59,7 @@
     </mask>
   </g>
   <g class="bottle-cap-red">
-    <circle class="rim" cx="4.909188309203678" cy="2.5227029226990805" r="1" mask="url(#bottle-cap-shape-3)"  fill="var(--mainColor)"/>
+    <circle class="rim" cx="4.909188309203678" cy="2.5227029226990805" r="1" mask="url(#bottle-cap-shape-3)"  fill="var(--iconColor)"/>
     <mask id="bottle-cap-shape-3">
       <rect width="2" height="2" x="3.909188309203678" y="1.5227029226990805" fill="white"/>
       <circle cx="4.909188309203678" cy="2.5227029226990805" r="0.7" fill="black"/>
@@ -87,7 +87,7 @@
     </mask>
   </g>
   <g class="bottle-cap-yellow">
-    <circle class="rim" cx="2.045405845398161" cy="3.4772970773009195" r="1" mask="url(#bottle-cap-shape-4)"  fill="var(--mainColor)"/>
+    <circle class="rim" cx="2.045405845398161" cy="3.4772970773009195" r="1" mask="url(#bottle-cap-shape-4)"  fill="var(--iconColor)"/>
     <mask id="bottle-cap-shape-4">
       <rect width="2" height="2" x="1.045405845398161" y="2.4772970773009195" fill="white"/>
       <circle cx="2.045405845398161" cy="3.4772970773009195" r="0.7" fill="black"/>
@@ -115,7 +115,7 @@
     </mask>
   </g>
   <g class="bottle-cap-green">
-    <circle class="rim" cx="3.954594154601839" cy="3.4772970773009195" r="1" mask="url(#bottle-cap-shape-5)"  fill="var(--mainColor)"/>
+    <circle class="rim" cx="3.954594154601839" cy="3.4772970773009195" r="1" mask="url(#bottle-cap-shape-5)"  fill="var(--iconColor)"/>
     <mask id="bottle-cap-shape-5">
       <rect width="2" height="2" x="2.954594154601839" y="2.4772970773009195" fill="white"/>
       <circle cx="3.954594154601839" cy="3.4772970773009195" r="0.7" fill="black"/>
@@ -143,7 +143,7 @@
     </mask>
   </g>
   <g class="bottle-cap-blue">
-    <circle class="rim" cx="1.0908116907963217" cy="2.5227029226990805" r="1" mask="url(#bottle-cap-shape-6)" clip-path="url(#ring-mask-0)" fill="var(--mainColor)"/>
+    <circle class="rim" cx="1.0908116907963217" cy="2.5227029226990805" r="1" mask="url(#bottle-cap-shape-6)" clip-path="url(#ring-mask-0)" fill="var(--iconColor)"/>
     <mask id="bottle-cap-shape-6">
       <rect width="2" height="2" x="0.09081169079632168" y="1.5227029226990805" fill="white"/>
       <circle cx="1.0908116907963217" cy="2.5227029226990805" r="0.7" fill="black"/>
@@ -174,7 +174,7 @@
     </clipPath>
   </g>
   <g class="bottle-cap-black">
-    <circle class="rim" cx="3" cy="2.5227029226990805" r="1" mask="url(#bottle-cap-shape-7)" clip-path="url(#ring-mask-1)" fill="var(--mainColor)"/>
+    <circle class="rim" cx="3" cy="2.5227029226990805" r="1" mask="url(#bottle-cap-shape-7)" clip-path="url(#ring-mask-1)" fill="var(--iconColor)"/>
     <mask id="bottle-cap-shape-7">
       <rect width="2" height="2" x="2" y="1.5227029226990805" fill="white"/>
       <circle cx="3" cy="2.5227029226990805" r="0.7" fill="black"/>
@@ -205,7 +205,7 @@
     </clipPath>
   </g>
   <g class="bottle-cap-black">
-    <circle class="rim" cx="3" cy="2.5227029226990805" r="1" mask="url(#bottle-cap-shape-8)" clip-path="url(#ring-mask-2)" fill="var(--mainColor)"/>
+    <circle class="rim" cx="3" cy="2.5227029226990805" r="1" mask="url(#bottle-cap-shape-8)" clip-path="url(#ring-mask-2)" fill="var(--iconColor)"/>
     <mask id="bottle-cap-shape-8">
       <rect width="2" height="2" x="2" y="1.5227029226990805" fill="white"/>
       <circle cx="3" cy="2.5227029226990805" r="0.7" fill="black"/>
@@ -236,7 +236,7 @@
     </clipPath>
   </g>
   <g class="bottle-cap-red">
-    <circle class="rim" cx="4.909188309203678" cy="2.5227029226990805" r="1" mask="url(#bottle-cap-shape-9)" clip-path="url(#ring-mask-3)" fill="var(--mainColor)"/>
+    <circle class="rim" cx="4.909188309203678" cy="2.5227029226990805" r="1" mask="url(#bottle-cap-shape-9)" clip-path="url(#ring-mask-3)" fill="var(--iconColor)"/>
     <mask id="bottle-cap-shape-9">
       <rect width="2" height="2" x="3.909188309203678" y="1.5227029226990805" fill="white"/>
       <circle cx="4.909188309203678" cy="2.5227029226990805" r="0.7" fill="black"/>
