@@ -65,17 +65,15 @@ for (const [[x, y], color, masks] of ringPositionsAndColors) {
 }
 logoSmallSvgString += '</svg>';
 
-writeFile('public/images/bottle_cap.svg', bottleCapSvgString, (err) => {
-  if (err) {
-    console.error(err.message)
-  } else {
-    console.info('Succesfully created public/images/bottle_cap.svg')
-  }
-})
-writeFile('public/images/logo_small.svg', logoSmallSvgString, (err) => {
-  if (err) {
-    console.error(err.message)
-  }  else {
-    console.info('Succesfully created public/images/logo_small.svg')
-  }
-})
+for (let [svgString, fileName] of [
+  [bottleCapSvgString, 'public/images/bottle_cap.svg'],
+  [logoSmallSvgString, 'public/images/logo_small.svg']
+]) {
+  writeFile(fileName, svgString, (err) => {
+    if (err) {
+      console.error(err.message)
+    }  else {
+      console.info(`Succesfully created ${fileName}`)
+    }
+  })
+}
