@@ -11,7 +11,7 @@ const ringDist = 1.35;
 const xStep = (1 / Math.cos(Math.PI / 4)) * ringDist;
 const yStep = Math.sin(Math.PI / 4) * ringDist;
 const ringPositionsAndColors: [[number, number], string, [number, number][]][] = [
-  [[logoSmallSize / 2 - xStep, logoSmallSize / 2 - yStep / 2], "blue", [[135 / 180 * Math.PI, Math.PI]]],
+  [[logoSmallSize / 2 - xStep, logoSmallSize / 2 - yStep / 2], "blue", [[90 / 180 * Math.PI, 135 / 180 * Math.PI]]],
   [[logoSmallSize / 2, logoSmallSize / 2 - yStep / 2], "black", [[90 / 180 * Math.PI, 135 / 180 * Math.PI], [180 / 180 * Math.PI, 225 / 180 * Math.PI]]],
   [[logoSmallSize / 2 + xStep, logoSmallSize / 2 - yStep / 2], "red", [[180 / 180 * Math.PI, 225 / 180 * Math.PI]]],
   [[logoSmallSize / 2 - xStep / 2, logoSmallSize / 2 + yStep / 2], "yellow", []],
