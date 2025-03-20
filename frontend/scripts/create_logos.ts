@@ -27,7 +27,7 @@ function bottleCap(x: number, y: number, xmlClass: string = "bottle-cap", mask: 
   }
 
   let bottleCapString = `  <g class="${xmlClass}">
-    <circle class="rim" cx="${x}" cy="${y}" r="1" mask="url(#bottle-cap-shape-${maskId})" ${mask != null ? `clip-path="url(#ring-mask-${clipId})"` : ""} fill="var(--mainColor)"/>
+    <circle class="rim" cx="${x}" cy="${y}" r="1" mask="url(#bottle-cap-shape-${maskId})" ${mask != null ? `clip-path="url(#ring-mask-${clipId})"` : ""} fill="var(--iconColor)"/>
     <mask id="bottle-cap-shape-${maskId}">
       <rect width="2" height="2" x="${x-1}" y="${y-1}" fill="white"/>
       <circle cx="${x}" cy="${y}" r="${innerRadius}" fill="black"/>

@@ -1,33 +1,33 @@
 .bottle-cap-blue {
-  --mainColor: #0000ff;
+  --iconColor: #0000ff;
   --strokeColor: #000080;
   --innerOpacity: 0;
 }
 
 .bottle-cap-black {
-  --mainColor:#262626;
+  --iconColor:#262626;
   --strokeColor: #000000;
   --innerOpacity: 0;
 }
 
 .bottle-cap-red {
-    --mainColor: #ff0000;
+    --iconColor: #ff0000;
     --strokeColor: #800000;
     --innerOpacity: 0;
 }
 
 .bottle-cap-green {
-    --mainColor: #33cc33;
+    --iconColor: #33cc33;
     --strokeColor: #196619;
     --innerOpacity: 0;
 }
 
 .bottle-cap-yellow {
-    --mainColor: #ffff00;
+    --iconColor: #ffff00;
     --strokeColor: #808000;
     --innerOpacity: 0;
 }
 
 .body {
-    --mainColor: blue;
+    --iconColor: blue;
 }

@@ -1,6 +1,6 @@
 <svg viewBox="0 0 2 2">
     <g class="bottle-cap">
-    <circle class="rim" cx="1" cy="1" r="1" mask="url(#bottle-cap-shape-0)"  fill="var(--mainColor)"/>
+    <circle class="rim" cx="1" cy="1" r="1" mask="url(#bottle-cap-shape-0)"  fill="var(--iconColor)"/>
     <mask id="bottle-cap-shape-0">
       <rect width="2" height="2" x="0" y="0" fill="white"/>
       <circle cx="1" cy="1" r="0.7" fill="black"/>
