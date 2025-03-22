@@ -15,7 +15,8 @@ export function AppwriteContextProvider({ children }: Props) {
   const client = new Client();
   client
     .setEndpoint("https://appwrite.git-ci.dev/v1")
-    .setProject("67bbdbe0003db9b80f07");
+    .setProject("67bbdbe0003db9b80f07")
+    .setLocale(navigator.language);
 
   const value = {
     client,
