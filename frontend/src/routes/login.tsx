@@ -51,6 +51,7 @@ export function LoginRoute() {
         />
       </label>
       <button>Login</button>
+      <Link to="/recovery">Forgot your password?</Link>
       <Link to="/register">No Account?</Link>
     </form>
   );

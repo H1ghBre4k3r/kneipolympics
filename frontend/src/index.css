@@ -163,10 +163,6 @@
       width: fit-content;
     }
 
-    h3 {
-      margin: 0;
-    }
-
     label {
       display: flex;
       flex-direction: column;

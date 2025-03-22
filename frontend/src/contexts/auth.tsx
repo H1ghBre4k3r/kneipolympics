@@ -18,6 +18,12 @@ export type AuthContextValue = {
   login(email: string, password: string): Promise<void>;
   logout(): Promise<void>;
   register(payload: RegisterPayload): Promise<void>;
+  sendRecoveryEmail(email: string): Promise<void>;
+  setRecoveredPassword(
+    userId: string,
+    secret: string,
+    password: string,
+  ): Promise<void>;
   authMessage: Maybe<string>;
 };
 
@@ -115,6 +121,18 @@ export function AuthContextProvider({ children }: PropsWithChildren) {
     await sendVerificationEmail(email, password);
   }
 
+  async function sendRecoveryEmail(email: string) {
+    await account.createRecovery(email, window.location.toString());
+  }
+
+  async function setRecoveredPassword(
+    userId: string,
+    secret: string,
+    password: string,
+  ) {
+    await account.updateRecovery(userId, secret, password);
+  }
+
   const value = {
     login,
     logout,
@@ -123,6 +141,8 @@ export function AuthContextProvider({ children }: PropsWithChildren) {
     user,
     loggedIn: !!(session && user),
     authMessage,
+    sendRecoveryEmail,
+    setRecoveredPassword,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

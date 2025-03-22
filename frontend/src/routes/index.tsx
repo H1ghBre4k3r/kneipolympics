@@ -7,6 +7,7 @@ import { LogoutRoute } from "./logout";
 import { RegisteredIndexRoute } from "./registered.index";
 import { useAdmin } from "../hooks/useAdmin";
 import { AdminRoute } from "./admin";
+import { RecoveryRoute } from "./recovery";
 
 export function Router() {
   const { loggedIn } = useAuth();
@@ -25,6 +26,7 @@ export function Router() {
           <Route path="/" element={<UnregisteredIndexMain />}></Route>
           <Route path="/login" element={<LoginRoute />}></Route>
           <Route path="/register" element={<RegisterRoute />}></Route>
+          <Route path="/recovery" element={<RecoveryRoute />}></Route>
         </>
       )}
     </Routes>
