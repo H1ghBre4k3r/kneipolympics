@@ -13,14 +13,25 @@ export function RegisterRoute() {
   const [message, setMessage] = useState<string | undefined>(undefined);
 
   const [username, setUsername] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [token, setToken] = useState(presentToken ?? "");
 
   function onSubmit(e: FormEvent) {
     e.preventDefault();
     auth
-      .register(email, password, username, token)
+      .register({
+        email,
+        password,
+        firstName,
+        lastName,
+        username,
+        phone,
+        token,
+      })
       .then(() => {
         setMessage(
           "Registration successful! Check you mail (and spam folder)!",
@@ -46,6 +57,29 @@ export function RegisterRoute() {
           placeholder="Username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
+          required
+        />
+      </label>
+      <label>
+        First Name
+        <input
+          type="text"
+          name="first-name"
+          placeholder="First Name"
+          value={firstName}
+          onChange={(e) => setFirstName(e.target.value)}
+          required
+        />
+      </label>
+      <label>
+        Last Name
+        <input
+          type="text"
+          name="last-name"
+          placeholder="Last Name"
+          value={lastName}
+          onChange={(e) => setLastName(e.target.value)}
+          required
         />
       </label>
       <label>
@@ -56,6 +90,18 @@ export function RegisterRoute() {
           placeholder="E-Mail"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+      </label>
+      <label>
+        Phone Number
+        <input
+          type="tel"
+          name="phone-number"
+          placeholder="Phone Number"
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
+          required
         />
       </label>
       <label>
@@ -66,6 +112,7 @@ export function RegisterRoute() {
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          required
         />
       </label>
       <label>
@@ -76,6 +123,7 @@ export function RegisterRoute() {
           placeholder="Token"
           value={token}
           onChange={(e) => setToken(e.target.value)}
+          required
         />
       </label>
       <button>Register</button>

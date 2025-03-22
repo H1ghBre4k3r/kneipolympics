@@ -9,6 +9,7 @@ import {
 import { useAppwrite } from "../hooks/useAppwrite";
 import { Account, AppwriteException, Models } from "appwrite";
 import { useFunctions } from "../hooks/useFunctions";
+import { RegisterPayload } from "./functions";
 
 export type AuthContextValue = {
   session?: Models.Session;
@@ -16,12 +17,7 @@ export type AuthContextValue = {
   loggedIn: boolean;
   login(email: string, password: string): Promise<void>;
   logout(): Promise<void>;
-  register(
-    email: string,
-    password: string,
-    name: string,
-    token: string,
-  ): Promise<void>;
+  register(payload: RegisterPayload): Promise<void>;
   authMessage: Maybe<string>;
 };
 
@@ -101,21 +97,22 @@ export function AuthContextProvider({ children }: PropsWithChildren) {
     }
   }
 
-  async function register(
-    email: string,
-    password: string,
-    name: string,
-    token: string,
-  ): Promise<void> {
-    const result = await functions.register(email, password, name, token);
+  async function sendVerificationEmail(email: string, password: string) {
+    await account.createEmailPasswordSession(email, password);
+    await account.createVerification(window.location.origin.toString());
+    await account.deleteSession("current");
+  }
+
+  async function register(payload: RegisterPayload): Promise<void> {
+    const result = await functions.register(payload);
     if (result.responseStatusCode !== 200) {
       throw new AppwriteException(
         "Registration failed! Either the credentials are already taken or the token is wrong!",
       );
     }
-    await account.createEmailPasswordSession(email, password);
-    await account.createVerification(window.location.origin.toString());
-    await account.deleteSession("current");
+
+    const { email, password } = payload;
+    await sendVerificationEmail(email, password);
   }
 
   const value = {
