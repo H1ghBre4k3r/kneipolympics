@@ -19,11 +19,13 @@ export type RegisterPayload = {
 
 export type FunctionsContextValue = {
   register(payload: RegisterPayload): Promise<Models.Execution>;
+  getUsers(): Promise<Models.User<Models.Preferences>[]>;
 };
 
 export const FunctionsContext = createContext({} as FunctionsContextValue);
 
 const REGISTER = "67d805fa00317040f6ff";
+const GET_USERS = "67dec57b0010a501bc9e";
 
 export function FunctionsContextProvider({ children }: PropsWithChildren) {
   const { client } = useAppwrite();
@@ -47,8 +49,26 @@ export function FunctionsContextProvider({ children }: PropsWithChildren) {
     return result;
   }
 
+  async function getUsers(): Promise<Models.User<Models.Preferences>[]> {
+    const result = await functions.createExecution(
+      GET_USERS,
+      undefined,
+      false,
+      undefined,
+      ExecutionMethod.GET,
+      {},
+    );
+
+    if (result.status !== "completed") {
+      throw new AppwriteException("Internal Server Error");
+    }
+
+    return JSON.parse(result.responseBody);
+  }
+
   const value: FunctionsContextValue = {
     register,
+    getUsers,
   };
 
   return (
