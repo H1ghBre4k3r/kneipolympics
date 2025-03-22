@@ -7,13 +7,18 @@ import {
   Models,
 } from "appwrite";
 
+export type RegisterPayload = {
+  email: string;
+  password: string;
+  firstName: string;
+  lastName: string;
+  username: string;
+  phone: string;
+  token: string;
+};
+
 export type FunctionsContextValue = {
-  register(
-    email: string,
-    password: string,
-    name: string,
-    token: string,
-  ): Promise<Models.Execution>;
+  register(payload: RegisterPayload): Promise<Models.Execution>;
 };
 
 export const FunctionsContext = createContext({} as FunctionsContextValue);
@@ -25,21 +30,10 @@ export function FunctionsContextProvider({ children }: PropsWithChildren) {
 
   const functions = useMemo(() => new Functions(client), [client]);
 
-  async function register(
-    email: string,
-    password: string,
-    name: string,
-    token: string,
-  ): Promise<Models.Execution> {
+  async function register(payload: RegisterPayload): Promise<Models.Execution> {
     const result = await functions.createExecution(
       REGISTER,
-      JSON.stringify({
-        email,
-        password,
-        name,
-        token,
-        location,
-      }),
+      JSON.stringify(payload),
       false,
       undefined,
       ExecutionMethod.POST,
