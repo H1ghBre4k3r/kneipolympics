@@ -5,15 +5,20 @@ import { LoginRoute } from "./login";
 import { RegisterRoute } from "./register";
 import { LogoutRoute } from "./logout";
 import { RegisteredIndexRoute } from "./registered.index";
+import { useAdmin } from "../hooks/useAdmin";
+import { AdminRoute } from "./admin";
 
 export function Router() {
   const { loggedIn } = useAuth();
+  const { isAdmin } = useAdmin();
+
   return (
     <Routes>
       {loggedIn ? (
         <>
           <Route path="/" element={<RegisteredIndexRoute />}></Route>
           <Route path="/logout" element={<LogoutRoute />}></Route>
+          {isAdmin && <Route path="/admin" element={<AdminRoute />}></Route>}
         </>
       ) : (
         <>
