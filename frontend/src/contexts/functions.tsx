@@ -15,6 +15,7 @@ export type RegisterPayload = {
   username: string;
   phone: string;
   token: string;
+  smoker: boolean;
 };
 
 export type FunctionsContextValue = {
