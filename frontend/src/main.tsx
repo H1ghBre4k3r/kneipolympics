@@ -8,6 +8,8 @@ import { FunctionsContextProvider } from "./contexts/functions.tsx";
 import { BrowserRouter } from "react-router";
 import { AdminContextProvider } from "./contexts/admin.tsx";
 
+import "./services/i18n.ts";
+
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <AppwriteContextProvider>
