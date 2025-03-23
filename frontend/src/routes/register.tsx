@@ -19,6 +19,7 @@ export function RegisterRoute() {
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [token, setToken] = useState(presentToken ?? "");
+  const [smoker, setSmoker] = useState(false);
 
   function onSubmit(e: FormEvent) {
     e.preventDefault();
@@ -31,6 +32,7 @@ export function RegisterRoute() {
         username,
         phone,
         token,
+        smoker,
       })
       .then(() => {
         setMessage(
@@ -125,6 +127,15 @@ export function RegisterRoute() {
           onChange={(e) => setToken(e.target.value)}
           required
         />
+      </label>
+      <label>
+        <input
+          type="checkbox"
+          name="smoker"
+          checked={smoker}
+          onChange={(e) => setSmoker(e.target.checked)}
+        />
+        Are Smoking Bars OK?
       </label>
       <button>Register</button>
       <Link to="/login">Already Got Account?</Link>
