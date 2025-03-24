@@ -17,14 +17,14 @@ export function Nav() {
   }
 
   return (
-    <nav data-open={`${open}`}>
+    <nav>
       <div className="header">
         <h2>Navigation</h2>
         <button onClick={() => setOpen((open) => !open)}>
           {open ? <IoClose /> : <IoMenu />}
         </button>
       </div>
-      <ul>
+      <ul aria-hidden={!open}>
         <li>
           <Link
             to="/"

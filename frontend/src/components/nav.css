@@ -8,11 +8,6 @@ nav {
       background: none;
       padding: 0;
 
-      /* width: fit-content; */
-
-      /* width: var(--size); */
-      /* height: var(--size); */
-
       svg {
         width: calc(var(--size) * 2 / 3);
         height: calc(var(--size) * 2 / 3);
@@ -59,14 +54,9 @@ nav {
       box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     }
 
-    &[data-open="false"] ul {
+    ul[aria-hidden="true"] {
       display: none;
     }
-    /* li { */
-    /*   &:not(:has([aria-current="page"])) { */
-    /*     display: none; */
-    /*   } */
-    /* } */
   }
 }
 
