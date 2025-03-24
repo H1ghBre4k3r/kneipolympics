@@ -2,10 +2,12 @@ import { FormEvent, useState } from "react";
 import { useAuth } from "../hooks/useAuth";
 import { AppwriteException } from "appwrite";
 import { Link, useNavigate } from "react-router";
+import { useLabels } from "../hooks/useLabels";
 
 export function LoginRoute() {
   const auth = useAuth();
   const nav = useNavigate();
+  const l = useLabels();
 
   const [err, setErr] = useState<string | undefined>(undefined);
 
@@ -28,31 +30,31 @@ export function LoginRoute() {
 
   return (
     <form onSubmit={onSubmit}>
-      <h3>Login</h3>
+      <h3>{l("login")}</h3>
       {err && <span className="error">{err}</span>}
       <label>
-        E-Mail
+        {l("email")}
         <input
           type="email"
           name="email"
-          placeholder="E-Mail"
+          placeholder={l("email")}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
       </label>
       <label>
-        Password
+        {l("password")}
         <input
           type="password"
           name="password"
-          placeholder="Password"
+          placeholder={l("password")}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
       </label>
-      <button>Login</button>
-      <Link to="/recovery">Forgot your password?</Link>
-      <Link to="/register">No Account?</Link>
+      <button>{l("login")}</button>
+      <Link to="/recovery">{l("forgotYouPassword")}</Link>
+      <Link to="/register">{l("noAccount")}</Link>
     </form>
   );
 }

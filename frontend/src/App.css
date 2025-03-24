@@ -1,5 +1,3 @@
-@import "./components/modal.css" layer(molecule);
-
 @import "./components/nav.css" layer(organism);
 @import "./components/header.css" layer(organism);
 

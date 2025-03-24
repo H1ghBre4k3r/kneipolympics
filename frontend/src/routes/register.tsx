@@ -3,9 +3,11 @@ import { useAuth } from "../hooks/useAuth";
 import { FormEvent, useState } from "react";
 import { AppwriteException } from "appwrite";
 import { useParam } from "../hooks/useParam";
+import { useLabels } from "../hooks/useLabels";
 
 export function RegisterRoute() {
   const auth = useAuth();
+  const l = useLabels();
 
   const presentToken = useParam("token");
 
@@ -35,9 +37,7 @@ export function RegisterRoute() {
         smoker,
       })
       .then(() => {
-        setMessage(
-          "Registration successful! Check you mail (and spam folder)!",
-        );
+        setMessage(l("registerSuccess"));
       })
       .catch((e: AppwriteException | unknown) => {
         if (e instanceof AppwriteException) {
@@ -48,77 +48,77 @@ export function RegisterRoute() {
   }
   return (
     <form onSubmit={onSubmit}>
-      <h3>Register</h3>
+      <h3>{l("register")}</h3>
       {err && <span className="error">{err}</span>}
       {message && <span className="success">{message}</span>}
       <label>
-        Username
+        {l("username")}
         <input
           type="text"
           name="username"
-          placeholder="Username"
+          placeholder={l("username")}
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           required
         />
       </label>
       <label>
-        First Name
+        {l("firstName")}
         <input
           type="text"
           name="first-name"
-          placeholder="First Name"
+          placeholder={l("firstName")}
           value={firstName}
           onChange={(e) => setFirstName(e.target.value)}
           required
         />
       </label>
       <label>
-        Last Name
+        {l("lastName")}
         <input
           type="text"
           name="last-name"
-          placeholder="Last Name"
+          placeholder={l("lastName")}
           value={lastName}
           onChange={(e) => setLastName(e.target.value)}
           required
         />
       </label>
       <label>
-        E-Mail
+        {l("email")}
         <input
           type="email"
           name="email"
-          placeholder="E-Mail"
+          placeholder={l("email")}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
         />
       </label>
       <label>
-        Phone Number
+        {l("phone")}
         <input
           type="tel"
           name="phone-number"
-          placeholder="Phone Number"
+          placeholder={l("phone")}
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
           required
         />
       </label>
       <label>
-        Password
+        {l("password")}
         <input
           type="password"
           name="password"
-          placeholder="Password"
+          placeholder={l("password")}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
       </label>
       <label>
-        Token
+        {l("token")}
         <input
           type="text"
           name="token"
@@ -135,10 +135,10 @@ export function RegisterRoute() {
           checked={smoker}
           onChange={(e) => setSmoker(e.target.checked)}
         />
-        Are Smoking Bars OK?
+        {l("smoker")}
       </label>
-      <button>Register</button>
-      <Link to="/login">Already Got Account?</Link>
+      <button>{l("register")}</button>
+      <Link to="/login">{l("alreadyGotAccount")}</Link>
     </form>
   );
 }

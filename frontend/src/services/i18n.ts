@@ -1,7 +1,27 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 
-export type Labels = "username";
+export type Labels =
+  | "register"
+  | "alreadyGotAccount"
+  | "login"
+  | "forgotYouPassword"
+  | "noAccount"
+  | "enterRecoveryEmail"
+  | "recoveryEmailSend"
+  | "enterNewPassword"
+  | "newPassword"
+  | "passwordUpdated"
+  | "submit"
+  | "username"
+  | "firstName"
+  | "lastName"
+  | "email"
+  | "phone"
+  | "password"
+  | "token"
+  | "smoker"
+  | "registerSuccess";
 
 type Resources = {
   [key: string]: {
@@ -14,7 +34,57 @@ type Resources = {
 const resources: Resources = {
   en: {
     translation: {
+      register: "Register",
+      alreadyGotAccount: "Already Got Account?",
+      login: "Login",
+      forgotYouPassword: "Forgot you password?",
+      noAccount: "No Account?",
+      enterRecoveryEmail:
+        "Enter your E-Mail address to receive an E-Mail with a link to recover your account.",
+      recoveryEmailSend:
+        "Recovery E-Mail send! Check you mail (and spam folder)!",
+      enterNewPassword: "Please enter your new password!",
+      newPassword: "New Password",
+      passwordUpdated: "Password updated successfully! You can now log in!",
+      submit: "Submit",
       username: "Username",
+      firstName: "First Name",
+      lastName: "Last Name",
+      email: "E-Mail",
+      phone: "Phone Number",
+      password: "Password",
+      token: "Token",
+      smoker: "Are Smoking Bars OK?",
+      registerSuccess:
+        "Registration successful! Check you mail (and spam folder)!",
+    },
+  },
+  de: {
+    translation: {
+      register: "Registrieren",
+      alreadyGotAccount: "Du hast schon einen Account?",
+      login: "Anmelden",
+      forgotYouPassword: "Passwort vergessen?",
+      noAccount: "Noch keinen Account?",
+      enterRecoveryEmail:
+        "Bitte gib deine E-Mail-Adresse ein um einen Link für die Wiederherstellung deines Accounts zu erhalten!",
+      recoveryEmailSend:
+        "Wiederherstellungsmail abgeschickt! Bitte überprüfe dein Postfach (und deinen Spam-Ordner)!",
+      enterNewPassword: "Bitte gib dein neues Passwort ein!",
+      newPassword: "Neues Passwort",
+      passwordUpdated:
+        "Passwort erfolgreich aktualisiert! Du kannst dich jetzt anmelden!",
+      submit: "Abschicken",
+      username: "Nutzername",
+      firstName: "Vorname",
+      lastName: "Nachname",
+      email: "E-Mail",
+      phone: "Telefonnummer",
+      password: "Passwort",
+      token: "Token",
+      smoker: "Sind Raucherbars ok?",
+      registerSuccess:
+        "Registrierung erfolgreich! Bitte überprüfe dein Postfach (und deinen Spam-Ordner)!",
     },
   },
 } as const;
