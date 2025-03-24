@@ -1,40 +1,97 @@
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 import { useAdmin } from "../hooks/useAdmin";
 import { useAuth } from "../hooks/useAuth";
+import { useState } from "react";
+import { IoClose, IoMenu } from "react-icons/io5";
 
 export function Nav() {
   const { isAdmin } = useAdmin();
   const { loggedIn } = useAuth();
+
+  const { pathname: p } = useLocation();
+
+  const [open, setOpen] = useState(false);
+
+  function close() {
+    setOpen(false);
+  }
+
   return (
     <nav>
-      <ul>
+      <div className="header">
+        <h2>Navigation</h2>
+        <button onClick={() => setOpen((open) => !open)}>
+          {open ? <IoClose /> : <IoMenu />}
+        </button>
+      </div>
+      <ul aria-hidden={!open}>
         <li>
-          <Link to="/">
+          <Link
+            to="/"
+            aria-current={p === "/" ? "page" : "false"}
+            onClick={close}
+          >
             <h3>Home</h3>
           </Link>
         </li>
         {isAdmin && (
           <li>
-            <Link to="/admin">
+            <Link
+              to="/admin"
+              aria-current={p === "/admin" ? "page" : "false"}
+              onClick={close}
+            >
               <h3>Admin</h3>
             </Link>
           </li>
         )}
         {loggedIn ? (
-          <li>
-            <Link to="/logout">
-              <h3>Logout</h3>
-            </Link>
-          </li>
+          <>
+            <li>
+              <Link
+                to="/info"
+                aria-current={p === "/info" ? "page" : "false"}
+                onClick={close}
+              >
+                <h3>Info</h3>
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/current"
+                aria-current={p === "/current" ? "page" : "false"}
+                onClick={close}
+              >
+                <h3>Game</h3>
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/profile"
+                aria-current={p === "/profile" ? "page" : "false"}
+                onClick={close}
+              >
+                <h3>Profile</h3>
+              </Link>
+            </li>
+          </>
         ) : (
           <>
             <li>
-              <Link to="/login">
+              <Link
+                to="/login"
+                aria-current={p === "/login" ? "page" : "false"}
+                onClick={close}
+              >
                 <h3>Login</h3>
               </Link>
             </li>
             <li>
-              <Link to="/register">
+              <Link
+                to="/register"
+                aria-current={p === "/register" ? "page" : "false"}
+                onClick={close}
+              >
                 <h3>Register</h3>
               </Link>
             </li>
