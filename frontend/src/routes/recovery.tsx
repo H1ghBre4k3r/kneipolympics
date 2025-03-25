@@ -3,6 +3,7 @@ import { useAuth } from "../hooks/useAuth";
 import { AppwriteException } from "appwrite";
 import { useParam } from "../hooks/useParam";
 import { Link } from "react-router";
+import { useLabels } from "../hooks/useLabels";
 
 export function RecoveryRoute() {
   const secret = useParam("secret");
@@ -17,6 +18,7 @@ export function RecoveryRoute() {
 
 function RecoveryRequestForm() {
   const auth = useAuth();
+  const l = useLabels();
 
   const [err, setErr] = useState<string | undefined>(undefined);
   const [message, setMessage] = useState<string | undefined>(undefined);
@@ -28,7 +30,7 @@ function RecoveryRequestForm() {
     auth
       .sendRecoveryEmail(email)
       .then(() => {
-        setMessage("Recovery E-Mail send! Check you mail (and spam folder)!");
+        setMessage(l("recoveryEmailSend"));
       })
       .catch((e: AppwriteException | unknown) => {
         if (e instanceof AppwriteException) {
@@ -42,23 +44,20 @@ function RecoveryRequestForm() {
       <h3>Recovery</h3>
       {err && <span className="error">{err}</span>}
       {message && <span className="success">{message}</span>}
-      <span>
-        Enter your E-Mail address to receive an E-Mail with a link to recover
-        your account.
-      </span>
+      <span>{l("enterRecoveryEmail")}</span>
       <label>
-        E-Mail
+        {l("email")}
         <input
           type="email"
           name="email"
-          placeholder="E-Mail"
+          placeholder={l("email")}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
         />
       </label>
-      <button>Submit</button>
-      <Link to="/login">Login</Link>
+      <button>{l("submit")}</button>
+      <Link to="/login">{l("login")}</Link>
     </form>
   );
 }
@@ -69,6 +68,7 @@ type NewPasswordFormParams = {
 };
 
 function NewPasswordForm({ secret, userId }: NewPasswordFormParams) {
+  const l = useLabels();
   const auth = useAuth();
 
   const [err, setErr] = useState<string | undefined>(undefined);
@@ -81,7 +81,7 @@ function NewPasswordForm({ secret, userId }: NewPasswordFormParams) {
     auth
       .setRecoveredPassword(userId, secret, password)
       .then(() => {
-        setMessage("Password updated successfully! You can now log in!");
+        setMessage(l("passwordUpdated"));
       })
       .catch((e: AppwriteException | unknown) => {
         if (e instanceof AppwriteException) {
@@ -95,20 +95,20 @@ function NewPasswordForm({ secret, userId }: NewPasswordFormParams) {
       <h3>Recovery</h3>
       {err && <span className="error">{err}</span>}
       {message && <span className="success">{message}</span>}
-      <span>Please enter your new password.</span>
+      <span>{l("enterNewPassword")}</span>
       <label>
-        New Password
+        {l("newPassword")}
         <input
           type="password"
           name="password"
-          placeholder="New Password"
+          placeholder={l("newPassword")}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
       </label>
-      <button>Submit</button>
-      <Link to="/login">Login</Link>
+      <button>{l("submit")}</button>
+      <Link to="/login">{l("login")}</Link>
     </form>
   );
 }

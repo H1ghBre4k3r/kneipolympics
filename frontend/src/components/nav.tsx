@@ -3,8 +3,11 @@ import { useAdmin } from "../hooks/useAdmin";
 import { useAuth } from "../hooks/useAuth";
 import { useState } from "react";
 import { IoClose, IoMenu } from "react-icons/io5";
+import { useLabels } from "../hooks/useLabels";
 
 export function Nav() {
+  const l = useLabels();
+
   const { isAdmin } = useAdmin();
   const { loggedIn } = useAuth();
 
@@ -83,7 +86,7 @@ export function Nav() {
                 aria-current={p === "/login" ? "page" : "false"}
                 onClick={close}
               >
-                <h3>Login</h3>
+                <h3>{l("login")}</h3>
               </Link>
             </li>
             <li>
@@ -92,7 +95,7 @@ export function Nav() {
                 aria-current={p === "/register" ? "page" : "false"}
                 onClick={close}
               >
-                <h3>Register</h3>
+                <h3>{l("register")}</h3>
               </Link>
             </li>
           </>
