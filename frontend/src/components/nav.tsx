@@ -68,15 +68,6 @@ export function Nav() {
                 <h3>{l("currentGame")}</h3>
               </Link>
             </li>
-            <li>
-              <Link
-                to="/profile"
-                aria-current={p === "/profile" ? "page" : "false"}
-                onClick={close}
-              >
-                <h3>{l("profile")}</h3>
-              </Link>
-            </li>
           </>
         ) : (
           <>
