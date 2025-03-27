@@ -49,6 +49,7 @@ export function RegisterRoute() {
   return (
     <form onSubmit={onSubmit}>
       <h3>{l("register")}</h3>
+      <span className="warn">{l("registrationDisclaimer")}</span>
       {err && <span className="error">{err}</span>}
       {message && <span className="success">{message}</span>}
       <label>

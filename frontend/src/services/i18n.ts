@@ -21,7 +21,19 @@ export type Labels =
   | "password"
   | "token"
   | "smoker"
-  | "registerSuccess";
+  | "registerSuccess"
+  | "infoAndRegistration"
+  | "currentGame"
+  | "profile"
+  | "registrationDisclaimer"
+  | "where"
+  | "when"
+  | "what"
+  | "note"
+  | "finalRegistration"
+  | "furtherInformation"
+  | "wantToJoin"
+  | "wantToLeave";
 
 type Resources = {
   [key: string]: {
@@ -35,7 +47,7 @@ const resources: Resources = {
   en: {
     translation: {
       register: "Register",
-      alreadyGotAccount: "Already Got Account?",
+      alreadyGotAccount: "Already Got An Account?",
       login: "Login",
       forgotYouPassword: "Forgot you password?",
       noAccount: "No Account?",
@@ -57,6 +69,21 @@ const resources: Resources = {
       smoker: "Are Smoking Bars OK?",
       registerSuccess:
         "Registration successful! Check you mail (and spam folder)!",
+      infoAndRegistration: "Info & Registration",
+      currentGame: "Current Game",
+      profile: "Profile",
+      registrationDisclaimer:
+        "This is not the registration for the current Kneipolympics but only for the platform in general! If you want to take part, you have to confirm your participation separately after registration!",
+      where: "Where",
+      when: "When",
+      what: "What",
+      note: "Note",
+      finalRegistration:
+        "This is the binding registration for the Kneipolympics! You are able to withdraw your participation and change your preferences (e.g., smoking bars) until April 20th, 11:59PM.",
+      furtherInformation:
+        "The Kneipolympics haven't started yet. Stay tuned for April 26th!",
+      wantToJoin: "I Want To Join!",
+      wantToLeave: "I Want To Leave!",
     },
   },
   de: {
@@ -85,6 +112,21 @@ const resources: Resources = {
       smoker: "Sind Raucherbars ok?",
       registerSuccess:
         "Registrierung erfolgreich! Bitte überprüfe dein Postfach (und deinen Spam-Ordner)!",
+      infoAndRegistration: "Infos & Anmeldung",
+      currentGame: "Aktuelles Spiel",
+      profile: "Profil",
+      registrationDisclaimer:
+        "Das ist nicht die Anmeldung für die aktuellen Kneipolympics sondern nur für die Plattform! Wenn du mitmachen möchtest, dann musst du deine Teilnahme danach nochmal separat bestätigen!",
+      where: "Wo",
+      when: "Wann",
+      what: "Was",
+      note: "Wichtig",
+      finalRegistration:
+        "Dies ist die bindende Anmeldung für die Kneipolympics! Bis zum 20. April um 23:59 Uhr kannst du deine Anmeldung noch zurückziehen oder deine Einstellungen (z.B. Raucherbars) anpassen.",
+      furtherInformation:
+        "Die Kneipolympics haben noch nicht begonnen. Freut euch auf den 26. April!",
+      wantToJoin: "Ich will teilnehmen!",
+      wantToLeave: "Ich will nicht teilnehmen!",
     },
   },
 } as const;
