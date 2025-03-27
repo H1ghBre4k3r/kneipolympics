@@ -77,7 +77,7 @@ const resources: Resources = {
       what: "What",
       note: "Note",
       finalRegistration:
-        "This is the final (and binding) registration for the Kneipolympics!",
+        "This is the binding registration for the Kneipolympics! You are able to withdraw your participation and change your preferences (e.g., smoking bars) until April 20th, 11:59PM.",
       furtherInformation:
         "The Kneipolympics haven't started yet. Stay tuned for April 26th!",
     },
@@ -118,7 +118,7 @@ const resources: Resources = {
       what: "Was",
       note: "Wichtig",
       finalRegistration:
-        "Dies ist die finale (und bindende) Anmeldung für die Kneipolympics!",
+        "Dies ist die bindende Anmeldung für die Kneipolympics! Bis zum 20. April um 23:59 Uhr kannst du deine Anmeldung noch zurückziehen oder deine Einstellungen (z.B. Raucherbars) anpassen.",
       furtherInformation:
         "Die Kneipolympics haben noch nicht begonnen. Freut euch auf den 26. April!",
     },
