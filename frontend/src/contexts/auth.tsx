@@ -14,6 +14,7 @@ import { RegisterPayload } from "./functions";
 export type AuthContextValue = {
   session?: Models.Session;
   user?: Models.User<Models.Preferences>;
+  account: Account;
   loggedIn: boolean;
   login(email: string, password: string): Promise<void>;
   logout(): Promise<void>;
@@ -139,6 +140,7 @@ export function AuthContextProvider({ children }: PropsWithChildren) {
     register,
     session,
     user,
+    account,
     loggedIn: !!(session && user),
     authMessage,
     sendRecoveryEmail,

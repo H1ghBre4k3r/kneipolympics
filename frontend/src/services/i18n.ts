@@ -31,7 +31,9 @@ export type Labels =
   | "what"
   | "note"
   | "finalRegistration"
-  | "furtherInformation";
+  | "furtherInformation"
+  | "wantToJoin"
+  | "wantToLeave";
 
 type Resources = {
   [key: string]: {
@@ -80,6 +82,8 @@ const resources: Resources = {
         "This is the binding registration for the Kneipolympics! You are able to withdraw your participation and change your preferences (e.g., smoking bars) until April 20th, 11:59PM.",
       furtherInformation:
         "The Kneipolympics haven't started yet. Stay tuned for April 26th!",
+      wantToJoin: "I Want To Join!",
+      wantToLeave: "I Want To Leave!",
     },
   },
   de: {
@@ -121,6 +125,8 @@ const resources: Resources = {
         "Dies ist die bindende Anmeldung für die Kneipolympics! Bis zum 20. April um 23:59 Uhr kannst du deine Anmeldung noch zurückziehen oder deine Einstellungen (z.B. Raucherbars) anpassen.",
       furtherInformation:
         "Die Kneipolympics haben noch nicht begonnen. Freut euch auf den 26. April!",
+      wantToJoin: "Ich will teilnehmen!",
+      wantToLeave: "Ich will nicht teilnehmen!",
     },
   },
 } as const;
