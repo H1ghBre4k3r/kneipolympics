@@ -1,6 +1,6 @@
 import { useAuth } from "./useAuth";
 
-type Prefs = "firstName" | "lastName" | "smoker" | "joined";
+type Prefs = "firstName" | "lastName" | "phone" | "smoker" | "joined";
 
 export function usePreferences() {
   const { user, account } = useAuth();
