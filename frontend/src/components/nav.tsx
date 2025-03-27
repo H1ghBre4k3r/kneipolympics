@@ -56,7 +56,7 @@ export function Nav() {
                 aria-current={p === "/info" ? "page" : "false"}
                 onClick={close}
               >
-                <h3>Info</h3>
+                <h3>{l("infoAndRegistration")}</h3>
               </Link>
             </li>
             <li>
@@ -65,7 +65,7 @@ export function Nav() {
                 aria-current={p === "/current" ? "page" : "false"}
                 onClick={close}
               >
-                <h3>Game</h3>
+                <h3>{l("currentGame")}</h3>
               </Link>
             </li>
             <li>
@@ -74,7 +74,7 @@ export function Nav() {
                 aria-current={p === "/profile" ? "page" : "false"}
                 onClick={close}
               >
-                <h3>Profile</h3>
+                <h3>{l("profile")}</h3>
               </Link>
             </li>
           </>

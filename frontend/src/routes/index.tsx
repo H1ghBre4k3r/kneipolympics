@@ -8,6 +8,8 @@ import { RegisteredIndexRoute } from "./registered.index";
 import { useAdmin } from "../hooks/useAdmin";
 import { AdminRoute } from "./admin";
 import { RecoveryRoute } from "./recovery";
+import { InfoRoute } from "./info";
+import { CurrentGameRoute } from "./current";
 
 export function Router() {
   const { loggedIn } = useAuth();
@@ -19,6 +21,8 @@ export function Router() {
         <>
           <Route path="/" element={<RegisteredIndexRoute />}></Route>
           <Route path="/logout" element={<LogoutRoute />}></Route>
+          <Route path="/info" element={<InfoRoute />}></Route>
+          <Route path="/current" element={<CurrentGameRoute />}></Route>
           {isAdmin && <Route path="/admin" element={<AdminRoute />}></Route>}
         </>
       ) : (
