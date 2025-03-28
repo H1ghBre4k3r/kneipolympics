@@ -39,7 +39,7 @@ export function InfoRoute() {
           <b>{l("when")}:</b> 26. April
         </div>
         <div>
-          <b>{l("where")}:</b> Kiel, Lille Brauerei
+          <b>{l("where")}:</b> Kiel, REWE Parkplatz (Gutenbergstraße 77)
         </div>
         <div>
           <b>{l("what")}:</b> Kneipolympics
