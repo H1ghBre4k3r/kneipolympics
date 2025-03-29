@@ -26,5 +26,6 @@
       <circle cx="0.43667994193637805" cy="1.826238774315995" r="0.16" fill="black"/>
       <circle cx="0.7052448255890953" cy="1.9555728057861406" r="0.16" fill="black"/>
     </mask>
+    <circle cx="1" cy="1" r="0.7" fill="var(--iconColor)" fill-opacity="var(--innerOpacity)"/>
   </g>
 </svg>

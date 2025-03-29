@@ -18,6 +18,21 @@ const ringPositionsAndColors: [[number, number], string, [number, number][]][] =
   [[logoSmallSize / 2 + xStep / 2, logoSmallSize / 2 + yStep / 2], "green", []],
 ]
 
+const logoLargeSize = 50;
+const largeRingDist = 11.2;
+const largeRingRadius = 7;
+const largeRingNumCaps = 20;
+const largeXStep = (1 / Math.cos(Math.PI / 4)) * largeRingDist;
+const largeYStep = Math.sin(Math.PI / 4) * largeRingDist;
+const commonOffset = 0.47
+const largeRingPositionsAndColors: [[number, number], string, number, number[]][] = [
+  [[logoLargeSize / 2 - largeXStep, logoLargeSize / 2 - largeYStep / 2], "blue", commonOffset, [0]],
+  [[logoLargeSize / 2, logoLargeSize / 2 - largeYStep / 2], "black", commonOffset, [0, 15]],
+  [[logoLargeSize / 2 + largeXStep, logoLargeSize / 2 - largeYStep / 2], "red", commonOffset, [15]],
+  [[logoLargeSize / 2 - largeXStep / 2, logoLargeSize / 2 + largeYStep / 2], "yellow", commonOffset, [10, 5]],
+  [[logoLargeSize / 2 + largeXStep / 2, logoLargeSize / 2 + largeYStep / 2], "green", commonOffset, [5, 10]],
+]
+
 let maskId = 0;
 let clipId = 0;
 function bottleCap(x: number, y: number, xmlClass: string = "bottle-cap", mask: [number, number] | null = null) {
@@ -40,6 +55,7 @@ ${cutoutString}    </mask>\n`;
     </clipPath>\n`;
       clipId += 1;
     }
+    bottleCapString += `    <circle cx="${x}" cy="${y}" r="${innerRadius}" fill="var(--iconColor)" fill-opacity="var(--innerOpacity)"/>\n`
     bottleCapString += "  </g>\n";
     maskId += 1;
   return bottleCapString;
@@ -65,9 +81,28 @@ for (const [[x, y], color, masks] of ringPositionsAndColors) {
 }
 logoSmallSvgString += '</svg>';
 
+let logoLargeSvgString = `<svg viewBox="0 0 ${logoLargeSize} ${logoLargeSize}">
+  <style>
+    @import url(../styles/logo_large.css);
+  </style>
+`;
+for (const [[x, y], color, startStep, remove] of largeRingPositionsAndColors) {
+  for (let i = 0; i < largeRingNumCaps; i++) {
+    if (!remove.includes(i)) {
+      logoLargeSvgString += bottleCap(
+        x + Math.sin(Math.PI * 2 / largeRingNumCaps * (i + startStep)) * largeRingRadius,
+        y + Math.cos(Math.PI * 2 / largeRingNumCaps * (i + startStep)) * largeRingRadius,
+        `bottle-cap-${color}`
+      );
+    }
+  }
+}
+logoLargeSvgString += "</svg>"
+
 for (const [svgString, fileName] of [
   [bottleCapSvgString, 'public/images/bottle_cap.svg'],
-  [logoSmallSvgString, 'public/images/logo_small.svg']
+  [logoSmallSvgString, 'public/images/logo_small.svg'],
+  [logoLargeSvgString, 'public/images/logo_large.svg']
 ]) {
   writeFile(fileName, svgString, (err) => {
     if (err) {
