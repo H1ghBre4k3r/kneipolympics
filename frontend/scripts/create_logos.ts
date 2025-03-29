@@ -65,7 +65,7 @@ for (const [[x, y], color, masks] of ringPositionsAndColors) {
 }
 logoSmallSvgString += '</svg>';
 
-for (let [svgString, fileName] of [
+for (const [svgString, fileName] of [
   [bottleCapSvgString, 'public/images/bottle_cap.svg'],
   [logoSmallSvgString, 'public/images/logo_small.svg']
 ]) {
