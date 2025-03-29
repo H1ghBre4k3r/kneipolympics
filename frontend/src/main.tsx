@@ -9,19 +9,22 @@ import { BrowserRouter } from "react-router";
 import { AdminContextProvider } from "./contexts/admin.tsx";
 
 import "./services/i18n.ts";
+import { DatabaseContextProvider } from "./contexts/database.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <AppwriteContextProvider>
-      <FunctionsContextProvider>
-        <AuthContextProvider>
-          <AdminContextProvider>
-            <BrowserRouter>
-              <App />
-            </BrowserRouter>
-          </AdminContextProvider>
-        </AuthContextProvider>
-      </FunctionsContextProvider>
+      <DatabaseContextProvider>
+        <FunctionsContextProvider>
+          <AuthContextProvider>
+            <AdminContextProvider>
+              <BrowserRouter>
+                <App />
+              </BrowserRouter>
+            </AdminContextProvider>
+          </AuthContextProvider>
+        </FunctionsContextProvider>
+      </DatabaseContextProvider>
     </AppwriteContextProvider>
   </StrictMode>,
 );
