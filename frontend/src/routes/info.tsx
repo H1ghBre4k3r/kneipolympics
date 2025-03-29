@@ -21,9 +21,12 @@ export function InfoRoute() {
       <h3>{l("infoAndRegistration")}</h3>
       <form>
         {joined ? (
-          <button className="large" type="button" onClick={leave}>
-            {l("wantToLeave")}
-          </button>
+          <>
+            <button className="large" type="button" onClick={leave}>
+              {l("wantToLeave")}
+            </button>
+            <p>{l("participating")}</p>
+          </>
         ) : (
           <button className="large" type="button" onClick={join}>
             {l("wantToJoin")}
