@@ -1,16 +1,14 @@
 import { useAuth } from "./useAuth";
 
-type Prefs = "firstName" | "lastName" | "phone" | "smoker" | "joined";
-
 export function usePreferences() {
   const { user, account } = useAuth();
   const { prefs } = user ?? {};
 
-  function get(pref: Prefs): Maybe<string> {
+  function get(pref: PrefKeys): Maybe<string> {
     return prefs?.[pref];
   }
 
-  async function set(pref: Prefs, value: string) {
+  async function set(pref: PrefKeys, value: string) {
     await account.updatePrefs({
       ...prefs,
       [pref]: value,

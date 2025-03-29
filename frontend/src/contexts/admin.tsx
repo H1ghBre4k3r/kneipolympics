@@ -4,8 +4,10 @@ import { useFunctions } from "../hooks/useFunctions";
 import { useAuth } from "../hooks/useAuth";
 import { can } from "../services/permissions";
 
+export type User = Models.User<Models.Preferences & Prefs>;
+
 export type AdminContextType = {
-  users: Models.User<Models.Preferences>[];
+  users: User[];
   isAdmin: boolean;
 };
 
@@ -17,13 +19,13 @@ export function AdminContextProvider({ children }: PropsWithChildren) {
   const functions = useFunctions();
   const { user } = useAuth();
 
-  const [users, setUsers] = useState<Models.User<Models.Preferences>[]>([]);
+  const [users, setUsers] = useState<User[]>([]);
 
   useEffect(() => {
     if (can("getUsers", user?.labels)) {
       functions
         .getUsers()
-        .then((response) => setUsers(response))
+        .then((response) => setUsers(response as User[]))
         .catch(console.error);
     }
   }, [functions, user]);
