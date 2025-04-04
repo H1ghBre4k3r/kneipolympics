@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { useAdmin } from "../hooks/useAdmin";
 import { useDatabase } from "../hooks/useDatabase";
-import { useLabels } from "../hooks/useLabels";
+import { UserCard } from "../components/userCard";
+import { BarCard } from "../components/barCard";
 
 export function AdminRoute() {
   const { users } = useAdmin();
@@ -10,11 +11,13 @@ export function AdminRoute() {
   const [bars, setBars] = useState<Bar[]>([]);
 
   useEffect(() => {
-    getAll<Bar>("bars")
+    getAll("bars")
       .then((bars) => {
         setBars(bars);
       })
       .catch(console.error);
+
+    getAll("routes").then(console.log).catch(console.error);
   }, [getAll]);
 
   return (
@@ -24,7 +27,7 @@ export function AdminRoute() {
         <h4>Users</h4>
         <ul>
           {users.map((user) => {
-            const { prefs, name } = user;
+            const { prefs, name, email } = user;
             const { firstName, lastName, joined } = prefs;
 
             return (
@@ -35,10 +38,10 @@ export function AdminRoute() {
                       {firstName} {lastName}
                     </span>
                     <span className={`joined ${joined ?? "false"}`}>
-                      {joined ? "In" : "Out"}
+                      {joined === "true" ? "In" : "Out"}
                     </span>
                   </summary>
-                  <UserCard name={name} prefs={prefs as Prefs} />
+                  <UserCard name={name} email={email} prefs={prefs as Prefs} />
                 </details>
               </li>
             );
@@ -49,50 +52,14 @@ export function AdminRoute() {
         <h4>Bars</h4>
         <ul>
           {bars.map((bar) => {
-            const { name, address, task, needs_picture } = bar;
-
             return (
               <li>
-                <details>
-                  <summary>
-                    <span>{name}</span>
-                  </summary>
-                  <div>
-                    <b>Addresse: </b> {address}
-                  </div>
-                  <div>
-                    <b>Task: </b> {task}
-                  </div>
-                  <div>
-                    <b>Needs Picture: </b>
-                    {needs_picture ? "Yes" : "No"}
-                  </div>
-                </details>
+                <BarCard bar={bar} />
               </li>
             );
           })}
         </ul>
       </section>
     </>
-  );
-}
-type UserCardProps = {
-  name: string;
-  prefs: Prefs;
-};
-
-function UserCard({ name, prefs }: UserCardProps) {
-  const l = useLabels();
-
-  const { phone } = prefs;
-  return (
-    <div>
-      <div>
-        <b>{l("username")}</b> {name}
-      </div>
-      <div>
-        <b>{l("phone")}</b> <a href={`tel:${phone}`}>{phone}</a>
-      </div>
-    </div>
   );
 }

@@ -200,6 +200,10 @@
     &:user-invalid {
       border-color: var(--error);
     }
+
+    &.small {
+      padding: 2px;
+    }
   }
 
   input,
@@ -217,6 +221,10 @@
     &.large {
       font-size: var(--h4-size);
       font-weight: bold;
+    }
+
+    &.small {
+      padding: 4px;
     }
   }
 }

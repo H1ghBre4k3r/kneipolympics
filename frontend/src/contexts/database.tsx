@@ -4,13 +4,12 @@ import { Databases } from "appwrite";
 
 const KNEIPOLMYPICS_DB = "67e4985c00379c9bb294";
 
-type Document = {
-  bars: {
-    name: string;
-  };
+type Documents = {
+  bars: Bar;
+  routes: unknown;
 };
 
-type DocumentName = keyof Document;
+type DocumentName = keyof Documents;
 
 type DocumentConversionMap = {
   [key in DocumentName]: string;
@@ -18,11 +17,27 @@ type DocumentConversionMap = {
 
 const documentConverstionMap: DocumentConversionMap = {
   bars: "67e498630028469bd350",
+  routes: "67e9c183002422411dbd",
 };
 
 export type DatabaseContextType = {
   databases: Databases;
-  getAll: <T>(document: DocumentName) => Promise<T[]>;
+  getAll: <Name extends DocumentName>(
+    document: Name,
+  ) => Promise<Documents[Name][]>;
+  get: <Name extends DocumentName>(
+    document: Name,
+    id: string,
+  ) => Promise<Documents[Name]>;
+  deleteEntry: <Name extends DocumentName>(
+    document: Name,
+    id: string,
+  ) => Promise<void>;
+  update: <Name extends DocumentName>(
+    document: Name,
+    id: string,
+    payload: Partial<Documents[Name]>,
+  ) => Promise<void>;
 };
 
 export const DatabaseContext = createContext<DatabaseContextType>(
@@ -38,16 +53,62 @@ export function DatabaseContextProvider({ children }: PropsWithChildren) {
 
   const databases = useMemo(() => new Databases(client), [client]);
 
-  async function getAll<T>(document: DocumentName): Promise<T[]> {
+  async function getAll<Document extends DocumentName>(
+    document: Document,
+  ): Promise<Documents[Document][]> {
     const result = await databases.listDocuments(
       KNEIPOLMYPICS_DB,
       convertDocument(document),
     );
 
-    return result.documents as T[];
+    return result.documents as unknown as Documents[Document][];
   }
 
-  const value: DatabaseContextType = { databases, getAll };
+  async function get<Document extends DocumentName>(
+    document: Document,
+    id: string,
+  ): Promise<Documents[Document]> {
+    const result = await databases.getDocument(
+      KNEIPOLMYPICS_DB,
+      convertDocument(document),
+      id,
+    );
+
+    return result as unknown as Documents[Document];
+  }
+
+  async function deleteEntry<Document extends DocumentName>(
+    document: Document,
+    id: string,
+  ): Promise<void> {
+    await databases.deleteDocument(
+      KNEIPOLMYPICS_DB,
+      convertDocument(document),
+      id,
+    );
+  }
+
+  async function update<Document extends DocumentName>(
+    document: Document,
+    id: string,
+    payload: Partial<Documents[Document]>,
+  ): Promise<void> {
+    await databases.updateDocument(
+      KNEIPOLMYPICS_DB,
+      convertDocument(document),
+      id,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      payload as any,
+    );
+  }
+
+  const value: DatabaseContextType = {
+    databases,
+    getAll,
+    get,
+    update,
+    deleteEntry,
+  };
 
   return (
     <DatabaseContext.Provider value={value}>

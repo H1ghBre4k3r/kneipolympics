@@ -1,5 +1,6 @@
 @import "./components/nav.css" layer(organism);
 @import "./components/header.css" layer(organism);
+@import "./components/barCard.css" layer(organism);
 
 @import "./routes/unregistered.index.css" layer(page);
 @import "./routes/admin.css" layer(page);

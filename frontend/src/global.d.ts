@@ -7,6 +7,7 @@ type Prefs = {
 };
 
 type Bar = {
+  $id: string;
   address: string;
   name: string;
   task: string;
