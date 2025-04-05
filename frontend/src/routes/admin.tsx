@@ -3,12 +3,14 @@ import { useAdmin } from "../hooks/useAdmin";
 import { useDatabase } from "../hooks/useDatabase";
 import { UserCard } from "../components/userCard";
 import { BarCard } from "../components/barCard";
+import { AddBarDialog } from "../components/addBar";
 
 export function AdminRoute() {
   const { users } = useAdmin();
-  const { getAll } = useDatabase();
+  const { getAll, create } = useDatabase();
 
   const [bars, setBars] = useState<Bar[]>([]);
+  const [showAddBardDialog, setShowAddBarDialog] = useState(false);
 
   useEffect(() => {
     getAll("bars")
@@ -19,6 +21,12 @@ export function AdminRoute() {
 
     getAll("routes").then(console.log).catch(console.error);
   }, [getAll]);
+
+  function addNewBar(bar: Omit<Bar, "$id">) {
+    create("bars", bar)
+      .then(() => location.reload())
+      .catch(console.error);
+  }
 
   return (
     <>
@@ -49,7 +57,17 @@ export function AdminRoute() {
         </ul>
       </section>
       <section id="bars">
-        <h4>Bars</h4>
+        <div className="header">
+          <h4>Bars</h4>
+          <button className="small" onClick={() => setShowAddBarDialog(true)}>
+            New Bar
+          </button>
+        </div>
+        <AddBarDialog
+          open={showAddBardDialog}
+          submit={addNewBar}
+          close={() => setShowAddBarDialog(false)}
+        />
         <ul>
           {bars.map((bar) => {
             return (

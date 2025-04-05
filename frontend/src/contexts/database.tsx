@@ -1,6 +1,6 @@
 import { createContext, PropsWithChildren, useMemo } from "react";
 import { useAppwrite } from "../hooks/useAppwrite";
-import { Databases } from "appwrite";
+import { Databases, ID } from "appwrite";
 
 const KNEIPOLMYPICS_DB = "67e4985c00379c9bb294";
 
@@ -22,6 +22,10 @@ const documentConverstionMap: DocumentConversionMap = {
 
 export type DatabaseContextType = {
   databases: Databases;
+  create<Document extends DocumentName>(
+    document: Document,
+    payload: Partial<Documents[Document]>,
+  ): Promise<void>;
   getAll: <Name extends DocumentName>(
     document: Name,
   ) => Promise<Documents[Name][]>;
@@ -52,6 +56,19 @@ export function DatabaseContextProvider({ children }: PropsWithChildren) {
   const { client } = useAppwrite();
 
   const databases = useMemo(() => new Databases(client), [client]);
+
+  async function create<Document extends DocumentName>(
+    document: Document,
+    payload: Partial<Documents[Document]>,
+  ): Promise<void> {
+    await databases.createDocument(
+      KNEIPOLMYPICS_DB,
+      convertDocument(document),
+      ID.unique(),
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      payload as any,
+    );
+  }
 
   async function getAll<Document extends DocumentName>(
     document: Document,
@@ -104,6 +121,7 @@ export function DatabaseContextProvider({ children }: PropsWithChildren) {
 
   const value: DatabaseContextType = {
     databases,
+    create,
     getAll,
     get,
     update,

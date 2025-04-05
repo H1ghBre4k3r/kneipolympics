@@ -218,6 +218,10 @@
     border-radius: 4px;
     cursor: pointer;
 
+    &.borderless {
+      border: none;
+    }
+
     &.large {
       font-size: var(--h4-size);
       font-weight: bold;
@@ -225,6 +229,16 @@
 
     &.small {
       padding: 4px;
+    }
+
+    &.save {
+      background-color: var(--success);
+      color: white;
+    }
+
+    &.delete {
+      background-color: var(--error);
+      color: white;
     }
   }
 }

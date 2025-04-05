@@ -7,7 +7,7 @@ type BarCardProps = {
 };
 
 export function BarCard({ bar }: BarCardProps) {
-  const { update } = useDatabase();
+  const { update, deleteEntry } = useDatabase();
 
   const [name, setName] = useState(bar.name);
   const [address, setAddress] = useState(bar.address);
@@ -25,6 +25,12 @@ export function BarCard({ bar }: BarCardProps) {
       needs_picture,
     })
       .then(() => console.log("updated"))
+      .catch(console.error);
+  }
+
+  function deleteBar() {
+    deleteEntry("bars", bar.$id)
+      .then(() => location.reload())
       .catch(console.error);
   }
 
@@ -67,7 +73,7 @@ export function BarCard({ bar }: BarCardProps) {
       <div className="button-row">
         {editMode ? (
           <>
-            <button className="small" onClick={save}>
+            <button className="small save" onClick={save}>
               Save
             </button>
             <button className="small" onClick={abort}>
@@ -75,9 +81,14 @@ export function BarCard({ bar }: BarCardProps) {
             </button>
           </>
         ) : (
-          <button className="small" onClick={() => setEditMode(true)}>
-            Edit
-          </button>
+          <>
+            <button className="small" onClick={() => setEditMode(true)}>
+              Edit
+            </button>
+            <button className="small delete" onClick={deleteBar}>
+              Delete
+            </button>
+          </>
         )}
       </div>
     </details>

@@ -34,7 +34,11 @@ export type Labels =
   | "furtherInformation"
   | "wantToJoin"
   | "wantToLeave"
-  | "participating";
+  | "participating"
+  | "name"
+  | "address"
+  | "task"
+  | "needsPicture";
 
 type Resources = {
   [key: string]: {
@@ -85,7 +89,11 @@ const resources: Resources = {
         "The Kneipolympics haven't started yet. Stay tuned for April 26th!",
       wantToJoin: "I Want To Join!",
       wantToLeave: "I Want To Leave!",
-      participating: "You are paricipating in the 2025 Kneipolympics."
+      participating: "You are paricipating in the 2025 Kneipolympics.",
+      name: "Name",
+      address: "Address",
+      task: "Task",
+      needsPicture: "Needs Picture?",
     },
   },
   de: {
@@ -129,7 +137,11 @@ const resources: Resources = {
         "Die Kneipolympics haben noch nicht begonnen. Freut euch auf den 26. April!",
       wantToJoin: "Ich will teilnehmen!",
       wantToLeave: "Ich will nicht teilnehmen!",
-      participating: "Du nimmst an den Kneipolympics 2025 teil."
+      participating: "Du nimmst an den Kneipolympics 2025 teil.",
+      name: "Name",
+      address: "Adresse",
+      task: "Aufgabe",
+      needsPicture: "Benötigt Bild?",
     },
   },
 } as const;
