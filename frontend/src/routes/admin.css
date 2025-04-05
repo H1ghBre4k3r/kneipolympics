@@ -1,0 +1,72 @@
+h3,
+h4 {
+  margin-bottom: 0;
+}
+
+section {
+  ul {
+    list-style: none;
+    padding: 0;
+
+    li {
+      padding-block: 8px;
+
+      &:not(:last-child) {
+        border-bottom: 1px solid var(--color-primary);
+      }
+
+      details {
+        --indicator-width: 16px;
+
+        summary {
+          &::before {
+            content: ">";
+            position: absolute;
+          }
+
+          & > :first-child {
+            padding-left: var(--indicator-width);
+          }
+        }
+        &[open] {
+          summary {
+            &::before {
+              content: "v";
+            }
+          }
+        }
+
+        summary {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+        }
+      }
+    }
+  }
+
+  &#users {
+    /* this is only needed for the users list */
+    .joined {
+      color: white;
+      padding-inline: 4px;
+      border-radius: 4px;
+
+      &.true {
+        background-color: var(--success);
+      }
+
+      &.false {
+        background-color: var(--error);
+      }
+    }
+  }
+
+  &#bars {
+    .header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+    }
+  }
+}
