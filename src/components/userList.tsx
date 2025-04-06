@@ -26,7 +26,7 @@ export function UserList() {
             const { firstName, lastName, joined } = prefs;
 
             return (
-              <li>
+              <li key={user.$id}>
                 <details>
                   <summary>
                     <span className="name">

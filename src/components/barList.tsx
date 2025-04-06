@@ -49,7 +49,7 @@ export function BarList() {
         <ul>
           {bars.map((bar) => {
             return (
-              <li>
+              <li key={bar.$id}>
                 <BarCard bar={bar} />
               </li>
             );
