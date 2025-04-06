@@ -13,3 +13,9 @@ type Bar = {
   task: string;
   needs_picture: boolean;
 };
+
+type Route = {
+  $id: string;
+  name: string;
+  bars: string[] | Bar[];
+};

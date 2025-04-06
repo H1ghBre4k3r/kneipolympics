@@ -10,6 +10,9 @@ import { AdminRoute } from "./admin";
 import { RecoveryRoute } from "./recovery";
 import { InfoRoute } from "./info";
 import { CurrentGameRoute } from "./current";
+import { UserList } from "../components/userList";
+import { BarList } from "../components/barList";
+import { RouteList } from "../components/routeList";
 
 export function Router() {
   const { loggedIn } = useAuth();
@@ -23,7 +26,14 @@ export function Router() {
           <Route path="/logout" element={<LogoutRoute />}></Route>
           <Route path="/info" element={<InfoRoute />}></Route>
           <Route path="/current" element={<CurrentGameRoute />}></Route>
-          {isAdmin && <Route path="/admin" element={<AdminRoute />}></Route>}
+          {isAdmin && (
+            <Route path="/admin" element={<AdminRoute />}>
+              <Route path="/admin/" element={<UserList />} />
+              <Route path="users" element={<UserList />} />
+              <Route path="bars" element={<BarList />} />
+              <Route path="routes" element={<RouteList />} />
+            </Route>
+          )}
         </>
       ) : (
         <>

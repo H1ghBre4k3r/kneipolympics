@@ -6,7 +6,7 @@
 @import "./routes/admin.css" layer(page);
 
 @import "./components/barList.css" layer(organism);
-@import "./components/barCard.css" layer(organism);
+@import "./components/barListEntry.css" layer(organism);
 @import "./components/addBar.css" layer(organism);
 
 @import "./components/userList.css" layer(organism);
