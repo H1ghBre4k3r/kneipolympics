@@ -1,0 +1,16 @@
+section#users {
+  /* this is only needed for the users list */
+  .joined {
+    color: white;
+    padding-inline: 4px;
+    border-radius: 4px;
+
+    &.true {
+      background-color: var(--success);
+    }
+
+    &.false {
+      background-color: var(--error);
+    }
+  }
+}

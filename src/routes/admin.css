@@ -1,72 +1,99 @@
-h3,
-h4 {
-  margin-bottom: 0;
-}
+#admin {
+  h3,
+  h4 {
+    margin-block: 0;
+  }
 
-section {
-  ul {
-    list-style: none;
-    padding: 0;
+  section {
+    padding-block: 16px;
 
-    li {
-      padding-block: 8px;
+    &:not(:last-child) {
+      border-bottom: 1px solid var(--color-primary);
+    }
 
-      &:not(:last-child) {
-        border-bottom: 1px solid var(--color-primary);
-      }
+    > details {
+      > summary.header {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
 
-      details {
-        --indicator-width: 16px;
+        h4 {
+          position: relative;
 
-        summary {
-          &::before {
-            content: ">";
-            position: absolute;
+          &:has(.open, .closed) {
+            padding-left: 16px;
           }
 
-          & > :first-child {
-            padding-left: var(--indicator-width);
+          .open,
+          .closed {
+            position: absolute;
+            left: 0;
+            top: 2px;
+          }
+
+          .open {
+            display: none;
+          }
+
+          .closed {
+            display: inline;
           }
         }
-        &[open] {
+      }
+
+      &[open] {
+        > summary.header h4 {
+          .open {
+            display: inline;
+          }
+
+          .closed {
+            display: none;
+          }
+        }
+      }
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+
+      li {
+        padding-block: 8px;
+
+        &:not(:last-child) {
+          border-bottom: 1px solid var(--color-primary);
+        }
+
+        details {
+          --indicator-width: 16px;
+
           summary {
             &::before {
-              content: "v";
+              content: ">";
+              position: absolute;
+            }
+
+            & > :first-child {
+              padding-left: var(--indicator-width);
             }
           }
+
+          &[open] {
+            summary {
+              &::before {
+                content: "v";
+              }
+            }
+          }
+
+          summary {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+          }
         }
-
-        summary {
-          display: flex;
-          flex-direction: row;
-          justify-content: space-between;
-        }
       }
-    }
-  }
-
-  &#users {
-    /* this is only needed for the users list */
-    .joined {
-      color: white;
-      padding-inline: 4px;
-      border-radius: 4px;
-
-      &.true {
-        background-color: var(--success);
-      }
-
-      &.false {
-        background-color: var(--error);
-      }
-    }
-  }
-
-  &#bars {
-    .header {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
     }
   }
 }
