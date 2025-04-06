@@ -26,6 +26,11 @@ export function BarList() {
   }
   return (
     <section id="bars">
+      <AddBarDialog
+        open={showAddBardDialog}
+        submit={addNewBar}
+        close={() => setShowAddBarDialog(false)}
+      />
       <details>
         <summary className="header">
           <h4>
@@ -41,11 +46,6 @@ export function BarList() {
             New Bar
           </button>
         </summary>
-        <AddBarDialog
-          open={showAddBardDialog}
-          submit={addNewBar}
-          close={() => setShowAddBarDialog(false)}
-        />
         <ul>
           {bars.map((bar) => {
             return (
