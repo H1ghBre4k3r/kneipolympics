@@ -4,54 +4,25 @@
     margin-block: 0;
   }
 
-  section {
+  ul.tab-bar {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+    gap: 16px;
+  }
+
+  > section {
     padding-block: 16px;
 
     &:not(:last-child) {
       border-bottom: 1px solid var(--color-primary);
     }
 
-    > details {
-      > summary.header {
-        display: flex;
-        align-items: flex-end;
-        justify-content: space-between;
-
-        h4 {
-          position: relative;
-
-          &:has(.open, .closed) {
-            padding-left: 16px;
-          }
-
-          .open,
-          .closed {
-            position: absolute;
-            left: 0;
-            top: 2px;
-          }
-
-          .open {
-            display: none;
-          }
-
-          .closed {
-            display: inline;
-          }
-        }
-      }
-
-      &[open] {
-        > summary.header h4 {
-          .open {
-            display: inline;
-          }
-
-          .closed {
-            display: none;
-          }
-        }
-      }
+    > .header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
     }
 
     ul {
@@ -66,31 +37,42 @@
         }
 
         details {
-          --indicator-width: 16px;
-
-          summary {
-            &::before {
-              content: ">";
-              position: absolute;
-            }
-
-            & > :first-child {
-              padding-left: var(--indicator-width);
-            }
-          }
-
-          &[open] {
-            summary {
-              &::before {
-                content: "v";
-              }
-            }
-          }
-
           summary {
             display: flex;
             flex-direction: row;
             justify-content: space-between;
+          }
+          summary > span {
+            position: relative;
+
+            &:has(.open, .closed) {
+              padding-left: 16px;
+            }
+
+            .open,
+            .closed {
+              position: absolute;
+              left: 0;
+              top: 2px;
+            }
+
+            .open {
+              display: none;
+            }
+
+            .closed {
+              display: inline;
+            }
+          }
+
+          &[open] > summary > span {
+            .open {
+              display: inline;
+            }
+
+            .closed {
+              display: none;
+            }
           }
         }
       }

@@ -6,7 +6,7 @@ const KNEIPOLMYPICS_DB = "67e4985c00379c9bb294";
 
 type Documents = {
   bars: Bar;
-  routes: unknown;
+  routes: Route;
 };
 
 type DocumentName = keyof Documents;
@@ -26,13 +26,13 @@ export type DatabaseContextType = {
     document: Document,
     payload: Partial<Documents[Document]>,
   ): Promise<void>;
-  getAll: <Name extends DocumentName>(
+  getAll: <Name extends DocumentName, Value = Documents[Name]>(
     document: Name,
-  ) => Promise<Documents[Name][]>;
-  get: <Name extends DocumentName>(
+  ) => Promise<Value[]>;
+  get: <Name extends DocumentName, Value = Documents[Name]>(
     document: Name,
     id: string,
-  ) => Promise<Documents[Name]>;
+  ) => Promise<Value>;
   deleteEntry: <Name extends DocumentName>(
     document: Name,
     id: string,
@@ -70,28 +70,29 @@ export function DatabaseContextProvider({ children }: PropsWithChildren) {
     );
   }
 
-  async function getAll<Document extends DocumentName>(
-    document: Document,
-  ): Promise<Documents[Document][]> {
+  async function getAll<
+    Document extends DocumentName,
+    Value = Documents[Document],
+  >(document: Document): Promise<Value[]> {
     const result = await databases.listDocuments(
       KNEIPOLMYPICS_DB,
       convertDocument(document),
     );
 
-    return result.documents as unknown as Documents[Document][];
+    return result.documents as unknown as Value[];
   }
 
-  async function get<Document extends DocumentName>(
-    document: Document,
-    id: string,
-  ): Promise<Documents[Document]> {
+  async function get<
+    Document extends DocumentName,
+    Value = Documents[Document],
+  >(document: Document, id: string): Promise<Value> {
     const result = await databases.getDocument(
       KNEIPOLMYPICS_DB,
       convertDocument(document),
       id,
     );
 
-    return result as unknown as Documents[Document];
+    return result as unknown as Value;
   }
 
   async function deleteEntry<Document extends DocumentName>(

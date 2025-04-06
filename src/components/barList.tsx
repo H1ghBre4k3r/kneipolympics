@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDatabase } from "../hooks/useDatabase";
-import { BarCard } from "../components/barCard";
+import { BarListEntry } from "./barListEntry";
 import { AddBarDialog } from "../components/addBar";
-import { FaCaretRight } from "react-icons/fa";
-import { FaCaretDown } from "react-icons/fa";
 
 export function BarList() {
   const { getAll, create } = useDatabase();
@@ -31,31 +29,21 @@ export function BarList() {
         submit={addNewBar}
         close={() => setShowAddBarDialog(false)}
       />
-      <details>
-        <summary className="header">
-          <h4>
-            <span className="closed">
-              <FaCaretRight />
-            </span>
-            <span className="open">
-              <FaCaretDown />
-            </span>
-            Bars
-          </h4>
-          <button className="small" onClick={() => setShowAddBarDialog(true)}>
-            New Bar
-          </button>
-        </summary>
-        <ul>
-          {bars.map((bar) => {
-            return (
-              <li key={bar.$id}>
-                <BarCard bar={bar} />
-              </li>
-            );
-          })}
-        </ul>
-      </details>
+      <div className="header">
+        <h4>Bars</h4>
+        <button className="small" onClick={() => setShowAddBarDialog(true)}>
+          New Bar
+        </button>
+      </div>
+      <ul>
+        {bars.map((bar) => {
+          return (
+            <li key={bar.$id}>
+              <BarListEntry bar={bar} />
+            </li>
+          );
+        })}
+      </ul>
     </section>
   );
 }

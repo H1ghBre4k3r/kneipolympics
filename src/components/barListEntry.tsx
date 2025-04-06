@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { LabelElement } from "./labelElement";
 import { useDatabase } from "../hooks/useDatabase";
+import { FaCaretRight } from "react-icons/fa";
+import { FaCaretDown } from "react-icons/fa6";
 
 type BarCardProps = {
   bar: Bar;
 };
 
-export function BarCard({ bar }: BarCardProps) {
+export function BarListEntry({ bar }: BarCardProps) {
   const { update, deleteEntry } = useDatabase();
 
   const [name, setName] = useState(bar.name);
@@ -43,9 +45,15 @@ export function BarCard({ bar }: BarCardProps) {
   }
 
   return (
-    <details className="bar">
+    <details className="bar-list-entry">
       <summary>
         <span>
+          <span className="closed">
+            <FaCaretRight />
+          </span>
+          <span className="open">
+            <FaCaretDown />
+          </span>
           <LabelElement value={name} onChange={setName} readonly={!editMode} />
         </span>
       </summary>
