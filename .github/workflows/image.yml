@@ -35,7 +35,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           platforms: linux/amd64,linux/arm64/v8
-          context: ./frontend
+          context: ./
           push: ${{ github.ref_name == 'main' }}
           tags: |
             ghcr.io/${{ env.OWNER_LC }}/kneipolympics:latest

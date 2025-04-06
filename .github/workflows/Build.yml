@@ -15,7 +15,7 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     env:
-      frontend-dir: ./frontend
+      frontend-dir: ./
 
     steps:
       - uses: actions/checkout@v2
