@@ -67,7 +67,7 @@
     }
   }
 
-  @media only screen and (min-width: 1420px) {
+  @media only screen and (min-width: 1020px) {
     :root {
       --h1-size: 6rem;
       --h2-size: 4rem;
@@ -76,7 +76,7 @@
       --h5-size: 1.25rem;
       --h6-size: 1.125rem;
 
-      --content-width: 1400px;
+      --content-width: 1000px;
       --content-max-width: calc(100vw - 20px);
     }
   }
