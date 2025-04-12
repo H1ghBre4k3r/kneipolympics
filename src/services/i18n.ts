@@ -39,7 +39,8 @@ export type Labels =
   | "name"
   | "address"
   | "task"
-  | "needsPicture";
+  | "needsPicture"
+  | "rules";
 
 type Resources = {
   [key: string]: {
@@ -96,6 +97,7 @@ const resources: Resources = {
       address: "Address",
       task: "Task",
       needsPicture: "Needs Picture?",
+      rules: "Rules",
     },
   },
   de: {
@@ -145,6 +147,7 @@ const resources: Resources = {
       address: "Adresse",
       task: "Aufgabe",
       needsPicture: "Benötigt Bild?",
+      rules: "Regeln",
     },
   },
 } as const;

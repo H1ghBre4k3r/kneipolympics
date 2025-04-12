@@ -1,5 +1,7 @@
 import { infoPageDe } from "../components/infoPage.de";
 import { infoPageEn } from "../components/infoPage.en";
+import { rulesPageDe } from "../components/rulesPage.de";
+import { rulesPageEn } from "../components/rulesPage.en";
 import { useLabels } from "../hooks/useLabels";
 import { usePreferences } from "../hooks/usePreferences";
 
@@ -19,6 +21,8 @@ export function InfoRoute() {
   }
 
   const infoPage = l("langId") == "en" ? infoPageEn : infoPageDe;
+
+  const rulesPage = l("langId") == "en" ? rulesPageEn : rulesPageDe;
   
   return (
     <section>
@@ -41,8 +45,20 @@ export function InfoRoute() {
         <b>{l("note")}:</b> {l("finalRegistration")}
       </p>
       <section id="tldr">
-        <h4>TL;DR:</h4>
-        {infoPage()}
+        <details>
+          <summary>
+            <h4>General Info</h4>
+          </summary>
+          {infoPage()}
+        </details>
+      </section>
+      <section>
+        <details>
+          <summary>
+            <h4>{l("rules")}</h4>
+          </summary>
+          {rulesPage()}
+        </details>
       </section>
     </section>
   );
