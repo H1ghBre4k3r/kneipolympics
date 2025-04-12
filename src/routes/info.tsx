@@ -47,7 +47,7 @@ export function InfoRoute() {
       <section id="tldr">
         <details>
           <summary>
-            <h4>General Info</h4>
+            <h4>{l("generalInfo")}</h4>
           </summary>
           <InfoPage />
         </details>
