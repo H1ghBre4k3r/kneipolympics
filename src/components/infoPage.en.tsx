@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 
-export function infoPageEn() {
+export function InfoPageEn() {
   return <>
     <p>
       The <i>Kneipolympics 2025</i> will start on 26.4.2025 at 18:00 (CEST) We will meet in front of Rewe at Gutenbergstraße 77.

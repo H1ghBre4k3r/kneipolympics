@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 
-export function rulesPageEn() {
+export function RulesPageEn() {
   return <ol className="rules-list">
   <li><em>Every</em> participant has to drink a small beer in <em>every</em> bar. Participants may drink larger or more beers.</li>
   <li>A beer counts as a beer, if it has at least 4,5% alcohol content. Mixed drinks especially "Radler" or nonalcoholic beers are, therefore, excluded. There are no further restrictions on the type of beer.</li>

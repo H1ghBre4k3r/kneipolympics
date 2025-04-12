@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 
-export function rulesPageDe() {
+export function RulesPageDe() {
 	return <ol className="rules-list">
 		<li><em>Jeder</em> Teilnehmende muss in <em>jeder</em> Kneipe ein kleines Bier trinken. Die Teilnehmenden dürfen größere Biere oder mehrere trinken.</li>
 		<li>Ein Bier zählt als Bier, wenn es mindestens 4,5% Alkoholgehalt hat. Ausgeschlossen sind also insbesondere Mischgetränke (Radler) oder alkoholfreies Bier. Ansonsten gibt es keine Einschränkung für die Sorte.</li>

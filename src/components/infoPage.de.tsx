@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 
-export function infoPageDe() {
+export function InfoPageDe() {
   return <>
     <p>
       Die <i>Kneipolympics 2025</i> starten am 26.4.2025 um 18:00 (MESZ) Treffpunkt ist vor dem Rewe in der Gutenbergstraße 77.

@@ -1,7 +1,7 @@
-import { infoPageDe } from "../components/infoPage.de";
-import { infoPageEn } from "../components/infoPage.en";
-import { rulesPageDe } from "../components/rulesPage.de";
-import { rulesPageEn } from "../components/rulesPage.en";
+import { InfoPageDe } from "../components/infoPage.de";
+import { InfoPageEn } from "../components/infoPage.en";
+import { RulesPageDe } from "../components/rulesPage.de";
+import { RulesPageEn } from "../components/rulesPage.en";
 import { useLabels } from "../hooks/useLabels";
 import { usePreferences } from "../hooks/usePreferences";
 
@@ -20,9 +20,9 @@ export function InfoRoute() {
     setPref("joined", "false").then(() => location.reload());
   }
 
-  const infoPage = l("langId") == "en" ? infoPageEn : infoPageDe;
+  const InfoPage = l("langId") == "en" ? InfoPageEn : InfoPageDe;
 
-  const rulesPage = l("langId") == "en" ? rulesPageEn : rulesPageDe;
+  const RulesPage = l("langId") == "en" ? RulesPageEn : RulesPageDe;
   
   return (
     <section>
@@ -49,7 +49,7 @@ export function InfoRoute() {
           <summary>
             <h4>General Info</h4>
           </summary>
-          {infoPage()}
+          <InfoPage />
         </details>
       </section>
       <section>
@@ -57,7 +57,7 @@ export function InfoRoute() {
           <summary>
             <h4>{l("rules")}</h4>
           </summary>
-          {rulesPage()}
+          <RulesPage />
         </details>
       </section>
     </section>
