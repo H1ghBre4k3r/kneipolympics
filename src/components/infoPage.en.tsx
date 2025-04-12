@@ -3,7 +3,7 @@ import { Link } from "react-router";
 export function InfoPageEn() {
   return <>
     <p>
-      The <i>Kneipolympics 2025</i> will start on 26.4.2025 at 18:00 (CEST) We will meet in front of Rewe at Gutenbergstraße 77.
+      The <i>Kneipolympics 2025</i> will start on 26.4.2025 at 18:00 (CEST). We will meet in front of Rewe at Gutenbergstraße 77.
     </p>
     <p>
       The participant will then be randomly assigned into teams on site and receive their route. The Route consists of 4 bars, then a Flunkyballtournament in the Schrevenpark, then again  4 bars and the final station in the Lille Brewery.

@@ -3,7 +3,7 @@ import { Link } from "react-router";
 export function RulesPageEn() {
   return <ol className="rules-list">
   <li><em>Every</em> participant has to drink a small beer in <em>every</em> bar. Participants may drink larger or more beers.</li>
-  <li>A beer counts as a beer, if it has at least 4,5% alcohol content. Mixed drinks especially "Radler" or nonalcoholic beers are, therefore, excluded. There are no further restrictions on the type of beer.</li>
+  <li>A beer counts as a beer, if it has at least 4.5% alcohol content. Mixed drinks especially "Radler" or nonalcoholic beers are, therefore, excluded. There are no further restrictions on the type of beer.</li>
   <li>A small beer must be at least 300 ml.</li>
   <li>A bar is considered visited, when the participants uploaded a picture of the entrance sign and their empty glasses or bottles. The beers must be drunken inside the bar. The bonus tasks are not mandatory. However, they are crucial for the overall rating.</li>
   <li>The participants may only travel by foot. The only allowed mode of transportation is a shopping cart. The participants may use any available tool for navigation.</li>

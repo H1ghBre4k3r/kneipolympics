@@ -3,7 +3,7 @@ import { Link } from "react-router";
 export function InfoPageDe() {
   return <>
     <p>
-      Die <i>Kneipolympics 2025</i> starten am 26.4.2025 um 18:00 (MESZ) Treffpunkt ist vor dem Rewe in der Gutenbergstraße 77.
+      Die <i>Kneipolympics 2025</i> starten am 26.4.2025 um 18:00 (MESZ). Treffpunkt ist vor dem Rewe in der Gutenbergstraße 77.
     </p>
     <p>
       Die Teilnehmer werden vor Ort in Gruppen gelost und erhalten dann ihre Route. Die Route besteht aus 4 Kneipen, dann einem Flunkyballturnier im Schrevenpark, dann wieder 4 Kneipen und der Endstation in der Lille Brauerei.
