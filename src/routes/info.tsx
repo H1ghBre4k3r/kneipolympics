@@ -42,7 +42,7 @@ export function InfoRoute() {
       </p>
       <section id="tldr">
         <h4>TL;DR:</h4>
-        infoPage
+        {infoPage()}
       </section>
     </section>
   );
