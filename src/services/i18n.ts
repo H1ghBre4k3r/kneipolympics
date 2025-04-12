@@ -2,6 +2,7 @@ import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 
 export type Labels =
+  | "langId"
   | "register"
   | "alreadyGotAccount"
   | "login"
@@ -51,6 +52,7 @@ type Resources = {
 const resources: Resources = {
   en: {
     translation: {
+      langId: "en",
       register: "Register",
       alreadyGotAccount: "Already Got An Account?",
       login: "Login",
@@ -98,6 +100,7 @@ const resources: Resources = {
   },
   de: {
     translation: {
+      langId: "de",
       register: "Registrieren",
       alreadyGotAccount: "Du hast schon einen Account?",
       login: "Anmelden",

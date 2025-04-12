@@ -1,3 +1,5 @@
+import { infoPageDe } from "../components/infoPage.de";
+import { infoPageEn } from "../components/infoPage.en";
 import { useLabels } from "../hooks/useLabels";
 import { usePreferences } from "../hooks/usePreferences";
 
@@ -16,6 +18,8 @@ export function InfoRoute() {
     setPref("joined", "false").then(() => location.reload());
   }
 
+  const infoPage = l("langId") == "en" ? infoPageEn : infoPageDe;
+  
   return (
     <section>
       <h3>{l("infoAndRegistration")}</h3>
@@ -38,15 +42,7 @@ export function InfoRoute() {
       </p>
       <section id="tldr">
         <h4>TL;DR:</h4>
-        <div>
-          <b>{l("when")}:</b> 26. April
-        </div>
-        <div>
-          <b>{l("where")}:</b> Kiel, REWE Parkplatz (Gutenbergstraße 77)
-        </div>
-        <div>
-          <b>{l("what")}:</b> Kneipolympics
-        </div>
+        infoPage
       </section>
     </section>
   );
