@@ -1,4 +1,4 @@
-type Maybe<T> = T | undefined;
+type Maybe<T> = T | undefined | null;
 
 type PrefKeys = "firstName" | "lastName" | "phone" | "smoker" | "joined";
 
@@ -18,4 +18,8 @@ type Route = {
   $id: string;
   name: string;
   bars: string[] | Bar[];
+};
+
+type ConcreteRoute = Omit<Route, "bars"> & {
+  bars: Bar[];
 };

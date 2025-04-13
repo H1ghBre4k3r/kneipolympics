@@ -1,0 +1,17 @@
+#concrete-route {
+  .button-list {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  ul > li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    > div:has(button) {
+      display: flex;
+      gap: 8px;
+    }
+  }
+}

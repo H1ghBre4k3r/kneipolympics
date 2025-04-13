@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDatabase } from "../hooks/useDatabase";
 import { FaCaretDown, FaCaretRight } from "react-icons/fa";
+import { Link } from "react-router";
 
 type ConcreteRoute = Omit<Route, "bars"> & {
   bars: Bar[];
@@ -43,6 +44,7 @@ export function RouteList() {
                     </span>
                     {name}
                   </span>
+                  <Link to={$id}>Edit</Link>
                 </summary>
                 <ul>
                   {bars.map(({ name }, i) => {
