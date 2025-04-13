@@ -41,6 +41,10 @@
             display: flex;
             flex-direction: row;
             justify-content: space-between;
+
+            &::-webkit-details-marker {
+              display: none;
+            }
           }
           summary > span {
             position: relative;

@@ -129,10 +129,6 @@
   }
 
   summary {
-    &::-webkit-details-marker {
-      display: none;
-    }
-
     > h4 {
       display: inline-block;
     }
