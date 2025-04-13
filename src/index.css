@@ -128,8 +128,14 @@
     flex: 1;
   }
 
-  summary::-webkit-details-marker {
-    display: none;
+  summary {
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    > h4 {
+      display: inline-block;
+    }
   }
 
   #root {
