@@ -1,15 +1,21 @@
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { useDatabase } from "../hooks/useDatabase";
 import { FormEvent, useEffect, useRef, useState } from "react";
 import { FaCaretDown, FaCaretUp, FaPlus } from "react-icons/fa6";
+import { IoClose } from "react-icons/io5";
 
 export function ConcreteRoute() {
-  const { get, getAll, update } = useDatabase();
+  const { get, getAll, update, deleteEntry } = useDatabase();
+
+  const nav = useNavigate();
+
   const params = useParams();
   const { route: routeId } = params;
 
-  const dialog = useRef<HTMLDialogElement>(null);
+  const addBarsDialog = useRef<HTMLDialogElement>(null);
+  const renameDialog = useRef<HTMLDialogElement>(null);
 
+  const [newName, setNewName] = useState("");
   const [route, setRoute] = useState<Maybe<ConcreteRoute>>();
   const [bars, setBars] = useState<Bar[]>([]);
 
@@ -93,17 +99,26 @@ export function ConcreteRoute() {
       .catch(console.error);
   }
 
+  function deleteRoute() {
+    deleteEntry("routes", routeId!)
+      .then(() => {
+        nav("/admin/routes");
+      })
+      .catch(console.error);
+  }
+
   const leftoverBars = allBars.filter(
     (bar) => !bars.some(({ $id }) => bar.$id === $id),
   );
 
   function addBarsToRoute(e: FormEvent) {
     e.preventDefault();
-    dialog.current?.close();
+    addBarsDialog.current?.close();
 
-    const checkboxes = dialog.current?.querySelectorAll<HTMLInputElement>(
-      'input[type="checkbox"]',
-    );
+    const checkboxes =
+      addBarsDialog.current?.querySelectorAll<HTMLInputElement>(
+        'input[type="checkbox"]',
+      );
 
     const newBars: Bar[] = [];
 
@@ -120,10 +135,35 @@ export function ConcreteRoute() {
     });
   }
 
+  function rename(e: FormEvent) {
+    e.preventDefault();
+
+    update("routes", routeId!, {
+      name: newName,
+      bars,
+    })
+      .then(() => {
+        location.reload();
+      })
+      .catch(console.error);
+  }
+
   return (
     <section id="concrete-route">
-      <dialog ref={dialog}>
+      <dialog id="add-bars-dialog" ref={addBarsDialog}>
         <form onSubmit={addBarsToRoute}>
+          <div className="header">
+            <h3>Add Bars</h3>
+            <button
+              className="large borderless"
+              type="button"
+              onClick={() => {
+                addBarsDialog.current?.close();
+              }}
+            >
+              <IoClose />
+            </button>
+          </div>
           <ul>
             {leftoverBars.map(({ $id, name }) => {
               return (
@@ -139,9 +179,38 @@ export function ConcreteRoute() {
           <button>Add</button>
         </form>
       </dialog>
+
+      <dialog id="rename-dialog" ref={renameDialog}>
+        <form onSubmit={rename}>
+          <div className="header">
+            <h3>Rename</h3>
+            <button
+              className="large borderless"
+              type="button"
+              onClick={() => {
+                renameDialog.current?.close();
+                setNewName("");
+              }}
+            >
+              <IoClose />
+            </button>
+          </div>
+          <input
+            type="text"
+            name="new-name"
+            value={newName}
+            onChange={(e) => setNewName(e.target.value)}
+          />
+          <button disabled={newName.trim().length === 0}>Rename</button>
+        </form>
+      </dialog>
+
       <div className="header">
         <h3>{name}</h3>
-        <button className="small" onClick={() => dialog.current?.showModal()}>
+        <button
+          className="small"
+          onClick={() => addBarsDialog.current?.showModal()}
+        >
           <FaPlus />
         </button>
       </div>
@@ -172,6 +241,20 @@ export function ConcreteRoute() {
         <button className="save" onClick={save}>
           Save
         </button>
+      </div>
+      <div className="danger-zone">
+        <h5>Danger Zone</h5>
+        <div className="button-list">
+          <button className="delete" onClick={deleteRoute}>
+            Delete
+          </button>
+          <button
+            className="rename"
+            onClick={() => renameDialog.current?.showModal()}
+          >
+            Rename
+          </button>
+        </div>
       </div>
     </section>
   );
