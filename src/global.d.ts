@@ -1,4 +1,4 @@
-type Maybe<T> = T | undefined | null;
+type Maybe<T> = T | undefined;
 
 type PrefKeys = "firstName" | "lastName" | "phone" | "smoker" | "joined";
 
