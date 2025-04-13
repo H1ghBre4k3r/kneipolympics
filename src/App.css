@@ -11,4 +11,7 @@
 
 @import "./components/userList.css" layer(organism);
 
-@import "./components/rulesPage.css" layer(organism)
+@import "./components/rulesPage.css" layer(organism);
+
+@import "./routes/concreteRoute.css" layer(page);
+

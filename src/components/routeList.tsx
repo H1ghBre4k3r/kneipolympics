@@ -1,13 +1,18 @@
-import { useEffect, useState } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 import { useDatabase } from "../hooks/useDatabase";
 import { FaCaretDown, FaCaretRight } from "react-icons/fa";
+import { Link } from "react-router";
+import { IoClose } from "react-icons/io5";
 
 type ConcreteRoute = Omit<Route, "bars"> & {
   bars: Bar[];
 };
 
 export function RouteList() {
-  const { getAll } = useDatabase();
+  const { getAll, create } = useDatabase();
+
+  const dialog = useRef<HTMLDialogElement>(null);
+  const [route, setRoute] = useState("");
 
   const [routes, setRoutes] = useState<ConcreteRoute[]>([]);
 
@@ -21,11 +26,49 @@ export function RouteList() {
       .catch(console.error);
   }, [getAll]);
 
+  function onSubmit(e: FormEvent) {
+    e.preventDefault();
+    create("routes", {
+      name: route,
+      bars: [],
+    })
+      .then(() => {
+        location.reload();
+      })
+      .catch(console.error);
+  }
+
   return (
     <section id="routes">
+      <dialog ref={dialog}>
+        <form onSubmit={onSubmit}>
+          <div className="header">
+            <h3>New Route</h3>
+            <button
+              className="large borderless"
+              type="button"
+              onClick={() => {
+                dialog.current?.close();
+                setRoute("");
+              }}
+            >
+              <IoClose />
+            </button>
+          </div>
+          <input
+            type="text"
+            name="route"
+            value={route}
+            onChange={(e) => setRoute(e.target.value)}
+          />
+          <button disabled={route.trim().length === 0}>Add</button>
+        </form>
+      </dialog>
       <div className="header">
         <h4>Routes</h4>
-        <button className="small">New Route</button>
+        <button className="small" onClick={() => dialog.current?.showModal()}>
+          New Route
+        </button>
       </div>
       <ul>
         {routes.map((route) => {
@@ -43,6 +86,7 @@ export function RouteList() {
                     </span>
                     {name}
                   </span>
+                  <Link to={$id}>Edit</Link>
                 </summary>
                 <ul>
                   {bars.map(({ name }, i) => {

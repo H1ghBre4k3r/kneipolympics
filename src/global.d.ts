@@ -19,3 +19,7 @@ type Route = {
   name: string;
   bars: string[] | Bar[];
 };
+
+type ConcreteRoute = Omit<Route, "bars"> & {
+  bars: Bar[];
+};
