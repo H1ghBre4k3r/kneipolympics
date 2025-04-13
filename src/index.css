@@ -128,8 +128,10 @@
     flex: 1;
   }
 
-  summary::-webkit-details-marker {
-    display: none;
+  summary {
+    > h4 {
+      display: inline-block;
+    }
   }
 
   #root {

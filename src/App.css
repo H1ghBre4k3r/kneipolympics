@@ -10,3 +10,5 @@
 @import "./components/addBar.css" layer(organism);
 
 @import "./components/userList.css" layer(organism);
+
+@import "./components/rulesPage.css" layer(organism)

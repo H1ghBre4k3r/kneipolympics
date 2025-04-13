@@ -1,3 +1,7 @@
+import { InfoPageDe } from "../components/infoPage.de";
+import { InfoPageEn } from "../components/infoPage.en";
+import { RulesPageDe } from "../components/rulesPage.de";
+import { RulesPageEn } from "../components/rulesPage.en";
 import { useLabels } from "../hooks/useLabels";
 import { usePreferences } from "../hooks/usePreferences";
 
@@ -16,6 +20,10 @@ export function InfoRoute() {
     setPref("joined", "false").then(() => location.reload());
   }
 
+  const InfoPage = l("langId") == "en" ? InfoPageEn : InfoPageDe;
+
+  const RulesPage = l("langId") == "en" ? RulesPageEn : RulesPageDe;
+  
   return (
     <section>
       <h3>{l("infoAndRegistration")}</h3>
@@ -37,16 +45,20 @@ export function InfoRoute() {
         <b>{l("note")}:</b> {l("finalRegistration")}
       </p>
       <section id="tldr">
-        <h4>TL;DR:</h4>
-        <div>
-          <b>{l("when")}:</b> 26. April
-        </div>
-        <div>
-          <b>{l("where")}:</b> Kiel, REWE Parkplatz (Gutenbergstraße 77)
-        </div>
-        <div>
-          <b>{l("what")}:</b> Kneipolympics
-        </div>
+        <details>
+          <summary>
+            <h4>{l("generalInfo")}</h4>
+          </summary>
+          <InfoPage />
+        </details>
+      </section>
+      <section>
+        <details>
+          <summary>
+            <h4>{l("rules")}</h4>
+          </summary>
+          <RulesPage />
+        </details>
       </section>
     </section>
   );

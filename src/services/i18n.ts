@@ -2,6 +2,7 @@ import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 
 export type Labels =
+  | "langId"
   | "register"
   | "alreadyGotAccount"
   | "login"
@@ -38,7 +39,9 @@ export type Labels =
   | "name"
   | "address"
   | "task"
-  | "needsPicture";
+  | "needsPicture"
+  | "rules"
+  | "generalInfo";
 
 type Resources = {
   [key: string]: {
@@ -51,6 +54,7 @@ type Resources = {
 const resources: Resources = {
   en: {
     translation: {
+      langId: "en",
       register: "Register",
       alreadyGotAccount: "Already Got An Account?",
       login: "Login",
@@ -94,10 +98,13 @@ const resources: Resources = {
       address: "Address",
       task: "Task",
       needsPicture: "Needs Picture?",
+      rules: "Rules",
+      generalInfo: "General Info",
     },
   },
   de: {
     translation: {
+      langId: "de",
       register: "Registrieren",
       alreadyGotAccount: "Du hast schon einen Account?",
       login: "Anmelden",
@@ -142,6 +149,8 @@ const resources: Resources = {
       address: "Adresse",
       task: "Aufgabe",
       needsPicture: "Benötigt Bild?",
+      rules: "Regeln",
+      generalInfo: "Allgemeine Informationen",
     },
   },
 } as const;
