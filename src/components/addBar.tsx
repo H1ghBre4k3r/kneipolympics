@@ -23,6 +23,7 @@ export function AddBarDialog({ open, submit, close }: AddBarDialogProps) {
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
   const [task, setTask] = useState("");
+  const [needsSubmission, setNeedsSubmission] = useState(true);
   const [needsPicture, setNeedsPicture] = useState(false);
 
   function reset() {
@@ -44,6 +45,7 @@ export function AddBarDialog({ open, submit, close }: AddBarDialogProps) {
       name,
       address,
       task,
+      needs_submission: needsSubmission,
       needs_picture: needsPicture,
     });
     close?.();
@@ -91,12 +93,29 @@ export function AddBarDialog({ open, submit, close }: AddBarDialogProps) {
           />
         </label>
         <label>
+          {l("needsSubmission")}
+          <input
+            type="checkbox"
+            name="needsSubmission"
+            checked={needsSubmission}
+            onClick={() =>
+              setNeedsSubmission((wasNeeded) => {
+                if (wasNeeded) {
+                  setNeedsPicture(false);
+                }
+                return !wasNeeded;
+              })
+            }
+          />
+        </label>
+        <label>
           {l("needsPicture")}
           <input
             type="checkbox"
             name="needsPicture"
-            checked={needsPicture}
-            onClick={() => setNeedsPicture((mode) => !mode)}
+            checked={needsSubmission && needsPicture}
+            onClick={() => setNeedsPicture((mode) => needsSubmission && !mode)}
+            disabled={!needsSubmission}
           />
         </label>
         <button>Submit</button>

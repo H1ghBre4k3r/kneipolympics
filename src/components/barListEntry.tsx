@@ -14,6 +14,7 @@ export function BarListEntry({ bar }: BarCardProps) {
   const [name, setName] = useState(bar.name);
   const [address, setAddress] = useState(bar.address);
   const [task, setTask] = useState(bar.task);
+  const [needs_submission, setNeedsSubmission] = useState(bar.needs_submission);
   const [needs_picture, setNeedsPicture] = useState(bar.needs_picture);
 
   const [editMode, setEditMode] = useState(false);
@@ -25,6 +26,7 @@ export function BarListEntry({ bar }: BarCardProps) {
       address,
       task,
       needs_picture,
+      needs_submission,
     })
       .then(() => console.log("updated"))
       .catch(console.error);
@@ -70,11 +72,27 @@ export function BarListEntry({ bar }: BarCardProps) {
         <LabelElement value={task} onChange={setTask} readonly={!editMode} />
       </div>
       <div>
+        <b>Needs Submission: </b>
+        <input
+          type="checkbox"
+          checked={needs_submission}
+          disabled={!editMode}
+          onClick={() =>
+            setNeedsSubmission((wasNeeded) => {
+              if (wasNeeded) {
+                setNeedsPicture(false);
+              }
+              return !wasNeeded;
+            })
+          }
+        />
+      </div>
+      <div>
         <b>Needs Picture: </b>
         <input
           type="checkbox"
           checked={needs_picture}
-          disabled={!editMode}
+          disabled={!editMode || !needs_submission}
           onClick={() => setNeedsPicture((s) => !s)}
         />
       </div>
