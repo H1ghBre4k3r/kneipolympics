@@ -1,6 +1,12 @@
 type Maybe<T> = T | undefined;
 
-type PrefKeys = "firstName" | "lastName" | "phone" | "smoker" | "joined";
+type PrefKeys =
+  | "firstName"
+  | "lastName"
+  | "phone"
+  | "smoker"
+  | "joined"
+  | "route";
 
 type Prefs = {
   [key in PrefKeys]: string;

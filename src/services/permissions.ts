@@ -1,5 +1,6 @@
 const Permissions = {
   getUsers: ["admin"],
+  getContestants: ["admin"],
 } as const;
 
 export function can<T extends keyof typeof Permissions>(

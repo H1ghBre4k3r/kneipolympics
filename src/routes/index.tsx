@@ -14,6 +14,7 @@ import { UserList } from "../components/userList";
 import { BarList } from "../components/barList";
 import { RouteList } from "../components/routeList";
 import { ConcreteRoute } from "./concreteRoute";
+import { ContestantList } from "../components/contestantList";
 
 export function Router() {
   const { loggedIn } = useAuth();
@@ -34,6 +35,7 @@ export function Router() {
               <Route path="bars" element={<BarList />} />
               <Route path="routes" element={<RouteList />} />
               <Route path="routes/:route" element={<ConcreteRoute />} />
+              <Route path="contestants" element={<ContestantList />} />
             </Route>
           )}
         </>
