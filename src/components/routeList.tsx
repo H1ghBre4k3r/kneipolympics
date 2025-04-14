@@ -3,13 +3,16 @@ import { useDatabase } from "../hooks/useDatabase";
 import { FaCaretDown, FaCaretRight } from "react-icons/fa";
 import { Link } from "react-router";
 import { IoClose } from "react-icons/io5";
+import { useFunctions } from "../hooks/useFunctions";
 
 type ConcreteRoute = Omit<Route, "bars"> & {
   bars: Bar[];
 };
 
 export function RouteList() {
-  const { getAll, create } = useDatabase();
+  const { getAll } = useDatabase();
+
+  const { createRoute } = useFunctions();
 
   const dialog = useRef<HTMLDialogElement>(null);
   const [route, setRoute] = useState("");
@@ -28,10 +31,7 @@ export function RouteList() {
 
   function onSubmit(e: FormEvent) {
     e.preventDefault();
-    create("routes", {
-      name: route,
-      bars: [],
-    })
+    createRoute(route)
       .then(() => {
         location.reload();
       })
