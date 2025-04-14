@@ -24,7 +24,7 @@ export function ContestantList() {
     <section id="contestants">
       <ul>
         {contestants.map((c) => {
-          const { firstName, lastName } = c.prefs;
+          const { firstName, lastName, route } = c.prefs;
           return (
             <li key={c.$id}>
               {firstName} {lastName}
@@ -33,10 +33,14 @@ export function ContestantList() {
                   Team:
                   <select onChange={(e) => onChange(c.$id, e.target.value)}>
                     <option value={"---"}>---</option>
-                    {routes.map((route) => {
+                    {routes.map((r) => {
                       return (
-                        <option key={route.$id} value={route.$id}>
-                          {route.name}
+                        <option
+                          key={r.$id}
+                          value={r.$id}
+                          selected={r.$id === route}
+                        >
+                          {r.name}
                         </option>
                       );
                     })}
