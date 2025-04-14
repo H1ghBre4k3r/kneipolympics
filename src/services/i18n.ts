@@ -39,6 +39,7 @@ export type Labels =
   | "name"
   | "address"
   | "task"
+  | "needsSubmission"
   | "needsPicture"
   | "rules"
   | "generalInfo";
@@ -97,6 +98,7 @@ const resources: Resources = {
       name: "Name",
       address: "Address",
       task: "Task",
+      needsSubmission: "Needs Submission?",
       needsPicture: "Needs Picture?",
       rules: "Rules",
       generalInfo: "General Info",
@@ -148,6 +150,7 @@ const resources: Resources = {
       name: "Name",
       address: "Adresse",
       task: "Aufgabe",
+      needsSubmission: "Abgabe notwendig?",
       needsPicture: "Benötigt Bild?",
       rules: "Regeln",
       generalInfo: "Allgemeine Informationen",

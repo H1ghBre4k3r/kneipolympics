@@ -17,6 +17,7 @@ type Bar = {
   address: string;
   name: string;
   task: string;
+  needs_submission: boolean;
   needs_picture: boolean;
 };
 
