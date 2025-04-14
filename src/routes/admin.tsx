@@ -21,6 +21,11 @@ export function AdminRoute() {
             <h4>Routes</h4>
           </Link>
         </li>
+        <li>
+          <Link to="contestants">
+            <h4>Contestants</h4>
+          </Link>
+        </li>
       </ul>
       <Outlet />
     </section>

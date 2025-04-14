@@ -8,6 +8,7 @@ export type User = Models.User<Models.Preferences & Prefs>;
 
 export type AdminContextType = {
   users: User[];
+  contestants: User[];
   isAdmin: boolean;
 };
 
@@ -20,6 +21,7 @@ export function AdminContextProvider({ children }: PropsWithChildren) {
   const { user } = useAuth();
 
   const [users, setUsers] = useState<User[]>([]);
+  const [contestants, setContestants] = useState<User[]>([]);
 
   useEffect(() => {
     if (can("getUsers", user?.labels)) {
@@ -30,8 +32,18 @@ export function AdminContextProvider({ children }: PropsWithChildren) {
     }
   }, [functions, user]);
 
+  useEffect(() => {
+    if (can("getContestants", user?.labels)) {
+      functions
+        .getContestants()
+        .then((response) => setContestants(response as User[]))
+        .catch(console.error);
+    }
+  }, [functions, user]);
+
   const value: AdminContextType = {
     users,
+    contestants,
     isAdmin: user?.labels.includes("admin") ?? false,
   };
   return (
