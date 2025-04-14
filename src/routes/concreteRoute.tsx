@@ -25,9 +25,25 @@ export function ConcreteRoute() {
       return;
     }
     get<"routes", ConcreteRoute>("routes", routeId)
-      .then((route) => setRoute(route))
+      .then((route) => {
+        // check if we have a bar in our order array which does not exist anymore
+        if (
+          route.order.some((id) => !route.bars.find((bar) => bar.$id === id))
+        ) {
+          // if yes, remove it and update the bar in the backend
+          route.order = route.order.filter((id) =>
+            route.bars.find((bar) => bar.$id === id),
+          );
+          update("routes", routeId, route).catch(console.error);
+        }
+
+        route.bars.sort(
+          (a, b) => route.order.indexOf(a.$id) - route.order.indexOf(b.$id),
+        );
+        setRoute(route);
+      })
       .catch(console.error);
-  }, [get, routeId]);
+  }, [get, update, routeId]);
 
   const [allBars, setAllBars] = useState<Bar[]>([]);
 
@@ -84,9 +100,11 @@ export function ConcreteRoute() {
   }
 
   function save() {
+    const order = bars.map((bar) => bar.$id);
     update("routes", routeId ?? "", {
       name,
       bars,
+      order,
     })
       .then(() => {
         if (!route) {
@@ -95,6 +113,7 @@ export function ConcreteRoute() {
         setRoute({
           ...route,
           bars,
+          order,
         });
       })
       .catch(console.error);
