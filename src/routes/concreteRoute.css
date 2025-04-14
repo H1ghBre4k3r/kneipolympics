@@ -12,6 +12,11 @@
     > div:has(button) {
       display: flex;
       gap: 8px;
+
+      button {
+        width: 24px;
+        height: 24px;
+      }
     }
   }
 }

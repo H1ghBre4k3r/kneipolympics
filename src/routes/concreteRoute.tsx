@@ -3,6 +3,7 @@ import { useDatabase } from "../hooks/useDatabase";
 import { FormEvent, useEffect, useRef, useState } from "react";
 import { FaCaretDown, FaCaretUp, FaPlus } from "react-icons/fa6";
 import { IoClose } from "react-icons/io5";
+import { RiDeleteBin2Line } from "react-icons/ri";
 
 export function ConcreteRoute() {
   const { get, getAll, update, deleteEntry } = useDatabase();
@@ -226,8 +227,8 @@ export function ConcreteRoute() {
                 <button className="small" onClick={() => up(i)}>
                   <FaCaretUp />
                 </button>
-                <button className="delete" onClick={() => remove(i)}>
-                  X
+                <button className="small delete" onClick={() => remove(i)}>
+                  <RiDeleteBin2Line />
                 </button>
               </div>
             </li>
