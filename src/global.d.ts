@@ -18,6 +18,7 @@ type Route = {
   $id: string;
   name: string;
   bars: string[] | Bar[];
+  order: string[];
 };
 
 type ConcreteRoute = Omit<Route, "bars"> & {
