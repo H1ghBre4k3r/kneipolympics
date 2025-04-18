@@ -18,7 +18,7 @@ export function InfoPageEn() {
       Participation at the <i>Kneipolympics</i> is free. Although we would be happy about donations either via cash on site or via <a href="https://www.paypal.com/pool/9dV4TLtnQY?sr=wccr">Paypal</a>.
     </p>
     <p>
-      Anyone who wishes to participate non-competively or just tag along can of course do so. Just don't press the final registration button.
+      Anyone who wishes to participate non-competively or just tag along can of course do so. There is no further registration necessary.
     </p>
   </>
 }
