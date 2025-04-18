@@ -5,7 +5,12 @@ import { RulesPageEn } from "../components/rulesPage.en";
 import { useLabels } from "../hooks/useLabels";
 import { usePreferences } from "../hooks/usePreferences";
 
+const DEADLINE = new Date(2025, 3, 20, 23, 59).getTime();
+
 export function InfoRoute() {
+  const now = Date.now();
+  const deadlineDue = now > DEADLINE;
+
   const l = useLabels();
 
   const [getPref, setPref] = usePreferences();
@@ -23,22 +28,29 @@ export function InfoRoute() {
   const InfoPage = l("langId") == "en" ? InfoPageEn : InfoPageDe;
 
   const RulesPage = l("langId") == "en" ? RulesPageEn : RulesPageDe;
-  
+
   return (
     <section>
       <h3>{l("infoAndRegistration")}</h3>
       <form>
         {joined ? (
           <>
-            <button className="large" type="button" onClick={leave}>
-              {l("wantToLeave")}
-            </button>
+            {!deadlineDue && (
+              <button className="large" type="button" onClick={leave}>
+                {l("wantToLeave")}
+              </button>
+            )}
             <p>{l("participating")}</p>
           </>
         ) : (
-          <button className="large" type="button" onClick={join}>
-            {l("wantToJoin")}
-          </button>
+          <>
+            {!deadlineDue && (
+              <button className="large" type="button" onClick={join}>
+                {l("wantToJoin")}
+              </button>
+            )}
+            <p>{l("notParticipating")}</p>
+          </>
         )}
       </form>
       <p>

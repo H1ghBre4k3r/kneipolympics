@@ -36,6 +36,7 @@ export type Labels =
   | "wantToJoin"
   | "wantToLeave"
   | "participating"
+  | "notParticipating"
   | "name"
   | "address"
   | "task"
@@ -95,6 +96,8 @@ const resources: Resources = {
       wantToJoin: "I Want To Join!",
       wantToLeave: "I Want To Leave!",
       participating: "You are paricipating in the 2025 Kneipolympics.",
+      notParticipating:
+        "You are not paricipating competitively in the 2025 Kneipolympics.",
       name: "Name",
       address: "Address",
       task: "Task",
@@ -147,6 +150,8 @@ const resources: Resources = {
       wantToJoin: "Ich will teilnehmen!",
       wantToLeave: "Ich will nicht teilnehmen!",
       participating: "Du nimmst an den Kneipolympics 2025 teil.",
+      notParticipating:
+        "Du nimmst nicht kompetetiv an den Kneipolympics 2025 teil.",
       name: "Name",
       address: "Adresse",
       task: "Aufgabe",
