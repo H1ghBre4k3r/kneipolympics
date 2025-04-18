@@ -1,0 +1,31 @@
+#current-route {
+  h3 {
+    border-bottom: 1px solid var(--color-primary);
+  }
+
+  .next-bar {
+    article {
+      &:not(:last-child) {
+        margin-bottom: 8px;
+      }
+
+      h4 {
+        margin-block: 0;
+      }
+
+      div {
+        font-weight: bold;
+      }
+
+      &.is-closed {
+        border-top: 1px solid var(--color-primary);
+        margin-top: 16px;
+        padding-top: 16px;
+
+        h4 {
+          margin-block: 8px;
+        }
+      }
+    }
+  }
+}
