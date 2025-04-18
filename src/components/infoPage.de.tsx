@@ -17,5 +17,8 @@ export function InfoPageDe() {
     <p>
       Teilnahme an den <i>Kneipolympics</i> ist kostenfrei. Wir freuen uns allerdings über Spenden entweder vor Ort oder per <a href="https://www.paypal.com/pool/9dV4TLtnQY?sr=wccr">Paypal</a>.
     </p>
+    <p>
+      Wer nicht-kompetitiv teilnehmen oder einfach nur dabei sein möchte, kann das selbstverständlich tun. Dafür ist keine weitere Anmeldung zur Veranstaltung notwendig.
+    </p>
   </>
 }
