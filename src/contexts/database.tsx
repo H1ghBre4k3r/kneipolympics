@@ -73,10 +73,11 @@ export function DatabaseContextProvider({ children }: PropsWithChildren) {
   async function getAll<
     Document extends DocumentName,
     Value = Documents[Document],
-  >(document: Document): Promise<Value[]> {
+  >(document: Document, queries: string[] = []): Promise<Value[]> {
     const result = await databases.listDocuments(
       KNEIPOLMYPICS_DB,
       convertDocument(document),
+      queries,
     );
 
     return result.documents as unknown as Value[];
