@@ -5,7 +5,7 @@ import { RulesPageEn } from "../components/rulesPage.en";
 import { useLabels } from "../hooks/useLabels";
 import { usePreferences } from "../hooks/usePreferences";
 
-const DEADLINE = new Date(2025, 3, 20, 23, 59).getTime();
+const DEADLINE = new Date(2025, 3, 20, 23, 59, 59, 999).getTime();
 
 export function InfoRoute() {
   const now = Date.now();
