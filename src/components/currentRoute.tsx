@@ -1,9 +1,14 @@
-import { useEffect, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { usePreferences } from "../hooks/usePreferences";
 import { useDatabase } from "../hooks/useDatabase";
+import { useStorage } from "../hooks/useStorage";
+import { useFunctions } from "../hooks/useFunctions";
 
 export function CurrentRoute() {
+  console.log("render");
   const { get } = useDatabase();
+  const { createSubmission } = useFunctions();
+  const { create } = useStorage();
   const [pref, _] = usePreferences();
   const routeId = pref("route");
 
@@ -28,6 +33,42 @@ export function CurrentRoute() {
     setNextBar(route.bars.find((bar) => bar.$id === first)!);
   }, [route]);
 
+  const [submission, setSubmission] = useState<Maybe<File | string>>();
+  const [entranceSign, setEntranceSign] = useState<Maybe<File>>();
+  const [beerPic, setBeerPic] = useState<Maybe<File>>();
+
+  // TODO: prevent double submit
+  function onSubmit(e: FormEvent) {
+    e.preventDefault();
+    if (!nextBar || !routeId || !submission || !entranceSign || !beerPic) {
+      return;
+    }
+
+    if (nextBar.needs_picture) {
+      // TODO: delete pictures of submission fails (for some reason)
+      Promise.all([
+        create("pictures", submission as File),
+        create("pictures", entranceSign),
+        create("pictures", beerPic),
+      ]).then(async ([submission, entranceSign, beerPic]) => {
+        const sub: Submission = {
+          routeId,
+          barId: nextBar.$id,
+          imageSubmission: submission.$id,
+          entranceSign: entranceSign.$id,
+          beers: beerPic.$id,
+        };
+
+        await createSubmission(sub)
+          .then(console.log)
+          .catch((e) => {
+            // TODO
+            console.error(e);
+          });
+      });
+    }
+  }
+
   return (
     <section id="current-route">
       <h3 className="team-name">{route?.name}</h3>
@@ -42,7 +83,7 @@ export function CurrentRoute() {
         {nextBar?.needs_submission ? (
           <>
             <article className="submission">
-              <form>
+              <form onSubmit={onSubmit}>
                 <label>
                   <h4>Task</h4>
                   {nextBar.task}
@@ -51,13 +92,16 @@ export function CurrentRoute() {
                       type="file"
                       name="submission"
                       accept="image/png, image/jpeg"
+                      onChange={(e) => setSubmission(e.target.files![0])}
                       required
                     />
                   ) : (
                     <input
                       type="text"
-                      placeholder="Submission"
+                      placeholder="Answer"
                       name="submission"
+                      onChange={(e) => setSubmission(e.target.value)}
+                      required
                     />
                   )}
                 </label>
@@ -67,6 +111,7 @@ export function CurrentRoute() {
                     type="file"
                     name="entry"
                     accept="image/png, image/jpeg"
+                    onChange={(e) => setEntranceSign(e.target.files![0])}
                     required
                   />
                 </label>
@@ -76,6 +121,7 @@ export function CurrentRoute() {
                     type="file"
                     name="beers"
                     accept="image/png, image/jpeg"
+                    onChange={(e) => setBeerPic(e.target.files![0])}
                     required
                   />
                 </label>
