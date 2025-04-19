@@ -17,6 +17,10 @@ export type StorageContextType = {
     bucket: BUCKET,
     file: File,
   ): Promise<Models.File>;
+  getView<BUCKET extends BUCKET_NAME>(
+    bucket: BUCKET,
+    id: string,
+  ): Promise<string>;
 };
 
 export const StorageContext = createContext<StorageContextType>(
@@ -34,8 +38,16 @@ export function StorageContextProvider({ children }: PropsWithChildren) {
     return storage.createFile(convert(bucket), ID.unique(), file);
   }
 
+  async function getView<Bucket extends BUCKET_NAME>(
+    bucket: Bucket,
+    fileId: string,
+  ): Promise<string> {
+    return storage.getFileView(convert(bucket), fileId);
+  }
+
   const value = {
     create,
+    getView,
   };
 
   return (

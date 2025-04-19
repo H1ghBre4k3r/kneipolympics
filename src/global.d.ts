@@ -35,11 +35,11 @@ type ConcreteRoute = Omit<Route, "bars"> & {
 type Submission = {
   routeId: string;
   barId: string;
-  beers: Maybe<string>;
-  entranceSign: Maybe<string>;
-  answer: Maybe<string>;
-  imageSubmission: Maybe<string>;
-  skipped: boolean;
-  accepted: boolean;
-  points: Maybe<number>;
+  beers?: string;
+  entranceSign?: string;
+  answer?: string;
+  imageSubmission?: string;
+  skipped?: boolean;
+  accepted?: boolean;
+  points?: number;
 };
