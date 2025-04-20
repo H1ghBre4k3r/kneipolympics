@@ -5,10 +5,9 @@ import { useStorage } from "../hooks/useStorage";
 import { useFunctions } from "../hooks/useFunctions";
 
 export function CurrentRoute() {
-  console.log("render");
   const { get } = useDatabase();
-  const { createSubmission } = useFunctions();
-  const { create } = useStorage();
+  const { getNextBar, createSubmission } = useFunctions();
+  const { create, deleteFile } = useStorage();
   const [pref, _] = usePreferences();
   const routeId = pref("route");
 
@@ -19,19 +18,14 @@ export function CurrentRoute() {
     if (!routeId) {
       return;
     }
+    getNextBar()
+      .then((bar) => setNextBar(bar))
+      .catch(console.error);
 
     get<"routes", ConcreteRoute>("routes", routeId)
       .then((route) => setRoute(route))
       .catch(console.error);
-  }, [routeId, get]);
-
-  useEffect(() => {
-    if (!route) {
-      return;
-    }
-    const first = route.order[0];
-    setNextBar(route.bars.find((bar) => bar.$id === first)!);
-  }, [route]);
+  }, [routeId, get, getNextBar]);
 
   const [submission, setSubmission] = useState<Maybe<File | string>>();
   const [entranceSign, setEntranceSign] = useState<Maybe<File>>();
@@ -45,7 +39,6 @@ export function CurrentRoute() {
     }
 
     if (nextBar.needs_picture) {
-      // TODO: delete pictures of submission fails (for some reason)
       Promise.all([
         create("pictures", submission as File),
         create("pictures", entranceSign),
@@ -59,11 +52,38 @@ export function CurrentRoute() {
           beers: beerPic.$id,
         };
 
-        await createSubmission(sub)
-          .then(console.log)
+        createSubmission(sub)
+          .then(() => location.reload())
           .catch((e) => {
-            // TODO
             console.error(e);
+            Promise.all([
+              deleteFile("pictures", submission.$id),
+              deleteFile("pictures", entranceSign.$id),
+              deleteFile("pictures", beerPic.$id),
+            ]).catch(console.error);
+          });
+      });
+    } else {
+      Promise.all([
+        create("pictures", entranceSign),
+        create("pictures", beerPic),
+      ]).then(async ([entranceSign, beerPic]) => {
+        const sub: Submission = {
+          routeId,
+          barId: nextBar.$id,
+          answer: submission as string,
+          entranceSign: entranceSign.$id,
+          beers: beerPic.$id,
+        };
+
+        createSubmission(sub)
+          .then(() => location.reload())
+          .catch((e) => {
+            console.error(e);
+            Promise.all([
+              deleteFile("pictures", entranceSign.$id),
+              deleteFile("pictures", beerPic.$id),
+            ]).catch(console.error);
           });
       });
     }

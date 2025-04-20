@@ -24,6 +24,7 @@ export type FunctionsContextValue = {
   createRoute(name: string): Promise<Models.Execution>;
   getContestants(): Promise<Models.User<Models.Preferences>[]>;
   assignToTeam(userId: string, routeId: string): Promise<Models.Execution>;
+  getNextBar(): Promise<Maybe<Bar>>;
   /**
    * This will create a submission for the next bar on this route.
    * If you mess up, you will submit for the wrong bar.
@@ -39,6 +40,7 @@ const GET_USERS = "67dec57b0010a501bc9e";
 const CREATE_ROUTE = "67fd591d00258a3d28f7";
 const GET_CONTESTANTS = "67fd63670031c2276f9f";
 const ASSIGN_TO_TEAM = "67fd685f0030b3383ee3";
+const GET_NEXT_BAR = "6804cab00036dcc43720";
 const ADD_SUBMISSION = "6803fe84000ec14e0aca";
 
 export function FunctionsContextProvider({ children }: PropsWithChildren) {
@@ -159,12 +161,38 @@ export function FunctionsContextProvider({ children }: PropsWithChildren) {
     }
   }
 
+  async function getNextBar(): Promise<Maybe<Bar>> {
+    const result = await functions.createExecution(
+      GET_NEXT_BAR,
+      undefined,
+      false,
+      undefined,
+      ExecutionMethod.GET,
+      {},
+    );
+
+    if (result.status !== "completed") {
+      throw new AppwriteException("Internal Server Error");
+    }
+
+    if (result.responseStatusCode === 404) {
+      return undefined;
+    }
+
+    if (result.responseStatusCode !== 200) {
+      throw new AppwriteException("Bad Request");
+    }
+
+    return JSON.parse(result.responseBody);
+  }
+
   const value: FunctionsContextValue = {
     register,
     getUsers,
     createRoute,
     getContestants,
     assignToTeam,
+    getNextBar,
     createSubmission,
   };
 

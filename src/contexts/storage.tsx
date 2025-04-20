@@ -17,6 +17,10 @@ export type StorageContextType = {
     bucket: BUCKET,
     file: File,
   ): Promise<Models.File>;
+  deleteFile<BUCKET extends BUCKET_NAME>(
+    bucket: BUCKET,
+    id: string,
+  ): Promise<void>;
   getView<BUCKET extends BUCKET_NAME>(
     bucket: BUCKET,
     id: string,
@@ -38,6 +42,13 @@ export function StorageContextProvider({ children }: PropsWithChildren) {
     return storage.createFile(convert(bucket), ID.unique(), file);
   }
 
+  async function deleteFile<Bucket extends BUCKET_NAME>(
+    bucket: Bucket,
+    id: string,
+  ): Promise<void> {
+    await storage.deleteFile(bucket, id);
+  }
+
   async function getView<Bucket extends BUCKET_NAME>(
     bucket: Bucket,
     fileId: string,
@@ -47,6 +58,7 @@ export function StorageContextProvider({ children }: PropsWithChildren) {
 
   const value = {
     create,
+    deleteFile,
     getView,
   };
 
