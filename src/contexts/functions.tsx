@@ -31,6 +31,7 @@ export type FunctionsContextValue = {
    * Therefore, `barId` and `routeId` will be purposely ignored
    */
   createSubmission(submission: Partial<Submission>): Promise<void>;
+  skipBar(barId: string): Promise<void>;
 };
 
 export const FunctionsContext = createContext({} as FunctionsContextValue);
@@ -42,6 +43,7 @@ const GET_CONTESTANTS = "67fd63670031c2276f9f";
 const ASSIGN_TO_TEAM = "67fd685f0030b3383ee3";
 const GET_NEXT_BAR = "6804cab00036dcc43720";
 const ADD_SUBMISSION = "6803fe84000ec14e0aca";
+const SKIP_BAR = "6804d14d0036f97ddbc1";
 
 export function FunctionsContextProvider({ children }: PropsWithChildren) {
   const { client } = useAppwrite();
@@ -161,6 +163,25 @@ export function FunctionsContextProvider({ children }: PropsWithChildren) {
     }
   }
 
+  async function skipBar(barId: string): Promise<void> {
+    const result = await functions.createExecution(
+      SKIP_BAR,
+      JSON.stringify({ barId }),
+      false,
+      undefined,
+      ExecutionMethod.POST,
+      {},
+    );
+
+    if (result.status !== "completed") {
+      throw new AppwriteException("Internal Server Error");
+    }
+
+    if (result.responseStatusCode !== 200) {
+      throw new AppwriteException("Bad Request");
+    }
+  }
+
   async function getNextBar(): Promise<Maybe<Bar>> {
     const result = await functions.createExecution(
       GET_NEXT_BAR,
@@ -194,6 +215,7 @@ export function FunctionsContextProvider({ children }: PropsWithChildren) {
     assignToTeam,
     getNextBar,
     createSubmission,
+    skipBar,
   };
 
   return (

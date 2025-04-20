@@ -6,7 +6,7 @@ import { useFunctions } from "../hooks/useFunctions";
 
 export function CurrentRoute() {
   const { get } = useDatabase();
-  const { getNextBar, createSubmission } = useFunctions();
+  const { getNextBar, createSubmission, skipBar } = useFunctions();
   const { create, deleteFile } = useStorage();
   const [pref, _] = usePreferences();
   const routeId = pref("route");
@@ -88,6 +88,16 @@ export function CurrentRoute() {
       });
     }
   }
+  function skip(e: FormEvent) {
+    e.preventDefault();
+    if (!nextBar) {
+      return;
+    }
+
+    skipBar(nextBar.$id)
+      .then(() => location.reload())
+      .catch(console.error);
+  }
 
   return (
     <section id="current-route">
@@ -154,7 +164,7 @@ export function CurrentRoute() {
                 Is your current bar closed? In this case you can skip it but you
                 have to drink two beers in the next bar!
               </span>
-              <form>
+              <form onSubmit={skip}>
                 <button>Skip</button>
               </form>
             </article>
