@@ -15,3 +15,6 @@
 
 @import "./routes/concreteRoute.css" layer(page);
 @import "./components/currentRoute.css" layer(page);
+
+@import "./routes/submissionList.css" layer(page);
+@import "./routes/concreteSubmissions.css" layer(page);
