@@ -14,4 +14,4 @@
 @import "./components/rulesPage.css" layer(organism);
 
 @import "./routes/concreteRoute.css" layer(page);
-
+@import "./components/currentRoute.css" layer(page);

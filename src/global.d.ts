@@ -31,3 +31,15 @@ type Route = {
 type ConcreteRoute = Omit<Route, "bars"> & {
   bars: Bar[];
 };
+
+type Submission = {
+  routeId: string;
+  barId: string;
+  beers?: string;
+  entranceSign?: string;
+  answer?: string;
+  imageSubmission?: string;
+  skipped?: boolean;
+  accepted?: boolean;
+  points?: number;
+};

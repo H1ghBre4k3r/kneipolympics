@@ -10,10 +10,11 @@ import { useAppwrite } from "../hooks/useAppwrite";
 import { Account, AppwriteException, Models } from "appwrite";
 import { useFunctions } from "../hooks/useFunctions";
 import { RegisterPayload } from "./functions";
+import { User } from "./admin";
 
 export type AuthContextValue = {
   session?: Models.Session;
-  user?: Models.User<Models.Preferences>;
+  user?: User;
   account: Account;
   loggedIn: boolean;
   login(email: string, password: string): Promise<void>;
@@ -39,7 +40,7 @@ export function AuthContextProvider({ children }: PropsWithChildren) {
   const account = useMemo(() => new Account(client), [client]);
 
   const [session, setSession] = useState<Maybe<Models.Session>>();
-  const [user, setUser] = useState<Maybe<Models.User<Models.Preferences>>>();
+  const [user, setUser] = useState<Maybe<User>>();
 
   const verifyUser = useCallback(async () => {
     const params = new URLSearchParams(window.location.search);
@@ -69,7 +70,7 @@ export function AuthContextProvider({ children }: PropsWithChildren) {
           .get()
           .then((user) => {
             setSession(session);
-            setUser(user);
+            setUser(user as User);
           })
           .catch(() => account.deleteSession("current"));
       })
@@ -87,7 +88,7 @@ export function AuthContextProvider({ children }: PropsWithChildren) {
         );
       }
       setSession(session);
-      setUser(user);
+      setUser(user as User);
     } catch (e) {
       account.deleteSession("current");
       throw e;

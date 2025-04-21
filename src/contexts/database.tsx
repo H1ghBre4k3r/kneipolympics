@@ -7,6 +7,7 @@ const KNEIPOLMYPICS_DB = "67e4985c00379c9bb294";
 type Documents = {
   bars: Bar;
   routes: Route;
+  submissions: Submission;
 };
 
 type DocumentName = keyof Documents;
@@ -18,6 +19,7 @@ type DocumentConversionMap = {
 const documentConverstionMap: DocumentConversionMap = {
   bars: "67e498630028469bd350",
   routes: "67e9c183002422411dbd",
+  submissions: "6802ba47001978993014",
 };
 
 export type DatabaseContextType = {
@@ -73,10 +75,11 @@ export function DatabaseContextProvider({ children }: PropsWithChildren) {
   async function getAll<
     Document extends DocumentName,
     Value = Documents[Document],
-  >(document: Document): Promise<Value[]> {
+  >(document: Document, queries: string[] = []): Promise<Value[]> {
     const result = await databases.listDocuments(
       KNEIPOLMYPICS_DB,
       convertDocument(document),
+      queries,
     );
 
     return result.documents as unknown as Value[];
