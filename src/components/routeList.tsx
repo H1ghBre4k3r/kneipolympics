@@ -39,7 +39,7 @@ export function RouteList() {
   }
 
   return (
-    <section id="routes">
+    <section id="routes" className="content">
       <dialog ref={dialog}>
         <form onSubmit={onSubmit}>
           <div className="header">

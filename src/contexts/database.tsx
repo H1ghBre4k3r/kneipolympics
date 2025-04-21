@@ -30,6 +30,7 @@ export type DatabaseContextType = {
   ): Promise<void>;
   getAll: <Name extends DocumentName, Value = Documents[Name]>(
     document: Name,
+    queries?: string[],
   ) => Promise<Value[]>;
   get: <Name extends DocumentName, Value = Documents[Name]>(
     document: Name,

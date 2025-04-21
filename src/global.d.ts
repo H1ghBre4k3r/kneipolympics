@@ -33,6 +33,7 @@ type ConcreteRoute = Omit<Route, "bars"> & {
 };
 
 type Submission = {
+  $id: string;
   routeId: string;
   barId: string;
   beers?: string;

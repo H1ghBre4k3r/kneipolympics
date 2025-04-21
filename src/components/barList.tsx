@@ -23,7 +23,7 @@ export function BarList() {
       .catch(console.error);
   }
   return (
-    <section id="bars">
+    <section id="bars" className="content">
       <AddBarDialog
         open={showAddBardDialog}
         submit={addNewBar}

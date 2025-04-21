@@ -37,18 +37,28 @@ export function Nav() {
             <h3>Home</h3>
           </Link>
         </li>
-        {isAdmin && (
-          <li>
-            <Link
-              to="/admin"
-              aria-current={p === "/admin" ? "page" : "false"}
-              onClick={close}
-            >
-              <h3>Admin</h3>
-            </Link>
-          </li>
-        )}
-        {loggedIn ? (
+        {isAdmin ? (
+          <>
+            <li>
+              <Link
+                to="/submissions"
+                aria-current={p === "/submissions" ? "page" : "false"}
+                onClick={close}
+              >
+                <h3>Submissions</h3>
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/admin"
+                aria-current={p === "/admin" ? "page" : "false"}
+                onClick={close}
+              >
+                <h3>Admin</h3>
+              </Link>
+            </li>
+          </>
+        ) : loggedIn ? (
           <>
             <li>
               <Link

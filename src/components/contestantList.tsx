@@ -22,13 +22,18 @@ export function ContestantList() {
   }
 
   return (
-    <section id="contestants">
+    <section id="contestants" className="content">
       <details open>
         <summary>Competitive</summary>
         <ul>
           {contestants.map((c) => {
             return (
-              <ContestantCard user={c} routes={routes} onChange={onChange} />
+              <ContestantCard
+                key={c.$id}
+                user={c}
+                routes={routes}
+                onChange={onChange}
+              />
             );
           })}
         </ul>
@@ -38,7 +43,12 @@ export function ContestantList() {
         <ul>
           {nonContestants.map((c) => {
             return (
-              <ContestantCard user={c} routes={routes} onChange={onChange} />
+              <ContestantCard
+                key={c.$id}
+                user={c}
+                routes={routes}
+                onChange={onChange}
+              />
             );
           })}
         </ul>

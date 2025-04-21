@@ -5,7 +5,7 @@ export function UserList() {
   const { users } = useAdmin();
 
   return (
-    <section id="user-list">
+    <section id="user-list" className="content">
       <div className="header">
         <h4>Users</h4>
       </div>
