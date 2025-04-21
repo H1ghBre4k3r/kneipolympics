@@ -117,7 +117,6 @@ export function CurrentRoute() {
       .catch(console.error);
   }
 
-  // TODO: display something if there is no next bar (or something like this)
   return loading ? (
     <section id="current-route">
       <h3>Loading...</h3>
