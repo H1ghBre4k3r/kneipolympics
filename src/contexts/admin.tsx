@@ -8,7 +8,9 @@ export type User = Models.User<Models.Preferences & Prefs>;
 
 export type AdminContextType = {
   users: User[];
+  // TODO: this should probably be done in the component
   contestants: User[];
+  nonContestants: User[];
   isAdmin: boolean;
 };
 
@@ -22,6 +24,7 @@ export function AdminContextProvider({ children }: PropsWithChildren) {
 
   const [users, setUsers] = useState<User[]>([]);
   const [contestants, setContestants] = useState<User[]>([]);
+  const [nonContestants, setNonContestants] = useState<User[]>([]);
 
   useEffect(() => {
     if (can("getUsers", user?.labels)) {
@@ -33,17 +36,19 @@ export function AdminContextProvider({ children }: PropsWithChildren) {
   }, [functions, user]);
 
   useEffect(() => {
-    if (can("getContestants", user?.labels)) {
-      functions
-        .getContestants()
-        .then((response) => setContestants(response as User[]))
-        .catch(console.error);
-    }
-  }, [functions, user]);
+    const contestants = users.filter((user) => user.prefs["joined"] == "true");
+    const nonContestants = users.filter(
+      (user) => user.prefs["joined"] != "true",
+    );
+
+    setContestants(contestants);
+    setNonContestants(nonContestants);
+  }, [users]);
 
   const value: AdminContextType = {
     users,
     contestants,
+    nonContestants,
     isAdmin: user?.labels.includes("admin") ?? false,
   };
   return (
