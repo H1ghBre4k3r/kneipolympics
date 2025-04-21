@@ -23,7 +23,7 @@ export function ContestantList() {
 
   return (
     <section id="contestants">
-      <details>
+      <details open>
         <summary>Competitive</summary>
         <ul>
           {contestants.map((c) => {
