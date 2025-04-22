@@ -107,9 +107,11 @@ export function SubmissionCard({ submission, bar }: SubmissionCardProps) {
         <button className="success" type="button" onClick={accept}>
           Accept
         </button>
-        <button className="error" type="button" onClick={decline}>
-          Decline
-        </button>
+        {!skipped && (
+          <button className="error" type="button" onClick={decline}>
+            Decline
+          </button>
+        )}
       </form>
     </article>
   );
