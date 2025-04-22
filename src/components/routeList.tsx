@@ -65,7 +65,7 @@ export function RouteList() {
         </form>
       </dialog>
       <div className="header">
-        <h4>Routes</h4>
+        <h4 className="slim">Routes</h4>
         <button className="small" onClick={() => dialog.current?.showModal()}>
           New Route
         </button>

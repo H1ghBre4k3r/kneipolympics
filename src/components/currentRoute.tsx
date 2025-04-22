@@ -124,7 +124,7 @@ export function CurrentRoute() {
 
       {nextBar ? (
         <article className="next-bar">
-          <h4>{nextBar?.name}</h4>
+          <h4 className="slim">{nextBar?.name}</h4>
           <article>
             <div>Address: </div>
             {nextBar?.address}
@@ -149,7 +149,7 @@ export function CurrentRoute() {
                   }}
                 >
                   <label>
-                    <h4>Task</h4>
+                    <h4 className="slim">Task</h4>
                     {nextBar.task}
                     {nextBar.needs_picture ? (
                       <input

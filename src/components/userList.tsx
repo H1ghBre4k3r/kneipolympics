@@ -7,7 +7,7 @@ export function UserList() {
   return (
     <section id="user-list" className="content">
       <div className="header">
-        <h4>Users</h4>
+        <h4 className="slim">Users</h4>
       </div>
       <ul>
         {users.map((user) => {
