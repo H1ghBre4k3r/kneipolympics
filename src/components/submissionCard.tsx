@@ -99,13 +99,11 @@ export function SubmissionCard({ submission, bar }: SubmissionCardProps) {
 
       <form onSubmit={(e) => e.preventDefault()}>
         <h5>Rating</h5>
-        {!skipped && (
-          <input
-            type="number"
-            value={points}
-            onChange={(e) => setPoints(parseInt(e.target.value))}
-          />
-        )}
+        <input
+          type="number"
+          value={points}
+          onChange={(e) => setPoints(parseInt(e.target.value))}
+        />
         <button className="success" type="button" onClick={accept}>
           Accept
         </button>
