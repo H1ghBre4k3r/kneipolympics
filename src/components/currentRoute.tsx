@@ -4,7 +4,6 @@ import { useDatabase } from "../hooks/useDatabase";
 import { useStorage } from "../hooks/useStorage";
 import { useFunctions } from "../hooks/useFunctions";
 import { Dialog } from "./dialog";
-import { Models } from "appwrite";
 
 export function CurrentRoute() {
   const { get } = useDatabase();
@@ -52,20 +51,16 @@ export function CurrentRoute() {
     if (nextBar.needs_picture) {
       Promise.all([
         // TODO: This is a very bad hack...
-        (submission
+        submission
           ? create("pictures", submission as File)
-          : new Promise((resolve) =>
-              resolve({
-                $id: undefined as unknown as string,
-              } as unknown as Models.File),
-            )) as Promise<Models.File>,
+          : new Promise<undefined>((resolve) => resolve(undefined)),
         create("pictures", entranceSign),
         create("pictures", beerPic),
       ]).then(async ([submission, entranceSign, beerPic]) => {
         const sub: Submission = {
           routeId,
           barId: nextBar.$id,
-          imageSubmission: submission.$id,
+          imageSubmission: submission?.$id,
           entranceSign: entranceSign.$id,
           beers: beerPic.$id,
         };
@@ -75,7 +70,9 @@ export function CurrentRoute() {
           .catch((e) => {
             console.error(e);
             Promise.all([
-              deleteFile("pictures", submission.$id),
+              submission
+                ? deleteFile("pictures", submission.$id)
+                : new Promise<void>((res) => res()),
               deleteFile("pictures", entranceSign.$id),
               deleteFile("pictures", beerPic.$id),
             ]).catch(console.error);
