@@ -24,7 +24,7 @@ export function UserListEntry({ user }: Props) {
           {firstName} {lastName}
         </span>
         <span>
-          <span className={`smoker ${joined ?? "true"}`}>
+          <span className={`smoker ${joined ?? "false"}`}>
             {smokerPref ? <FaSmoking /> : <FaSmokingBan />}
           </span>
           <span className={`joined ${joined ?? "false"}`}>
