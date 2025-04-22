@@ -18,3 +18,5 @@
 
 @import "./routes/submissionList.css" layer(page);
 @import "./routes/concreteSubmissions.css" layer(page);
+
+@import "./components/submissionCard.css" layer(organism);

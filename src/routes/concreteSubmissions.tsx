@@ -2,9 +2,9 @@ import { useParams } from "react-router";
 import { useDatabase } from "../hooks/useDatabase";
 import { useEffect, useState } from "react";
 import { Query } from "appwrite";
-import { TbCodeAsterisk } from "react-icons/tb";
-import { CgCheck } from "react-icons/cg";
+import { TbCodeAsterisk, TbCodeMinus, TbCodePlus } from "react-icons/tb";
 import { FaCaretDown, FaCaretRight } from "react-icons/fa";
+import { SubmissionCard } from "../components/submissionCard";
 
 export function ConcreteSubmissionsRoute() {
   const params = useParams();
@@ -28,8 +28,6 @@ export function ConcreteSubmissionsRoute() {
           getAll("submissions", [Query.equal("routeId", [routeId])]),
         ]);
 
-        console.log(submissions);
-
         setRoute(route);
         setSubmissions(submissions);
       } catch (e) {
@@ -44,7 +42,11 @@ export function ConcreteSubmissionsRoute() {
       <h4>{route?.name}</h4>
       <ul className="listing">
         {submissions.map((sub) => {
-          const name = route?.bars.find((bar) => bar.$id === sub.barId)?.name;
+          const bar = route?.bars.find((bar) => bar.$id === sub.barId);
+          if (!bar) {
+            return <></>;
+          }
+          const name = bar.name;
           return (
             <li key={sub.$id}>
               <details>
@@ -58,9 +60,21 @@ export function ConcreteSubmissionsRoute() {
                     </span>
                     {name}
                   </span>
-                  <span>{sub.accepted ? <CgCheck /> : <TbCodeAsterisk />}</span>
+                  <span>
+                    {!sub.accepted && !sub.declined && <TbCodeAsterisk />}
+                    {sub.accepted && (
+                      <span className="accepted">
+                        <TbCodePlus />
+                      </span>
+                    )}
+                    {sub.declined && (
+                      <span className="declined">
+                        <TbCodeMinus />
+                      </span>
+                    )}
+                  </span>
                 </summary>
-                <div>HEHEHEH</div>
+                <SubmissionCard submission={sub} bar={bar} />
               </details>
             </li>
           );

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDatabase } from "../hooks/useDatabase";
 import { Link } from "react-router";
+import { TbCodeAsterisk } from "react-icons/tb";
 
 export function SubmissionsListRoute() {
   const { getAll } = useDatabase();
@@ -44,7 +45,7 @@ export function SubmissionsListRoute() {
           const { $id, name } = route;
           const subs = submissions?.get($id) ?? [];
           const hasUnaccepted = subs.find(
-            (sub) => !sub.accepted || sub.points === 0,
+            (sub) => !sub.accepted && !sub.declined,
           );
 
           return (
@@ -53,7 +54,8 @@ export function SubmissionsListRoute() {
                 <Link to={$id}>{name}</Link>
               </span>
               <span className="points">
-                ({subs.length} / {route.bars.length}) {hasUnaccepted && "*"}
+                ({subs.length} / {route.bars.length})
+                {hasUnaccepted && <TbCodeAsterisk />}
               </span>
             </li>
           );

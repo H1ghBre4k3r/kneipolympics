@@ -57,7 +57,7 @@ export function CurrentRoute() {
         create("pictures", entranceSign),
         create("pictures", beerPic),
       ]).then(async ([submission, entranceSign, beerPic]) => {
-        const sub: Submission = {
+        const sub: Partial<Submission> = {
           routeId,
           barId: nextBar.$id,
           imageSubmission: submission?.$id,
@@ -83,7 +83,7 @@ export function CurrentRoute() {
         create("pictures", entranceSign),
         create("pictures", beerPic),
       ]).then(async ([entranceSign, beerPic]) => {
-        const sub: Submission = {
+        const sub: Partial<Submission> = {
           routeId,
           barId: nextBar.$id,
           answer: submission as string,

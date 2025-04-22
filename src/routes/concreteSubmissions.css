@@ -7,4 +7,12 @@
       }
     }
   }
+
+  .accepted {
+    color: var(--success);
+  }
+
+  .declined {
+    color: var(--error);
+  }
 }
