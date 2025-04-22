@@ -10,7 +10,7 @@ export function SubmissionCard({ submission, bar }: SubmissionCardProps) {
   const { getView } = useStorage();
   const { update } = useDatabase();
 
-  const { needs_picture } = bar;
+  const { needs_picture, individual_points } = bar;
   const { skipped, entranceSign, beers, imageSubmission, answer } = submission;
 
   const [entranceSignPic, setEntranceSignPic] = useState<string>();
@@ -45,11 +45,11 @@ export function SubmissionCard({ submission, bar }: SubmissionCardProps) {
       .catch(console.error);
   }, [getView, imageSubmission, needs_picture]);
 
-  const [points, setPoints] = useState(0);
+  const [points, setPoints] = useState(submission.points ?? 0);
 
   function accept() {
     update("submissions", submission.$id, {
-      points,
+      points: individual_points ? points : 1,
       accepted: true,
       declined: false,
     })
@@ -59,7 +59,7 @@ export function SubmissionCard({ submission, bar }: SubmissionCardProps) {
 
   function decline() {
     update("submissions", submission.$id, {
-      points,
+      points: individual_points ? points : 0,
       accepted: false,
       declined: true,
     })
@@ -99,11 +99,16 @@ export function SubmissionCard({ submission, bar }: SubmissionCardProps) {
 
       <form onSubmit={(e) => e.preventDefault()}>
         <h5>Rating</h5>
-        <input
-          type="number"
-          value={points}
-          onChange={(e) => setPoints(parseInt(e.target.value))}
-        />
+        {individual_points && (
+          <label>
+            Points (only relevant if accepted)
+            <input
+              type="number"
+              value={points}
+              onChange={(e) => setPoints(parseInt(e.target.value))}
+            />
+          </label>
+        )}
         <button className="success" type="button" onClick={accept}>
           Accept
         </button>

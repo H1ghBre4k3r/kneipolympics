@@ -8,22 +8,22 @@ export function AdminRoute() {
       <ul className="tab-bar">
         <li>
           <Link to="users">
-            <h4>Users</h4>
+            <h4 className="slim">Users</h4>
           </Link>
         </li>
         <li>
           <Link to="bars">
-            <h4>Bars</h4>
+            <h4 className="slim">Bars</h4>
           </Link>
         </li>
         <li>
           <Link to="routes">
-            <h4>Routes</h4>
+            <h4 className="slim">Routes</h4>
           </Link>
         </li>
         <li>
           <Link to="contestants">
-            <h4>Contestants</h4>
+            <h4 className="slim">Contestants</h4>
           </Link>
         </li>
       </ul>

@@ -3,6 +3,7 @@ import { LabelElement } from "./labelElement";
 import { useDatabase } from "../hooks/useDatabase";
 import { FaCaretRight } from "react-icons/fa";
 import { FaCaretDown } from "react-icons/fa6";
+import { useLabels } from "../hooks/useLabels";
 
 type BarCardProps = {
   bar: Bar;
@@ -11,11 +12,16 @@ type BarCardProps = {
 export function BarListEntry({ bar }: BarCardProps) {
   const { update, deleteEntry } = useDatabase();
 
+  const l = useLabels();
+
   const [name, setName] = useState(bar.name);
   const [address, setAddress] = useState(bar.address);
   const [task, setTask] = useState(bar.task);
   const [needs_submission, setNeedsSubmission] = useState(bar.needs_submission);
   const [needs_picture, setNeedsPicture] = useState(bar.needs_picture);
+  const [individual_points, setIndividualPoints] = useState(
+    !!bar.individual_points,
+  );
 
   const [editMode, setEditMode] = useState(false);
 
@@ -27,6 +33,7 @@ export function BarListEntry({ bar }: BarCardProps) {
       task,
       needs_picture,
       needs_submission,
+      individual_points,
     })
       .then(() => console.log("updated"))
       .catch(console.error);
@@ -44,6 +51,7 @@ export function BarListEntry({ bar }: BarCardProps) {
     setAddress(bar.address);
     setTask(bar.task);
     setNeedsPicture(bar.needs_picture);
+    setIndividualPoints(bar.individual_points);
   }
 
   return (
@@ -60,7 +68,7 @@ export function BarListEntry({ bar }: BarCardProps) {
         </span>
       </summary>
       <div>
-        <b>Addresse: </b>{" "}
+        <b>{l("address")}: </b>
         <LabelElement
           value={address}
           onChange={setAddress}
@@ -68,11 +76,11 @@ export function BarListEntry({ bar }: BarCardProps) {
         />
       </div>
       <div>
-        <b>Task: </b>
+        <b>{l("task")}: </b>
         <LabelElement value={task} onChange={setTask} readonly={!editMode} />
       </div>
       <div>
-        <b>Needs Submission: </b>
+        <b>{l("needsSubmission")}: </b>
         <input
           type="checkbox"
           checked={needs_submission}
@@ -88,12 +96,21 @@ export function BarListEntry({ bar }: BarCardProps) {
         />
       </div>
       <div>
-        <b>Needs Picture: </b>
+        <b>{l("needsPicture")}: </b>
         <input
           type="checkbox"
           checked={needs_picture}
           disabled={!editMode || !needs_submission}
           onClick={() => setNeedsPicture((s) => !s)}
+        />
+      </div>
+      <div>
+        <b>{l("individialPoints")}: </b>
+        <input
+          type="checkbox"
+          checked={individual_points}
+          disabled={!editMode}
+          onClick={() => setIndividualPoints((s) => !s)}
         />
       </div>
       <div className="button-row">

@@ -226,7 +226,7 @@ export function ConcreteRoute() {
       </dialog>
 
       <div className="header">
-        <h3>{name}</h3>
+        <h3 className="slim">{name}</h3>
         <button
           className="small"
           onClick={() => addBarsDialog.current?.showModal()}

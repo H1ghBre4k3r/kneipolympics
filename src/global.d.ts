@@ -19,6 +19,7 @@ type Bar = {
   task: string;
   needs_submission: boolean;
   needs_picture: boolean;
+  individual_points: boolean;
 };
 
 type Route = {

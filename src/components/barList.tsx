@@ -30,7 +30,7 @@ export function BarList() {
         close={() => setShowAddBarDialog(false)}
       />
       <div className="header">
-        <h4>Bars</h4>
+        <h4 className="slim">Bars</h4>
         <button className="small" onClick={() => setShowAddBarDialog(true)}>
           New Bar
         </button>

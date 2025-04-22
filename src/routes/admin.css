@@ -1,9 +1,4 @@
 #admin {
-  h3,
-  h4 {
-    margin-block: 0;
-  }
-
   ul.tab-bar {
     list-style: none;
     display: flex;
