@@ -3,6 +3,7 @@ import { LabelElement } from "./labelElement";
 import { useDatabase } from "../hooks/useDatabase";
 import { FaCaretRight } from "react-icons/fa";
 import { FaCaretDown } from "react-icons/fa6";
+import { useLabels } from "../hooks/useLabels";
 
 type BarCardProps = {
   bar: Bar;
@@ -10,6 +11,8 @@ type BarCardProps = {
 
 export function BarListEntry({ bar }: BarCardProps) {
   const { update, deleteEntry } = useDatabase();
+
+  const l = useLabels();
 
   const [name, setName] = useState(bar.name);
   const [address, setAddress] = useState(bar.address);
@@ -65,7 +68,7 @@ export function BarListEntry({ bar }: BarCardProps) {
         </span>
       </summary>
       <div>
-        <b>Addresse: </b>{" "}
+        <b>{l("address")}: </b>
         <LabelElement
           value={address}
           onChange={setAddress}
@@ -73,11 +76,11 @@ export function BarListEntry({ bar }: BarCardProps) {
         />
       </div>
       <div>
-        <b>Task: </b>
+        <b>{l("task")}: </b>
         <LabelElement value={task} onChange={setTask} readonly={!editMode} />
       </div>
       <div>
-        <b>Needs Submission: </b>
+        <b>{l("needsSubmission")}: </b>
         <input
           type="checkbox"
           checked={needs_submission}
@@ -93,7 +96,7 @@ export function BarListEntry({ bar }: BarCardProps) {
         />
       </div>
       <div>
-        <b>Needs Picture: </b>
+        <b>{l("needsPicture")}: </b>
         <input
           type="checkbox"
           checked={needs_picture}
@@ -102,7 +105,7 @@ export function BarListEntry({ bar }: BarCardProps) {
         />
       </div>
       <div>
-        <b>Individual Points: </b>
+        <b>{l("individialPoints")}: </b>
         <input
           type="checkbox"
           checked={individual_points}
