@@ -15,6 +15,8 @@ import { BarList } from "../components/barList";
 import { RouteList } from "../components/routeList";
 import { ConcreteRoute } from "./concreteRoute";
 import { ContestantList } from "../components/contestantList";
+import { SubmissionsListRoute } from "./submissionList";
+import { ConcreteSubmissionsRoute } from "./concreteSubmissions";
 
 export function Router() {
   const { loggedIn } = useAuth();
@@ -29,14 +31,21 @@ export function Router() {
           <Route path="/info" element={<InfoRoute />}></Route>
           <Route path="/current" element={<CurrentGameRoute />}></Route>
           {isAdmin && (
-            <Route path="/admin" element={<AdminRoute />}>
-              <Route index element={<UserList />} />
-              <Route path="users" element={<UserList />} />
-              <Route path="bars" element={<BarList />} />
-              <Route path="routes" element={<RouteList />} />
-              <Route path="routes/:route" element={<ConcreteRoute />} />
-              <Route path="contestants" element={<ContestantList />} />
-            </Route>
+            <>
+              <Route path="/admin" element={<AdminRoute />}>
+                <Route index element={<UserList />} />
+                <Route path="users" element={<UserList />} />
+                <Route path="bars" element={<BarList />} />
+                <Route path="routes" element={<RouteList />} />
+                <Route path="routes/:route" element={<ConcreteRoute />} />
+                <Route path="contestants" element={<ContestantList />} />
+              </Route>
+              <Route path="/submissions" element={<SubmissionsListRoute />} />
+              <Route
+                path="/submissions/:route"
+                element={<ConcreteSubmissionsRoute />}
+              />
+            </>
           )}
         </>
       ) : (

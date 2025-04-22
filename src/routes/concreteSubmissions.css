@@ -1,0 +1,18 @@
+#concrete-submission {
+  ul {
+    li {
+      .header {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+  }
+
+  .accepted {
+    color: var(--success);
+  }
+
+  .declined {
+    color: var(--error);
+  }
+}

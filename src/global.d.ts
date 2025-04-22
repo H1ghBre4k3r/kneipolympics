@@ -33,6 +33,7 @@ type ConcreteRoute = Omit<Route, "bars"> & {
 };
 
 type Submission = {
+  $id: string;
   routeId: string;
   barId: string;
   beers?: string;
@@ -41,5 +42,6 @@ type Submission = {
   imageSubmission?: string;
   skipped?: boolean;
   accepted?: boolean;
+  declined?: boolean;
   points?: number;
 };

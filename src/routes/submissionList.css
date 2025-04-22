@@ -1,0 +1,13 @@
+#submission-list {
+  ul {
+    li {
+      display: flex;
+      justify-content: space-between;
+
+      > span.points {
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+}

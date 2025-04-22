@@ -169,7 +169,7 @@ export function ConcreteRoute() {
   }
 
   return (
-    <section id="concrete-route">
+    <section id="concrete-route" className="content">
       <dialog id="add-bars-dialog" ref={addBarsDialog}>
         <form onSubmit={addBarsToRoute}>
           <div className="header">

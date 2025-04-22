@@ -1,0 +1,13 @@
+.submission-card {
+  display: flex;
+  flex-direction: column;
+
+  > article {
+    display: flex;
+    flex-direction: column;
+  }
+
+  form > h5 {
+    margin-block: 0;
+  }
+}

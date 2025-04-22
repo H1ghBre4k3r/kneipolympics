@@ -30,6 +30,7 @@ export type DatabaseContextType = {
   ): Promise<void>;
   getAll: <Name extends DocumentName, Value = Documents[Name]>(
     document: Name,
+    queries?: string[],
   ) => Promise<Value[]>;
   get: <Name extends DocumentName, Value = Documents[Name]>(
     document: Name,
@@ -43,7 +44,7 @@ export type DatabaseContextType = {
     document: Name,
     id: string,
     payload: Partial<Documents[Name]>,
-  ) => Promise<void>;
+  ) => Promise<Documents[Name]>;
 };
 
 export const DatabaseContext = createContext<DatabaseContextType>(
@@ -113,14 +114,15 @@ export function DatabaseContextProvider({ children }: PropsWithChildren) {
     document: Document,
     id: string,
     payload: Partial<Documents[Document]>,
-  ): Promise<void> {
-    await databases.updateDocument(
+  ): Promise<Documents[Document]> {
+    const result = await databases.updateDocument(
       KNEIPOLMYPICS_DB,
       convertDocument(document),
       id,
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       payload as any,
     );
+    return result as unknown as Documents[Document];
   }
 
   const value: DatabaseContextType = {
