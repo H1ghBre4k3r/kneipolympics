@@ -10,7 +10,7 @@ export function UserListEntry({ user }: Props) {
 
   const { prefs, name, email } = user;
   const { firstName, lastName, joined, phone, smoker } = prefs;
-  const smokerPref: boolean = smoker === true || smoker === "true";
+  const smokerPref: boolean = typeof smoker === "string" ? smoker === "true" : smoker;
   return (
     <details className="user-list-entry">
       <summary>
