@@ -13,4 +13,13 @@ section#user-list {
       background-color: var(--error);
     }
   }
+
+  .smoker {
+    padding-inline: 4px;
+    border-radius: 4px;
+
+    &.false {
+      opacity: 0.5;
+    }
+  }
 }
