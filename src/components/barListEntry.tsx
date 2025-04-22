@@ -16,6 +16,9 @@ export function BarListEntry({ bar }: BarCardProps) {
   const [task, setTask] = useState(bar.task);
   const [needs_submission, setNeedsSubmission] = useState(bar.needs_submission);
   const [needs_picture, setNeedsPicture] = useState(bar.needs_picture);
+  const [individual_points, setIndividualPoints] = useState(
+    !!bar.individual_points,
+  );
 
   const [editMode, setEditMode] = useState(false);
 
@@ -27,6 +30,7 @@ export function BarListEntry({ bar }: BarCardProps) {
       task,
       needs_picture,
       needs_submission,
+      individual_points,
     })
       .then(() => console.log("updated"))
       .catch(console.error);
@@ -44,6 +48,7 @@ export function BarListEntry({ bar }: BarCardProps) {
     setAddress(bar.address);
     setTask(bar.task);
     setNeedsPicture(bar.needs_picture);
+    setIndividualPoints(bar.individual_points);
   }
 
   return (
@@ -94,6 +99,15 @@ export function BarListEntry({ bar }: BarCardProps) {
           checked={needs_picture}
           disabled={!editMode || !needs_submission}
           onClick={() => setNeedsPicture((s) => !s)}
+        />
+      </div>
+      <div>
+        <b>Individual Points: </b>
+        <input
+          type="checkbox"
+          checked={individual_points}
+          disabled={!editMode}
+          onClick={() => setIndividualPoints((s) => !s)}
         />
       </div>
       <div className="button-row">
