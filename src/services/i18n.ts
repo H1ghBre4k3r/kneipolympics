@@ -42,6 +42,7 @@ export type Labels =
   | "task"
   | "needsSubmission"
   | "needsPicture"
+  | "individialPoints"
   | "rules"
   | "generalInfo";
 
@@ -103,6 +104,7 @@ const resources: Resources = {
       task: "Task",
       needsSubmission: "Needs Submission?",
       needsPicture: "Needs Picture?",
+      individialPoints: "Individual Points?",
       rules: "Rules",
       generalInfo: "General Info",
     },
@@ -157,6 +159,7 @@ const resources: Resources = {
       task: "Aufgabe",
       needsSubmission: "Abgabe notwendig?",
       needsPicture: "Benötigt Bild?",
+      individialPoints: "Individuelle Punkte?",
       rules: "Regeln",
       generalInfo: "Allgemeine Informationen",
     },

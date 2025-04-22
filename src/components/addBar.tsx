@@ -25,6 +25,7 @@ export function AddBarDialog({ open, submit, close }: AddBarDialogProps) {
   const [task, setTask] = useState("");
   const [needsSubmission, setNeedsSubmission] = useState(true);
   const [needsPicture, setNeedsPicture] = useState(false);
+  const [individialPoints, setIndividualPoints] = useState(false);
 
   function reset() {
     setName("");
@@ -47,6 +48,7 @@ export function AddBarDialog({ open, submit, close }: AddBarDialogProps) {
       task,
       needs_submission: needsSubmission,
       needs_picture: needsPicture,
+      individual_points: individialPoints,
     });
     close?.();
 
@@ -116,6 +118,15 @@ export function AddBarDialog({ open, submit, close }: AddBarDialogProps) {
             checked={needsSubmission && needsPicture}
             onClick={() => setNeedsPicture((mode) => needsSubmission && !mode)}
             disabled={!needsSubmission}
+          />
+        </label>
+        <label>
+          {l("individialPoints")}
+          <input
+            type="checkbox"
+            name="individialPoints"
+            checked={individialPoints}
+            onClick={() => setIndividualPoints((mode) => !mode)}
           />
         </label>
         <button>Submit</button>
