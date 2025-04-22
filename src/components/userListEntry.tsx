@@ -43,7 +43,7 @@ export function UserListEntry({ user }: Props) {
           <b>{l("email")}</b> <a href={`mailto:${email}`}>{email}</a>
         </div>
         <div>
-          <b>Smoker Bars</b> {smoker}
+          <b>Smoker Bars</b> {smokerPref ? "true" : "false"}
         </div>
       </div>
     </details>
