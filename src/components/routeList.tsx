@@ -89,13 +89,18 @@ export function RouteList() {
                   <Link to={$id}>Edit</Link>
                 </summary>
                 <ul>
-                  {bars.map(({ name }, i) => {
-                    return (
-                      <li>
-                        {i + 1}. {name}
-                      </li>
-                    );
-                  })}
+                  {bars
+                    .sort(
+                      (a, b) =>
+                        route.order.indexOf(a.$id) - route.order.indexOf(b.$id),
+                    )
+                    .map(({ name }, i) => {
+                      return (
+                        <li>
+                          {i + 1}. {name}
+                        </li>
+                      );
+                    })}
                 </ul>
               </details>
             </li>
