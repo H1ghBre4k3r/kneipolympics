@@ -15,7 +15,7 @@ export function ContestantList() {
     getAll<"routes", ConcreteRoute>("routes")
       .then((routes) => setRoutes(routes))
       .catch(console.error);
-  });
+  }, [getAll]);
 
   function onChange(user: string, team: string) {
     assignToTeam(user, team).catch(console.error);
