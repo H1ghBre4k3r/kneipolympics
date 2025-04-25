@@ -4,9 +4,10 @@ import { useDatabase } from "../hooks/useDatabase";
 import { useStorage } from "../hooks/useStorage";
 import { useFunctions } from "../hooks/useFunctions";
 import { Dialog } from "./dialog";
+import { FaInfo } from "react-icons/fa";
 
 export function CurrentRoute() {
-  const { get } = useDatabase();
+  const { get, getAll } = useDatabase();
   const { getNextBar, createSubmission, skipBar } = useFunctions();
   const { create, deleteFile } = useStorage();
   const [pref, _] = usePreferences();
@@ -14,25 +15,28 @@ export function CurrentRoute() {
 
   const [loading, setLoading] = useState(true);
 
+  const [inFlight, setInFlight] = useState(false);
+
   const [route, setRoute] = useState<Maybe<ConcreteRoute>>();
   const [nextBar, setNextBar] = useState<Maybe<Bar>>();
+  const [submissions, setSubmissions] = useState<Submission[]>([]);
 
   useEffect(() => {
     if (!routeId) {
       return;
     }
     Promise.all([
-      getNextBar()
-        .then((bar) => setNextBar(bar))
-        .catch(console.error),
+      getNextBar().then(setNextBar).catch(console.error),
 
       get<"routes", ConcreteRoute>("routes", routeId)
-        .then((route) => setRoute(route))
+        .then(setRoute)
         .catch(console.error),
+
+      getAll("submissions").then(setSubmissions).catch(console.error),
     ])
       .then(() => setLoading(false))
       .catch(console.error);
-  }, [routeId, get, getNextBar]);
+  }, [routeId, get, getAll, getNextBar]);
 
   const submitDialog = useRef<HTMLDialogElement>(null);
   const skipDialog = useRef<HTMLDialogElement>(null);
@@ -44,9 +48,11 @@ export function CurrentRoute() {
   // TODO: prevent double submit
   function onSubmit(e: FormEvent) {
     e.preventDefault();
-    if (!nextBar || !routeId || !entranceSign || !beerPic) {
+    if (!nextBar || !routeId || !entranceSign || !beerPic || inFlight) {
       return;
     }
+
+    setInFlight(true);
 
     if (nextBar.needs_picture) {
       Promise.all([
@@ -76,7 +82,8 @@ export function CurrentRoute() {
               deleteFile("pictures", entranceSign.$id),
               deleteFile("pictures", beerPic.$id),
             ]).catch(console.error);
-          });
+          })
+          .finally(() => setInFlight(false));
       });
     } else {
       Promise.all([
@@ -99,7 +106,8 @@ export function CurrentRoute() {
               deleteFile("pictures", entranceSign.$id),
               deleteFile("pictures", beerPic.$id),
             ]).catch(console.error);
-          });
+          })
+          .finally(() => setInFlight(false));
       });
     }
   }
@@ -140,7 +148,17 @@ export function CurrentRoute() {
                   onClose={() => submitDialog.current?.close()}
                 >
                   Are you sure you want to submit this bar?
-                  <button>Submit</button>
+                  <button disabled={inFlight}>
+                    {inFlight ? "Submitting..." : "Submit"}
+                  </button>
+                  <p>
+                    <b>
+                      <FaInfo />
+                      Note:
+                    </b>
+                    Submission can take a while depending on the image size.
+                    Please do not close this site or dialog!
+                  </p>
                 </Dialog>
                 <form
                   onSubmit={(e) => {
@@ -220,7 +238,14 @@ export function CurrentRoute() {
           )}
         </article>
       ) : (
-        <p>No next bar found!</p>
+        <p>
+          No next bar found! You currently have{" "}
+          {submissions.reduce(
+            (memo, current) => memo + (current.points ?? 0),
+            0,
+          )}{" "}
+          points!
+        </p>
       )}
     </section>
   );

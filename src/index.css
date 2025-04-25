@@ -256,6 +256,8 @@
     border: none;
     border-radius: 4px;
     box-shadow: var(--color-primary) 0px 0px 5px 0px;
+    width: var(--content-width);
+    max-width: var(--content-max-width);
 
     .header {
       display: flex;
