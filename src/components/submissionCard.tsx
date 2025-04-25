@@ -11,7 +11,8 @@ export function SubmissionCard({ submission, bar }: SubmissionCardProps) {
   const { update } = useDatabase();
 
   const { needs_picture, individual_points } = bar;
-  const { skipped, entranceSign, beers, imageSubmission, answer } = submission;
+  const { skipped, entranceSign, beers, imageSubmission, answer, timestamp } =
+    submission;
 
   const [entranceSignPic, setEntranceSignPic] = useState<string>();
   const [beerPic, setBeerPic] = useState<string>();
@@ -73,6 +74,7 @@ export function SubmissionCard({ submission, bar }: SubmissionCardProps) {
         <h4>Skipped</h4>
       ) : (
         <>
+          <h5>{new Date(timestamp).toLocaleString()}</h5>
           <article>
             <h5>Entrance</h5>
             {entranceSignPic ? <img src={entranceSignPic} /> : <b>-</b>}
