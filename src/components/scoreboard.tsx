@@ -22,7 +22,7 @@ export function Scoreboard() {
         </thead>
         <tbody>
           {entries
-            .sort((a, b) => a.points - b.points)
+            .sort((a, b) => b.points - a.points)
             .map((entry) => {
               return (
                 <tr key={entry.id}>
