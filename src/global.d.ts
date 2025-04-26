@@ -47,3 +47,9 @@ type Submission = {
   points?: number;
   timestamp: number;
 };
+
+type ScoreboardEntry = {
+  name: string;
+  id: string;
+  points: number;
+};

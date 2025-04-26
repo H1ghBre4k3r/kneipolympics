@@ -6,6 +6,7 @@ import { useFunctions } from "../hooks/useFunctions";
 import { Dialog } from "./dialog";
 import { FaInfo } from "react-icons/fa";
 import { useLabels } from "../hooks/useLabels";
+import { Scoreboard } from "./scoreboard";
 
 export function CurrentRoute() {
   const { get, getAll } = useDatabase();
@@ -239,14 +240,18 @@ export function CurrentRoute() {
           )}
         </article>
       ) : (
-        <p>
-          {l("noNextBar")}
-          {submissions.reduce(
-            (memo, current) => memo + (current.points ?? 0),
-            0,
-          )}
-          {l("points")}
-        </p>
+        <>
+          <p>
+            {l("noNextBar")}
+            {submissions.reduce(
+              (memo, current) => memo + (current.points ?? 0),
+              0,
+            )}
+            {l("points")}
+          </p>
+
+          <Scoreboard />
+        </>
       )}
     </section>
   );

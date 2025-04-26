@@ -32,6 +32,7 @@ export type FunctionsContextValue = {
    */
   createSubmission(submission: Partial<Submission>): Promise<void>;
   skipBar(barId: string): Promise<void>;
+  getPoints(): Promise<ScoreboardEntry[]>;
 };
 
 export const FunctionsContext = createContext({} as FunctionsContextValue);
@@ -44,6 +45,7 @@ const ASSIGN_TO_TEAM = "67fd685f0030b3383ee3";
 const GET_NEXT_BAR = "6804cab00036dcc43720";
 const ADD_SUBMISSION = "6803fe84000ec14e0aca";
 const SKIP_BAR = "6804d14d0036f97ddbc1";
+const GET_POINTS = "680ccfd10009fb5382f2";
 
 export function FunctionsContextProvider({ children }: PropsWithChildren) {
   const { client } = useAppwrite();
@@ -207,6 +209,22 @@ export function FunctionsContextProvider({ children }: PropsWithChildren) {
     return JSON.parse(result.responseBody);
   }
 
+  async function getPoints(): Promise<ScoreboardEntry[]> {
+    const result = await functions.createExecution(
+      GET_POINTS,
+      undefined,
+      false,
+      undefined,
+      ExecutionMethod.GET,
+      {},
+    );
+
+    if (result.status !== "completed") {
+      throw new AppwriteException("Internal Server Error");
+    }
+    return JSON.parse(result.responseBody);
+  }
+
   const value: FunctionsContextValue = {
     register,
     getUsers,
@@ -216,6 +234,7 @@ export function FunctionsContextProvider({ children }: PropsWithChildren) {
     getNextBar,
     createSubmission,
     skipBar,
+    getPoints,
   };
 
   return (
