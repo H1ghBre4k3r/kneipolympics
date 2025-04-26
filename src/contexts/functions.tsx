@@ -168,7 +168,7 @@ export function FunctionsContextProvider({ children }: PropsWithChildren) {
   async function skipBar(barId: string): Promise<void> {
     const result = await functions.createExecution(
       SKIP_BAR,
-      JSON.stringify({ barId }),
+      JSON.stringify({ barId, timestamp: Date.now() }),
       false,
       undefined,
       ExecutionMethod.POST,
