@@ -44,7 +44,18 @@ export type Labels =
   | "needsPicture"
   | "individialPoints"
   | "rules"
-  | "generalInfo";
+  | "generalInfo"
+  | "sureToSubmit"
+  | "submissionsWillTakeAWhile"
+  | "entranceSign"
+  | "beers"
+  | "skip"
+  | "skipBar"
+  | "skipBarShort"
+  | "skipBarLong"
+  | "noSubmission"
+  | "noNextBar"
+  | "points";
 
 type Resources = {
   [key: string]: {
@@ -107,6 +118,20 @@ const resources: Resources = {
       individialPoints: "Individual Points?",
       rules: "Rules",
       generalInfo: "General Info",
+      sureToSubmit: "Are you sure you want to submit this bar?",
+      submissionsWillTakeAWhile:
+        "Submission can take a while depending on the image size. Please do not close this site or dialog!",
+      entranceSign: "Entrance Sign",
+      beers: "Beers",
+      skip: "Skip",
+      skipBar: "Skip Bar?",
+      skipBarShort: "Are you sure you want to skip this bar?",
+      skipBarLong:
+        "Is your current bar closed? In this case you can skip it but you have to drink two beers in the next bar!",
+      noSubmission:
+        "For this bar, you do not need to submit anything. An admin will enter required points for you. After this, you will see your next bar!",
+      noNextBar: "No next bar found! You currentl have ",
+      points: " points!",
     },
   },
   de: {
@@ -162,6 +187,20 @@ const resources: Resources = {
       individialPoints: "Individuelle Punkte?",
       rules: "Regeln",
       generalInfo: "Allgemeine Informationen",
+      sureToSubmit: "Willst du diese Bar wirklich abgeben?",
+      submissionsWillTakeAWhile:
+        "Abgaben können einige Zeit dauern, abhängig von der Größe der hochgeladenen Bilder. Bitte schließe diese Seite und diesen Dialog nicht!",
+      entranceSign: "Eingangsschild",
+      beers: "Biere",
+      skipBar: "Bar Überspringen?",
+      skip: "Überspringen",
+      skipBarShort: "Willst du diese Bar wirklich überspringen?",
+      skipBarLong:
+        "Ist eure aktuelle Bar geschlossen? In diesem Fall könnt ihr sie überspringen, aber ihr müsst jeweils zwei Bier in der nächsten Bar trinken!",
+      noSubmission:
+        "Für diese Bar müsst ihr nichts abgeben. Ein Admin trägt eure Punkte ein und danach könnt ihr eure nächste Bar sehen.",
+      noNextBar: "Keine nächste Bar gefunden! Du hast aktuell ",
+      points: " Punkte!",
     },
   },
 } as const;
