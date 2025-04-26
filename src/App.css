@@ -20,3 +20,5 @@
 @import "./routes/concreteSubmissions.css" layer(page);
 
 @import "./components/submissionCard.css" layer(organism);
+
+@import "./components/hendriksMegaButton.css" layer(organism);

@@ -5,12 +5,14 @@ import { useStorage } from "../hooks/useStorage";
 import { useFunctions } from "../hooks/useFunctions";
 import { Dialog } from "./dialog";
 import { FaInfo } from "react-icons/fa";
+import { useLabels } from "../hooks/useLabels";
 
 export function CurrentRoute() {
   const { get, getAll } = useDatabase();
   const { getNextBar, createSubmission, skipBar } = useFunctions();
   const { create, deleteFile } = useStorage();
   const [pref, _] = usePreferences();
+  const l = useLabels();
   const routeId = pref("route");
 
   const [loading, setLoading] = useState(true);
@@ -132,9 +134,9 @@ export function CurrentRoute() {
 
       {nextBar ? (
         <article className="next-bar">
-          <h4 className="slim">{nextBar?.name}</h4>
+          <h4>{nextBar?.name}</h4>
           <article>
-            <div>Address: </div>
+            <div>{l("address")}: </div>
             {nextBar?.address}
           </article>
 
@@ -142,22 +144,21 @@ export function CurrentRoute() {
             <>
               <article className="submission">
                 <Dialog
-                  header="Submit?"
+                  header={`${l("submit")}?`}
                   ref={submitDialog}
                   onSubmit={onSubmit}
                   onClose={() => submitDialog.current?.close()}
                 >
-                  Are you sure you want to submit this bar?
+                  {l("sureToSubmit")}{" "}
                   <button disabled={inFlight}>
-                    {inFlight ? "Submitting..." : "Submit"}
+                    {inFlight ? "Submitting..." : l("submit")}
                   </button>
                   <p>
                     <b>
                       <FaInfo />
                       Note:
                     </b>
-                    Submission can take a while depending on the image size.
-                    Please do not close this site or dialog!
+                    {l("submissionsWillTakeAWhile")}
                   </p>
                 </Dialog>
                 <form
@@ -167,7 +168,7 @@ export function CurrentRoute() {
                   }}
                 >
                   <label>
-                    <h4 className="slim">Task</h4>
+                    <h4 className="slim">{l("task")}</h4>
                     {nextBar.task}
                     {nextBar.needs_picture ? (
                       <input
@@ -186,7 +187,7 @@ export function CurrentRoute() {
                     )}
                   </label>
                   <label>
-                    Entrance Sign
+                    {l("entranceSign")}
                     <input
                       type="file"
                       name="entry"
@@ -196,7 +197,7 @@ export function CurrentRoute() {
                     />
                   </label>
                   <label>
-                    Beers
+                    {l("beers")}
                     <input
                       type="file"
                       name="beers"
@@ -210,41 +211,41 @@ export function CurrentRoute() {
               </article>
               <article className="is-closed">
                 <Dialog
-                  header="Skip bar?"
+                  header={l("skipBar")}
                   ref={skipDialog}
                   onSubmit={skip}
                   onClose={() => skipDialog.current?.close()}
                 >
-                  Are you sure you want to skip this bar?
-                  <button>Skip</button>
+                  {l("skipBarShort")}
+                  <button>{l("skip")}</button>
                 </Dialog>
                 <h4 className="slim">Closed?</h4>
-                <span>
-                  Is your current bar closed? In this case you can skip it but
-                  you have to drink two beers in the next bar!
-                </span>
+                <span>{l("skipBarLong")}</span>
                 <form
                   onSubmit={(e) => {
                     e.preventDefault();
                     skipDialog.current?.showModal();
                   }}
                 >
-                  <button>Skip</button>
+                  <button>{l("skip")}</button>
                 </form>
               </article>
             </>
           ) : (
-            <></>
+            <p>
+              <b>Note: </b>
+              {l("noSubmission")}
+            </p>
           )}
         </article>
       ) : (
         <p>
-          No next bar found! You currently have{" "}
+          {l("noNextBar")}
           {submissions.reduce(
             (memo, current) => memo + (current.points ?? 0),
             0,
-          )}{" "}
-          points!
+          )}
+          {l("points")}
         </p>
       )}
     </section>
