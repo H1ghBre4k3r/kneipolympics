@@ -1,6 +1,6 @@
 export function LogoLarge() {
   return (
-    <svg viewBox="0 0 50 50">
+    <svg viewBox="0 0 50 50" className="large">
       <style>@import url(../styles/logo_large.css);</style>
       <g className="bottle-cap-blue">
         <circle
@@ -157,7 +157,7 @@ export function LogoLarge() {
           cy="27.306921563629018"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-blue">
@@ -315,7 +315,7 @@ export function LogoLarge() {
           cy="26.036379241290284"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-blue">
@@ -473,7 +473,7 @@ export function LogoLarge() {
           cy="24.276776282642277"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-blue">
@@ -631,7 +631,7 @@ export function LogoLarge() {
           cy="22.200354885152173"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-blue">
@@ -789,7 +789,7 @@ export function LogoLarge() {
           cy="20.010369642484875"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-blue">
@@ -947,7 +947,7 @@ export function LogoLarge() {
           cy="17.92119156871706"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-blue">
@@ -1105,7 +1105,7 @@ export function LogoLarge() {
           cy="16.13732396986869"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-blue">
@@ -1263,7 +1263,7 @@ export function LogoLarge() {
           cy="14.833384235451438"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-blue">
@@ -1421,7 +1421,7 @@ export function LogoLarge() {
           cy="14.137011071752411"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-blue">
@@ -1579,7 +1579,7 @@ export function LogoLarge() {
           cy="14.116370335951602"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-blue">
@@ -1737,7 +1737,7 @@ export function LogoLarge() {
           cy="14.773482487081653"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-blue">
@@ -1895,7 +1895,7 @@ export function LogoLarge() {
           cy="16.044024809420385"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-blue">
@@ -2053,7 +2053,7 @@ export function LogoLarge() {
           cy="17.803627768068395"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-blue">
@@ -2211,7 +2211,7 @@ export function LogoLarge() {
           cy="19.8800491655585"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-blue">
@@ -2369,7 +2369,7 @@ export function LogoLarge() {
           cy="22.070034408225798"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-blue">
@@ -2527,7 +2527,7 @@ export function LogoLarge() {
           cy="24.159212481993606"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-blue">
@@ -2685,7 +2685,7 @@ export function LogoLarge() {
           cy="25.943080080841977"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-blue">
@@ -2843,7 +2843,7 @@ export function LogoLarge() {
           cy="27.24701981525923"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-blue">
@@ -3001,7 +3001,7 @@ export function LogoLarge() {
           cy="27.943392978958258"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-black">
@@ -3159,7 +3159,7 @@ export function LogoLarge() {
           cy="27.306921563629018"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-black">
@@ -3317,7 +3317,7 @@ export function LogoLarge() {
           cy="26.036379241290284"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-black">
@@ -3475,7 +3475,7 @@ export function LogoLarge() {
           cy="24.276776282642277"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-black">
@@ -3633,7 +3633,7 @@ export function LogoLarge() {
           cy="22.200354885152173"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-black">
@@ -3791,7 +3791,7 @@ export function LogoLarge() {
           cy="20.010369642484875"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-black">
@@ -3949,7 +3949,7 @@ export function LogoLarge() {
           cy="17.92119156871706"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-black">
@@ -4107,7 +4107,7 @@ export function LogoLarge() {
           cy="16.13732396986869"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-black">
@@ -4265,7 +4265,7 @@ export function LogoLarge() {
           cy="14.833384235451438"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-black">
@@ -4423,7 +4423,7 @@ export function LogoLarge() {
           cy="14.137011071752411"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-black">
@@ -4581,7 +4581,7 @@ export function LogoLarge() {
           cy="14.116370335951602"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-black">
@@ -4739,7 +4739,7 @@ export function LogoLarge() {
           cy="14.773482487081653"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-black">
@@ -4897,7 +4897,7 @@ export function LogoLarge() {
           cy="16.044024809420385"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-black">
@@ -5055,7 +5055,7 @@ export function LogoLarge() {
           cy="17.803627768068395"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-black">
@@ -5213,7 +5213,7 @@ export function LogoLarge() {
           cy="19.8800491655585"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-black">
@@ -5371,7 +5371,7 @@ export function LogoLarge() {
           cy="24.159212481993606"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-black">
@@ -5529,7 +5529,7 @@ export function LogoLarge() {
           cy="25.943080080841977"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-black">
@@ -5687,7 +5687,7 @@ export function LogoLarge() {
           cy="27.24701981525923"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-black">
@@ -5845,7 +5845,7 @@ export function LogoLarge() {
           cy="27.943392978958258"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-red">
@@ -6003,7 +6003,7 @@ export function LogoLarge() {
           cy="27.96403371475907"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-red">
@@ -6161,7 +6161,7 @@ export function LogoLarge() {
           cy="27.306921563629018"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-red">
@@ -6319,7 +6319,7 @@ export function LogoLarge() {
           cy="26.036379241290284"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-red">
@@ -6477,7 +6477,7 @@ export function LogoLarge() {
           cy="24.276776282642277"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-red">
@@ -6635,7 +6635,7 @@ export function LogoLarge() {
           cy="22.200354885152173"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-red">
@@ -6793,7 +6793,7 @@ export function LogoLarge() {
           cy="20.010369642484875"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-red">
@@ -6951,7 +6951,7 @@ export function LogoLarge() {
           cy="17.92119156871706"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-red">
@@ -7109,7 +7109,7 @@ export function LogoLarge() {
           cy="16.13732396986869"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-red">
@@ -7267,7 +7267,7 @@ export function LogoLarge() {
           cy="14.833384235451438"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-red">
@@ -7425,7 +7425,7 @@ export function LogoLarge() {
           cy="14.137011071752411"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-red">
@@ -7583,7 +7583,7 @@ export function LogoLarge() {
           cy="14.116370335951602"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-red">
@@ -7741,7 +7741,7 @@ export function LogoLarge() {
           cy="14.773482487081653"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-red">
@@ -7899,7 +7899,7 @@ export function LogoLarge() {
           cy="16.044024809420385"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-red">
@@ -8057,7 +8057,7 @@ export function LogoLarge() {
           cy="17.803627768068395"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-red">
@@ -8215,7 +8215,7 @@ export function LogoLarge() {
           cy="19.8800491655585"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-red">
@@ -8373,7 +8373,7 @@ export function LogoLarge() {
           cy="24.159212481993606"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-red">
@@ -8531,7 +8531,7 @@ export function LogoLarge() {
           cy="25.943080080841977"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-red">
@@ -8689,7 +8689,7 @@ export function LogoLarge() {
           cy="27.24701981525923"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-red">
@@ -8847,7 +8847,7 @@ export function LogoLarge() {
           cy="27.943392978958258"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-yellow">
@@ -9005,7 +9005,7 @@ export function LogoLarge() {
           cy="35.8836296640484"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-yellow">
@@ -9163,7 +9163,7 @@ export function LogoLarge() {
           cy="35.22651751291835"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-yellow">
@@ -9321,7 +9321,7 @@ export function LogoLarge() {
           cy="33.955975190579615"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-yellow">
@@ -9479,7 +9479,7 @@ export function LogoLarge() {
           cy="32.196372231931605"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-yellow">
@@ -9637,7 +9637,7 @@ export function LogoLarge() {
           cy="30.119950834441504"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-yellow">
@@ -9795,7 +9795,7 @@ export function LogoLarge() {
           cy="25.84078751800639"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-yellow">
@@ -9953,7 +9953,7 @@ export function LogoLarge() {
           cy="24.05691991915802"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-yellow">
@@ -10111,7 +10111,7 @@ export function LogoLarge() {
           cy="22.75298018474077"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-yellow">
@@ -10269,7 +10269,7 @@ export function LogoLarge() {
           cy="22.056607021041742"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-yellow">
@@ -10427,7 +10427,7 @@ export function LogoLarge() {
           cy="22.693078436370982"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-yellow">
@@ -10585,7 +10585,7 @@ export function LogoLarge() {
           cy="23.963620758709716"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-yellow">
@@ -10743,7 +10743,7 @@ export function LogoLarge() {
           cy="25.723223717357726"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-yellow">
@@ -10901,7 +10901,7 @@ export function LogoLarge() {
           cy="27.79964511484783"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-yellow">
@@ -11059,7 +11059,7 @@ export function LogoLarge() {
           cy="29.98963035751513"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-yellow">
@@ -11217,7 +11217,7 @@ export function LogoLarge() {
           cy="32.07880843128294"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-yellow">
@@ -11375,7 +11375,7 @@ export function LogoLarge() {
           cy="33.86267603013131"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-yellow">
@@ -11533,7 +11533,7 @@ export function LogoLarge() {
           cy="35.16661576454856"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-yellow">
@@ -11691,7 +11691,7 @@ export function LogoLarge() {
           cy="35.86298892824759"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-green">
@@ -11849,7 +11849,7 @@ export function LogoLarge() {
           cy="35.8836296640484"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-green">
@@ -12007,7 +12007,7 @@ export function LogoLarge() {
           cy="35.22651751291835"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-green">
@@ -12165,7 +12165,7 @@ export function LogoLarge() {
           cy="33.955975190579615"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-green">
@@ -12323,7 +12323,7 @@ export function LogoLarge() {
           cy="32.196372231931605"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-green">
@@ -12481,7 +12481,7 @@ export function LogoLarge() {
           cy="30.119950834441504"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-green">
@@ -12639,7 +12639,7 @@ export function LogoLarge() {
           cy="25.84078751800639"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-green">
@@ -12797,7 +12797,7 @@ export function LogoLarge() {
           cy="24.05691991915802"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-green">
@@ -12955,7 +12955,7 @@ export function LogoLarge() {
           cy="22.75298018474077"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-green">
@@ -13113,7 +13113,7 @@ export function LogoLarge() {
           cy="22.056607021041742"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-green">
@@ -13271,7 +13271,7 @@ export function LogoLarge() {
           cy="22.693078436370982"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-green">
@@ -13429,7 +13429,7 @@ export function LogoLarge() {
           cy="23.963620758709716"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-green">
@@ -13587,7 +13587,7 @@ export function LogoLarge() {
           cy="25.723223717357726"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-green">
@@ -13745,7 +13745,7 @@ export function LogoLarge() {
           cy="27.79964511484783"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-green">
@@ -13903,7 +13903,7 @@ export function LogoLarge() {
           cy="29.98963035751513"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-green">
@@ -14061,7 +14061,7 @@ export function LogoLarge() {
           cy="32.07880843128294"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-green">
@@ -14219,7 +14219,7 @@ export function LogoLarge() {
           cy="33.86267603013131"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-green">
@@ -14377,7 +14377,7 @@ export function LogoLarge() {
           cy="35.16661576454856"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-green">
@@ -14535,7 +14535,7 @@ export function LogoLarge() {
           cy="35.86298892824759"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
     </svg>

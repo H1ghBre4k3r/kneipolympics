@@ -1,6 +1,6 @@
 export function LogoSmall() {
   return (
-    <svg viewBox="0 0 6 6">
+    <svg viewBox="0 0 6 6" className="small">
       <style>@import url(../styles/logo_small.css);</style>
       <g className="bottle-cap-blue">
         <circle
@@ -157,7 +157,7 @@ export function LogoSmall() {
           cy="2.5227029226990805"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-black">
@@ -305,7 +305,7 @@ export function LogoSmall() {
           cy="2.5227029226990805"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-red">
@@ -463,7 +463,7 @@ export function LogoSmall() {
           cy="2.5227029226990805"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-yellow">
@@ -621,7 +621,7 @@ export function LogoSmall() {
           cy="3.4772970773009195"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-green">
@@ -779,7 +779,7 @@ export function LogoSmall() {
           cy="3.4772970773009195"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-blue">
@@ -789,7 +789,7 @@ export function LogoSmall() {
           cy="2.5227029226990805"
           r="1"
           mask="url(#bottle-cap-shape-6)"
-          clip-path="url(#ring-mask-0)"
+          clipPath="url(#ring-mask-0)"
           fill="var(--iconColor)"
         />
         <mask id="bottle-cap-shape-6">
@@ -941,7 +941,7 @@ export function LogoSmall() {
           cy="2.5227029226990805"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-black">
@@ -951,7 +951,7 @@ export function LogoSmall() {
           cy="2.5227029226990805"
           r="1"
           mask="url(#bottle-cap-shape-7)"
-          clip-path="url(#ring-mask-1)"
+          clipPath="url(#ring-mask-1)"
           fill="var(--iconColor)"
         />
         <mask id="bottle-cap-shape-7">
@@ -1093,7 +1093,7 @@ export function LogoSmall() {
           cy="2.5227029226990805"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-black">
@@ -1103,7 +1103,7 @@ export function LogoSmall() {
           cy="2.5227029226990805"
           r="1"
           mask="url(#bottle-cap-shape-8)"
-          clip-path="url(#ring-mask-2)"
+          clipPath="url(#ring-mask-2)"
           fill="var(--iconColor)"
         />
         <mask id="bottle-cap-shape-8">
@@ -1245,7 +1245,7 @@ export function LogoSmall() {
           cy="2.5227029226990805"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
       <g className="bottle-cap-red">
@@ -1255,7 +1255,7 @@ export function LogoSmall() {
           cy="2.5227029226990805"
           r="1"
           mask="url(#bottle-cap-shape-9)"
-          clip-path="url(#ring-mask-3)"
+          clipPath="url(#ring-mask-3)"
           fill="var(--iconColor)"
         />
         <mask id="bottle-cap-shape-9">
@@ -1407,7 +1407,7 @@ export function LogoSmall() {
           cy="2.5227029226990805"
           r="0.7"
           fill="var(--iconColor)"
-          fill-opacity="var(--innerOpacity)"
+          fillOpacity="var(--innerOpacity)"
         />
       </g>
     </svg>
