@@ -45,4 +45,5 @@ type Submission = {
   accepted?: boolean;
   declined?: boolean;
   points?: number;
+  timestamp: number;
 };
