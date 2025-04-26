@@ -1,6 +1,6 @@
-import { CiBeerMugFull } from "react-icons/ci";
 import { Link } from "react-router";
 import { Nav } from "./nav";
+import { LogoSmall } from "./logoSmall";
 
 export function Header() {
   return (
@@ -12,7 +12,7 @@ export function Header() {
           </h1>
         </section>
         <section className="profile">
-          <CiBeerMugFull />
+          <LogoSmall />
         </section>
       </header>
       <Nav />

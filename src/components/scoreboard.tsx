@@ -1,10 +1,8 @@
 import { useFunctions } from "../hooks/useFunctions";
 import { useEffect, useState } from "react";
-import { useLabels } from "../hooks/useLabels";
 
 export function Scoreboard() {
   const { getPoints } = useFunctions();
-  const l = useLabels();
 
   const [entries, setEntries] = useState<ScoreboardEntry[]>([]);
 
@@ -18,8 +16,8 @@ export function Scoreboard() {
       <table>
         <thead>
           <tr>
-            <th className="name">{l("name")}</th>
-            <th className="points">{l("points")}</th>
+            <th className="name">Name</th>
+            <th className="points">Points</th>
           </tr>
         </thead>
         <tbody>
