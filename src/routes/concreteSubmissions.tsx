@@ -41,44 +41,51 @@ export function ConcreteSubmissionsRoute() {
       <h3>Submissions</h3>
       <h4>{route?.name}</h4>
       <ul className="listing">
-        {submissions.map((sub) => {
-          const bar = route?.bars.find((bar) => bar.$id === sub.barId);
-          if (!bar) {
-            return <></>;
-          }
-          const name = bar.name;
-          return (
-            <li key={sub.$id}>
-              <details>
-                <summary>
-                  <span className="name">
-                    <span className="closed">
-                      <FaCaretRight />
-                    </span>
-                    <span className="open">
-                      <FaCaretDown />
-                    </span>
-                    {name}
-                  </span>
-                  <span>
-                    {!sub.accepted && !sub.declined && <TbCodeAsterisk />}
-                    {sub.accepted && (
-                      <span className="accepted">
-                        <TbCodePlus />
+        {route?.order
+          .map((id) => route!.bars.find((bar) => bar.$id === id)!)
+          .map((bar) => {
+            const sub = submissions.find((sub) => sub.barId === bar.$id);
+
+            const { needs_submission } = bar;
+
+            if (!sub && needs_submission) {
+              return <li key={bar.$id}>{bar.name}</li>;
+            } else {
+              const accepted = !!sub?.accepted;
+              const declined = !!sub?.declined;
+              return (
+                <li key={bar.$id}>
+                  <details>
+                    <summary>
+                      <span className="name">
+                        <span className="closed">
+                          <FaCaretRight />
+                        </span>
+                        <span className="open">
+                          <FaCaretDown />
+                        </span>
+                        {bar.name}
                       </span>
-                    )}
-                    {sub.declined && (
-                      <span className="declined">
-                        <TbCodeMinus />
+                      <span>
+                        {!accepted && !declined && <TbCodeAsterisk />}
+                        {accepted && (
+                          <span className="accepted">
+                            <TbCodePlus />
+                          </span>
+                        )}
+                        {declined && (
+                          <span className="declined">
+                            <TbCodeMinus />
+                          </span>
+                        )}
                       </span>
-                    )}
-                  </span>
-                </summary>
-                <SubmissionCard submission={sub} bar={bar} />
-              </details>
-            </li>
-          );
-        })}
+                    </summary>
+                    <SubmissionCard submission={sub} bar={bar} route={route} />
+                  </details>
+                </li>
+              );
+            }
+          })}
       </ul>
     </section>
   );

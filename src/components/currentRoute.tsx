@@ -132,7 +132,7 @@ export function CurrentRoute() {
 
       {nextBar ? (
         <article className="next-bar">
-          <h4 className="slim">{nextBar?.name}</h4>
+          <h4>{nextBar?.name}</h4>
           <article>
             <div>Address: </div>
             {nextBar?.address}
@@ -234,7 +234,11 @@ export function CurrentRoute() {
               </article>
             </>
           ) : (
-            <></>
+            <p>
+              <b>Note: </b>For this bar, you do not need to submit anything. An
+              admin will enter required points for you. After this, you will see
+              your next bar!
+            </p>
           )}
         </article>
       ) : (

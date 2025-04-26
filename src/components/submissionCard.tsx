@@ -3,16 +3,21 @@ import { useStorage } from "../hooks/useStorage";
 import { useDatabase } from "../hooks/useDatabase";
 
 type SubmissionCardProps = {
-  submission: Submission;
+  submission?: Submission;
   bar: Bar;
+  route: Route;
 };
-export function SubmissionCard({ submission, bar }: SubmissionCardProps) {
+export function SubmissionCard({
+  submission,
+  bar,
+  route,
+}: SubmissionCardProps) {
   const { getView } = useStorage();
-  const { update } = useDatabase();
+  const { update, create } = useDatabase();
 
-  const { needs_picture, individual_points } = bar;
+  const { needs_picture, individual_points, needs_submission } = bar;
   const { skipped, entranceSign, beers, imageSubmission, answer, timestamp } =
-    submission;
+    submission ?? {};
 
   const [entranceSignPic, setEntranceSignPic] = useState<string>();
   const [beerPic, setBeerPic] = useState<string>();
@@ -46,26 +51,41 @@ export function SubmissionCard({ submission, bar }: SubmissionCardProps) {
       .catch(console.error);
   }, [getView, imageSubmission, needs_picture]);
 
-  const [points, setPoints] = useState(submission.points ?? 0);
+  const [points, setPoints] = useState(submission?.points ?? 0);
 
   function accept() {
-    update("submissions", submission.$id, {
-      points: individual_points ? points : 1,
-      accepted: true,
-      declined: false,
-    })
-      .then(() => location.reload())
-      .catch(console.error);
+    if (submission) {
+      update("submissions", submission.$id, {
+        points: individual_points ? points : 1,
+        accepted: true,
+        declined: false,
+      })
+        .then(() => location.reload())
+        .catch(console.error);
+    } else {
+      create("submissions", {
+        barId: bar.$id,
+        routeId: route.$id,
+        points: individual_points ? points : 1,
+        accepted: true,
+        declined: false,
+        timestamp: Date.now(),
+      })
+        .then(() => location.reload())
+        .catch(console.error);
+    }
   }
 
   function decline() {
-    update("submissions", submission.$id, {
-      points: individual_points ? points : 0,
-      accepted: false,
-      declined: true,
-    })
-      .then(() => location.reload())
-      .catch(console.error);
+    if (submission) {
+      update("submissions", submission.$id, {
+        points: individual_points ? points : 0,
+        accepted: false,
+        declined: true,
+      })
+        .then(() => location.reload())
+        .catch(console.error);
+    }
   }
 
   return (
@@ -73,30 +93,32 @@ export function SubmissionCard({ submission, bar }: SubmissionCardProps) {
       {skipped ? (
         <h4>Skipped</h4>
       ) : (
-        <>
-          <h5>{new Date(timestamp).toLocaleString()}</h5>
-          <article>
-            <h5>Entrance</h5>
-            {entranceSignPic ? <img src={entranceSignPic} /> : <b>-</b>}
-          </article>
-          <article>
-            <h5>Beers</h5>
-            {beerPic ? <img src={beerPic} /> : <b>-</b>}
-          </article>
+        needs_submission && (
+          <>
+            {timestamp && <h5>{new Date(timestamp).toLocaleString()}</h5>}
+            <article>
+              <h5>Entrance</h5>
+              {entranceSignPic ? <img src={entranceSignPic} /> : <b>-</b>}
+            </article>
+            <article>
+              <h5>Beers</h5>
+              {beerPic ? <img src={beerPic} /> : <b>-</b>}
+            </article>
 
-          <article>
-            <h5>Task</h5>
-            {needs_picture ? (
-              submissionPic ? (
-                <img src={submissionPic} />
+            <article>
+              <h5>Task</h5>
+              {needs_picture ? (
+                submissionPic ? (
+                  <img src={submissionPic} />
+                ) : (
+                  <b>-</b>
+                )
               ) : (
-                <b>-</b>
-              )
-            ) : (
-              <i>{answer}</i>
-            )}
-          </article>
-        </>
+                <i>{answer}</i>
+              )}
+            </article>
+          </>
+        )
       )}
 
       <form onSubmit={(e) => e.preventDefault()}>
@@ -114,7 +136,7 @@ export function SubmissionCard({ submission, bar }: SubmissionCardProps) {
         <button className="success" type="button" onClick={accept}>
           Accept
         </button>
-        {!skipped && (
+        {!skipped && needs_submission && (
           <button className="error" type="button" onClick={decline}>
             Decline
           </button>
