@@ -21,14 +21,16 @@ export function Scoreboard() {
           </tr>
         </thead>
         <tbody>
-          {entries.map((entry) => {
-            return (
-              <tr key={entry.id}>
-                <td className="name">{entry.name}</td>
-                <td className="points">{entry.points}</td>
-              </tr>
-            );
-          })}
+          {entries
+            .sort((a, b) => a.points - b.points)
+            .map((entry) => {
+              return (
+                <tr key={entry.id}>
+                  <td className="name">{entry.name}</td>
+                  <td className="points">{entry.points}</td>
+                </tr>
+              );
+            })}
         </tbody>
       </table>
     </section>

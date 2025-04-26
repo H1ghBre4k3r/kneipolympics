@@ -14,7 +14,7 @@ export function RegisteredIndexRoute() {
 
       {isAdmin && <HendriksMegaButton />}
 
-      <Scoreboard />
+      {isAdmin && <Scoreboard />}
 
       <Link to="/logout">Logout</Link>
     </section>
