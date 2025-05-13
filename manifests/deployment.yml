@@ -17,7 +17,7 @@ spec:
         io.kompose.service: kneipolympics-deployment
     spec:
       containers:
-        - image: ghcr.io/h1ghbre4k3r/kneipolympics:latest
+        - image: ghcr.io/h1ghbre4k3r/kneipolympics:280728c007ce1119c60ba15f27fc4e42ef2dafd6
           imagePullPolicy: Always
           name: kneipolympics-deployment
           ports:
